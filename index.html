@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 8 English Learning Portal - West Bengal Board</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2b2d42;
+            --text-light: #6c757d;
+            --highlight: #e0aaff;
+            --success: #2ec4b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav button {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover, nav button.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .page-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .page-number {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .interactive-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        /* Clickable word styling */
+        .w {
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+            display: inline-block;
+        }
+
+        .w:hover {
+            background-color: var(--highlight);
+            color: #000;
+        }
+
+        .activity-box {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .activity-title {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .question-item {
+            margin-bottom: 15px;
+        }
+
+        .question {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .answer {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 4px solid var(--success);
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* Modal / Popup for Dictionary */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: popup 0.3s ease;
+        }
+
+        @keyframes popup {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .word-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .pos-badge {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .info-row {
+            margin: 8px 0;
+            font-size: 1.1rem;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bengali-text {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #d81b60;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--primary);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Class 8 English Learning Hub</h1>
+        <p>Interactive Textbook, Vocabulary & Solutions (WB Board)</p>
+    </header>
+
+    <nav>
+        <button onclick="scrollToSection('lesson10')" class="active">Lesson 10: Tales of Childhood</button>
+        <button onclick="scrollToSection('lesson11')">Lesson 11: Midnight Express</button>
+        <button onclick="scrollToSection('unit-review')">End Activities (121-123)</button>
+    </nav>
+
+    <div class="container">
+
+        <!-- LESSON 10 SECTION -->
+        <div id="lesson10">
+            <h2 style="margin: 20px 0; color: var(--secondary);">Lesson 10: Tales of Childhood - Roald Dahl</h2>
+            
+            <!-- Page 89 -->
+            <div class="page-card">
+                <div class="page-header">
+                    <h3>Excerpt & Family Background</h3>
+                    <span class="page-number">Page 89</span>
+                </div>
+                <div class="interactive-text">
+                    <span class="w" onclick="dict('My','pronoun','মাই','আমার')">My</span>
+                    <span class="w" onclick="dict('father','noun','ফাদার','বাবা')">father,</span>
+                    <span class="w" onclick="dict('Harold Dahl','proper noun','হ্যারল্ড ডাল','হ্যারল্ড ডাল')">Harold Dahl,</span>
+                    <span class="w" onclick="dict('was','verb','ওয়াজ','ছিলেন')">was</span>
+                    <span class="w" onclick="dict('a','article','এ','একজন')">a</span>
+                    <span class="w" onclick="dict('Norwegian','adjective','নরওয়েজিয়ান','নরওয়ের অধিবাসী')">Norwegian</span>
+                    <span class="w" onclick="dict('who','pronoun','হু','যিনি')">who</span>
+                    <span class="w" onclick="dict('came','verb','কেম','এসেছিলেন')">came</span>
+                    <span class="w" onclick="dict('from','preposition','ফ্রাম','থেকে')">from</span>
+                    <span class="w" onclick="dict('a','article','এ','একটি')">a</span>
+                    <span class="w" onclick="dict('small','adjective','স্মল','ছোট')">small</span>
+                    <span class="w" onclick="dict('town','noun','টাউন','শহর')">town</span>
+                    <span class="w" onclick="dict('near','preposition','নিয়ার','কাছে')">near</span>
+                    <span class="w" onclick="dict('Oslo','proper noun','অসলো','অসলো')">Oslo,</span>
+                    <span class="w" onclick="dict('called','verb','কল্ড','নামক')">called</span>
+                    <span class="w" onclick="dict('Sarpsborg','proper noun','সার্পসবোর্গ','সার্পসবোর্গ')">Sarpsborg.</span>
+                    <span class="w" onclick="dict('His','pronoun','হিজ','তাঁর')">His</span>
+                    <span class="w" onclick="dict('own','adjective','ওন','নিজের')">own</span>
+                    <span class="w" onclick="dict('father','noun','ফাদার','বাবা')">father,</span>
+                    <span class="w" onclick="dict('my','pronoun','মাই','আমার')">my</span>
+                    <span class="w" onclick="dict('grandfather','noun','গ্র্যান্ডফাদার','দাদু')">grandfather,</span>
+                    <span class="w" onclick="dict('was','verb','ওয়াজ','ছিলেন')">was</span>
+                    <span class="w" onclick="dict('a','article','এ','একজন')">a</span>
+                    <span class="w" onclick="dict('prosperous','adjective','প্রসপরাস','সমৃদ্ধশালী/ধনী')">prosperous</span>
+                    <span class="w" onclick="dict('merchant','noun','মার্চেন্ট','বণিক/ব্যবসায়ী')">merchant...</span>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-light);">* Click on any word above to see pronunciation, part of speech, and Bengali meaning!</p>
+            </div>
+
+            <!-- Page 91 Activities -->
+            <div class="page-card">
+                <div class="page-header">
+                    <h3>Page 91 Activities</h3>
+                    <span class="page-number">Page 91</span>
+                </div>
+                <div class="activity-box">
+                    <div class="activity-title">Activity 1: Sentence Rearrangement</div>
+                    <ol>
+                        <li>The writer's grandfather was a prosperous merchant. <strong>[1]</strong></li>
+                        <li>Harold Dahl lost his arm when he was fourteen. <strong>[2]</strong></li>
+                        <li>Harold Dahl became a successful shipbroker and set up a farm at Cardiff. <strong>[3]</strong></li>
+                        <li>He met Sofie Magdalene Hesselberg in 1911. <strong>[4]</strong></li>
+                        <li>They married soon after. <strong>[5]</strong></li>
+                        <li>They, along with their family members, moved to Radyr in 1918. <strong>[6]</strong></li>
+                    </ol>
+                </div>
+
+                <div class="activity-box">
+                    <div class="activity-title">Activity 2: Sentence Completion</div>
+                    <div class="question-item">
+                        <div class="question">(a) The narrator's grandfather was...</div>
+                        <div class="answer">a fairly prosperous merchant who owned a store in Sarpsborg.</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question">(b) Harold Dahl had lost...</div>
+                        <div class="answer">an arm when he was fourteen years old.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 98 Writing Activity -->
+            <div class="page-card">
+                <div class="page-header">
+                    <h3>Page 98 - Writing Task</h3>
+                    <span class="page-number">Page 98</span>
+                </div>
+                <div class="activity-box">
+                    <div class="activity-title">Activity 10(b): Diary Entry on Shifting to a New Place (Under 90 Words)</div>
+                    <div class="answer" style="background-color: #fff; color: #333; border: 1px solid #ccc;">
+                        <strong>10th August 2026</strong><br>
+                        Dear Diary,<br>
+                        Today was our first day in our new home at Llandaff. Leaving my familiar neighbourhood, childhood friends, and cozy room felt deeply saddening. However, this new villa is quite pleasant and peaceful. The surroundings are spacious, and there is a beautiful park nearby. Though I miss my old house and neighbors terribly, I am trying to stay positive. I hope to make new friends soon and adapt comfortably to this new environment. It is a fresh chapter of my life.<br>
+                        <strong>- Roald</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LESSON 11 SECTION -->
+        <div id="lesson11">
+            <h2 style="margin: 20px 0; color: var(--secondary);">Lesson 11: Midnight Express - Alfred Noyes</h2>
+            
+            <!-- Page 99 -->
+            <div class="page-card">
+                <div class="page-header">
+                    <h3>Story Opening</h3>
+                    <span class="page-number">Page 99</span>
+                </div>
+                <div class="interactive-text">
+                    <span class="w" onclick="dict('It','pronoun','ইট','এটি')">It</span>
+                    <span class="w" onclick="dict('was','verb','ওয়াজ','ছিল')">was</span>
+                    <span class="w" onclick="dict('a','article','এ','একটি')">a</span>
+                    <span class="w" onclick="dict('battered','adjective','ব্যাটার্ড','জীর্ণ/ক্ষতিগ্রস্ত')">battered</span>
+                    <span class="w" onclick="dict('old','adjective','ওল্ড','পুরোনো')">old</span>
+                    <span class="w" onclick="dict('book','noun','বুক','বই')">book,</span>
+                    <span class="w" onclick="dict('bound','verb','বাউন্ড','বাঁধানো')">bound</span>
+                    <span class="w" onclick="dict('in','preposition','ইন','মধ্যে')">in</span>
+                    <span class="w" onclick="dict('red','adjective','রেড','লাল')">red</span>
+                    <span class="w" onclick="dict('leather','noun','লেদার','চামড়া')">leather.</span>
+                    <span class="w" onclick="dict('When','conjunction','হোয়েন','যখন')">When</span>
+                    <span class="w" onclick="dict('Mortimer','proper noun','মরটিমার','মরটিমার')">Mortimer</span>
+                    <span class="w" onclick="dict('was','verb','ওয়াজ','ছিল')">was</span>
+                    <span class="w" onclick="dict('twelve','adjective','ট্যুয়েলভ','বারো')">twelve</span>
+                    <span class="w" onclick="dict('years','noun','ইয়ার্স','বছর')">years</span>
+                    <span class="w" onclick="dict('old','adjective','ওল্ড','বয়স')">old,</span>
+                    <span class="w" onclick="dict('he','pronoun','হি','সে')">he</span>
+                    <span class="w" onclick="dict('found','verb','ফাউন্ড','পেয়েছিল')">found</span>
+                    <span class="w" onclick="dict('the','article','দি','টি')">the</span>
+                    <span class="w" onclick="dict('book','noun','বুক','বই')">book...</span>
+                </div>
+            </div>
+
+            <!-- Page 100 Activity -->
+            <div class="page-card">
+                <div class="page-header">
+                    <h3>Page 100 Activities</h3>
+                    <span class="page-number">Page 100</span>
+                </div>
+                <div class="activity-box">
+                    <div class="activity-title">Activity 1: Tick the Correct Alternative</div>
+                    <div class="question-item">
+                        <div class="question">(i) Mortimer found the book—</div>
+                        <div class="answer">(c) in his father's library</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question">(ii) The illustration on the page showed—</div>
+                        <div class="answer">(b) an empty railway platform</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question">(iii) Mortimer was able to read up to—</div>
+                        <div class="answer">(a) page fifty of the book</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- END-OF-UNIT ACTIVITIES SECTION -->
+        <div id="unit-review">
+            <h2 style="margin: 20px 0; color: var(--secondary);">End-of-Unit Activities (Pages 121 - 123)</h2>
+
+            <!-- Page 121 Activities -->
+            <div class="page-card">
+                <div class="page-header">
+                    <h3>Page 121 Activities</h3>
+                    <span class="page-number">Page 121</span>
+                </div>
+                <div class="activity-box">
+                    <div class="activity-title">Activity 7: Comprehension Questions</div>
+                    <div class="question-item">
+                        <div class="question">(a) How did Elzéard Bouffier plant the acorns?</div>
+                        <div class="answer">Elzéard Bouffier carried a bag of acorns, selected the best ones, and planted them one by one by pounding an iron rod into the earth and dropping an acorn in.</div>
+                    </div>
+                    <div class="question-item">
+                        <div class="question">(b) How many years later did the narrator revisit the country?</div>
+                        <div class="answer">The narrator revisited the country after a time span of five years.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 123 Writing Activity -->
+            <div class="page-card">
+                <div class="page-header">
+                    <h3>Page 123 - Creative Writing Task</h3>
+                    <span class="page-number">Page 123</span>
+                </div>
+                <div class="activity-box">
+                    <div class="activity-title">Activity 10(b): Letter to a Friend in a Hostel (Under 90 Words)</div>
+                    <div class="answer" style="background-color: #fff; color: #333; border: 1px solid #ccc;">
+                        Dear Rahul,<br>
+                        I hope this letter finds you well. I came to know that you are feeling lonely and homesick at your hostel. Please do not feel disheartened. It takes time to adjust to a new place. Focus on your studies and try participating in sports and extracurricular activities. Make new friends and stay engaged. Remember, this experience will make you independent and stronger. We all believe in you. Stay cheerful and write back soon.<br>
+                        Yours lovingly,<br>
+                        <strong>Aniket</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- DICTIONARY POPUP MODAL -->
+    <div id="dictModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="word-title" id="m-word">Word</div>
+            <span class="pos-badge" id="m-pos">Part of Speech</span>
+            <div class="info-row">
+                <div class="info-label">Bengali Pronunciation</div>
+                <div id="m-pron" style="font-size: 1.1rem; font-weight: 500;">pronunciation</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Bengali Meaning</div>
+                <div class="bengali-text" id="m-meaning">অর্থ</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function dict(word, pos, pron, meaning) {
+            document.getElementById('m-word').innerText = word;
+            document.getElementById('m-pos').innerText = pos;
+            document.getElementById('m-pron').innerText = pron;
+            document.getElementById('m-meaning').innerText = meaning;
+            document.getElementById('dictModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('dictModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('dictModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            
+            // Toggle active state on buttons
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -38,7 +38,6 @@
             text-align: left;
         }
 
-        /* Front Page Menu Grid */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -75,7 +74,6 @@
             margin: 0;
         }
 
-        /* Section View Management */
         .topic-section {
             display: none;
         }
@@ -129,7 +127,6 @@
             margin-bottom: 10px;
         }
 
-        /* Clickable Words */
         .w {
             cursor: pointer;
             padding: 2px 4px;
@@ -162,7 +159,6 @@
             font-weight: 500;
         }
 
-        /* Dictionary Popup Modal */
         .modal {
             display: none;
             position: fixed;
@@ -224,12 +220,10 @@
 
 <div class="container">
 
-    <!-- MAIN FRONT PAGE DASHBOARD -->
     <div id="front-page" class="page-card" style="text-align: center; border-left: none;">
         <h2>Class 8 English Interactive Portal</h2>
         <p style="color: #666; margin-bottom: 25px;">Select any topic across Lessons 10–12 (Pages 89–123)</p>
 
-        <!-- BATCH 1 -->
         <div class="batch-header">Batch 1: Lesson 10 — Tales of Childhood (Pages 89–98)</div>
         <div class="menu-grid">
             <div class="topic-card" onclick="openTopic('b1-t1')">
@@ -246,7 +240,6 @@
             </div>
         </div>
 
-        <!-- BATCH 2 -->
         <div class="batch-header">Batch 2: Lesson 11 — Midnight Express Part 1 (Pages 99–101)</div>
         <div class="menu-grid">
             <div class="topic-card" onclick="openTopic('b2-t1')">
@@ -267,7 +260,6 @@
             </div>
         </div>
 
-        <!-- BATCH 3 -->
         <div class="batch-header">Batch 3: Lesson 11 — Continuation & Grammar (Pages 102–115)</div>
         <div class="menu-grid">
             <div class="topic-card" onclick="openTopic('b3-t1')">
@@ -288,7 +280,6 @@
             </div>
         </div>
 
-        <!-- BATCH 4 -->
         <div class="batch-header">Batch 4: Lesson 12 — Someone & Final Review (Pages 116–123)</div>
         <div class="menu-grid">
             <div class="topic-card" onclick="openTopic('b4-t1')">
@@ -310,7 +301,6 @@
         </div>
     </div>
 
-    <!-- ==================== BATCH 1 SECTIONS ==================== -->
     <div id="b1-t1" class="topic-section">
         <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
         <div class="page-card">
@@ -376,7 +366,6 @@
         </div>
     </div>
 
-    <!-- ==================== BATCH 2 SECTIONS ==================== -->
     <div id="b2-t1" class="topic-section">
         <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
         <div class="page-card">
@@ -450,7 +439,6 @@
         </div>
     </div>
 
-    <!-- ==================== BATCH 3 SECTIONS ==================== -->
     <div id="b3-t1" class="topic-section">
         <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
         <div class="page-card">
@@ -517,7 +505,6 @@
         </div>
     </div>
 
-    <!-- ==================== BATCH 4 SECTIONS ==================== -->
     <div id="b4-t1" class="topic-section">
         <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
         <div class="page-card">
@@ -587,7 +574,6 @@
 
 </div>
 
-<!-- DICTIONARY MODAL POPUP -->
 <div id="dictModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -642,3 +628,4 @@
 
 </body>
 </html>
+

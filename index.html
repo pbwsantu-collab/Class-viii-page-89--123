@@ -3,92 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 8 English Learning Portal - West Bengal Board</title>
+    <title>Class 8 English - Interactive Portal (Pages 89-98)</title>
     <style>
         :root {
             --primary: #4361ee;
             --secondary: #3f37c9;
-            --accent: #4895ef;
             --bg: #f8f9fa;
             --card-bg: #ffffff;
             --text: #2b2d42;
-            --text-light: #6c757d;
             --highlight: #e0aaff;
             --success: #2ec4b6;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.6;
-            padding-bottom: 50px;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            background-color: #fff;
-            padding: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav button {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        nav button:hover, nav button.active {
-            background-color: var(--primary);
-            color: white;
+            line-height: 2;
+            padding: 20px 10px;
         }
 
         .container {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 15px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .page-card {
             background: var(--card-bg);
             border-radius: 12px;
             padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
             border-left: 5px solid var(--primary);
         }
 
@@ -98,10 +43,10 @@
             align-items: center;
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
-        .page-number {
+        .page-num {
             background-color: var(--primary);
             color: white;
             padding: 4px 12px;
@@ -110,61 +55,45 @@
             font-weight: bold;
         }
 
-        .interactive-text {
-            font-size: 1.1rem;
-            line-height: 2;
-            margin-bottom: 20px;
+        h1, h2, h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
-        /* Clickable word styling */
+        /* Clickable Word Styling */
         .w {
             cursor: pointer;
             padding: 2px 4px;
             border-radius: 4px;
-            transition: background-color 0.2s;
+            transition: all 0.2s ease;
             display: inline-block;
         }
 
         .w:hover {
             background-color: var(--highlight);
             color: #000;
+            font-weight: bold;
         }
 
         .activity-box {
             background-color: #f1f5f9;
             border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
-            border: 1px solid #e2e8f0;
+            padding: 18px;
+            margin-top: 15px;
+            border: 1px solid #cbd5e1;
         }
 
-        .activity-title {
-            color: var(--secondary);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .question-item {
-            margin-bottom: 15px;
-        }
-
-        .question {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .answer {
+        .ans-box {
             background-color: #e8f5e9;
             color: #2e7d32;
-            padding: 10px;
+            padding: 10px 15px;
             border-radius: 6px;
             border-left: 4px solid var(--success);
-            margin-top: 5px;
+            margin-top: 8px;
             font-weight: 500;
         }
 
-        /* Modal / Popup for Dictionary */
+        /* Modal Dialog */
         .modal {
             display: none;
             position: fixed;
@@ -182,17 +111,11 @@
             background: white;
             padding: 25px;
             border-radius: 12px;
-            max-width: 400px;
+            max-width: 380px;
             width: 90%;
             text-align: center;
             position: relative;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            animation: popup 0.3s ease;
-        }
-
-        @keyframes popup {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
         }
 
         .close-btn {
@@ -221,292 +144,1509 @@
             margin-bottom: 15px;
         }
 
-        .info-row {
-            margin: 8px 0;
-            font-size: 1.1rem;
-        }
-
-        .info-label {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         .bengali-text {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
             color: #d81b60;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: var(--primary);
-            color: white;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Class 8 English Learning Hub</h1>
-        <p>Interactive Textbook, Vocabulary & Solutions (WB Board)</p>
-    </header>
+<div class="container">
 
-    <nav>
-        <button onclick="scrollToSection('lesson10')" class="active">Lesson 10: Tales of Childhood</button>
-        <button onclick="scrollToSection('lesson11')">Lesson 11: Midnight Express</button>
-        <button onclick="scrollToSection('unit-review')">End Activities (121-123)</button>
-    </nav>
-
-    <div class="container">
-
-        <!-- LESSON 10 SECTION -->
-        <div id="lesson10">
-            <h2 style="margin: 20px 0; color: var(--secondary);">Lesson 10: Tales of Childhood - Roald Dahl</h2>
-            
-            <!-- Page 89 -->
-            <div class="page-card">
-                <div class="page-header">
-                    <h3>Excerpt & Family Background</h3>
-                    <span class="page-number">Page 89</span>
-                </div>
-                <div class="interactive-text">
-                    <span class="w" onclick="dict('My','pronoun','মাই','আমার')">My</span>
-                    <span class="w" onclick="dict('father','noun','ফাদার','বাবা')">father,</span>
-                    <span class="w" onclick="dict('Harold Dahl','proper noun','হ্যারল্ড ডাল','হ্যারল্ড ডাল')">Harold Dahl,</span>
-                    <span class="w" onclick="dict('was','verb','ওয়াজ','ছিলেন')">was</span>
-                    <span class="w" onclick="dict('a','article','এ','একজন')">a</span>
-                    <span class="w" onclick="dict('Norwegian','adjective','নরওয়েজিয়ান','নরওয়ের অধিবাসী')">Norwegian</span>
-                    <span class="w" onclick="dict('who','pronoun','হু','যিনি')">who</span>
-                    <span class="w" onclick="dict('came','verb','কেম','এসেছিলেন')">came</span>
-                    <span class="w" onclick="dict('from','preposition','ফ্রাম','থেকে')">from</span>
-                    <span class="w" onclick="dict('a','article','এ','একটি')">a</span>
-                    <span class="w" onclick="dict('small','adjective','স্মল','ছোট')">small</span>
-                    <span class="w" onclick="dict('town','noun','টাউন','শহর')">town</span>
-                    <span class="w" onclick="dict('near','preposition','নিয়ার','কাছে')">near</span>
-                    <span class="w" onclick="dict('Oslo','proper noun','অসলো','অসলো')">Oslo,</span>
-                    <span class="w" onclick="dict('called','verb','কল্ড','নামক')">called</span>
-                    <span class="w" onclick="dict('Sarpsborg','proper noun','সার্পসবোর্গ','সার্পসবোর্গ')">Sarpsborg.</span>
-                    <span class="w" onclick="dict('His','pronoun','হিজ','তাঁর')">His</span>
-                    <span class="w" onclick="dict('own','adjective','ওন','নিজের')">own</span>
-                    <span class="w" onclick="dict('father','noun','ফাদার','বাবা')">father,</span>
-                    <span class="w" onclick="dict('my','pronoun','মাই','আমার')">my</span>
-                    <span class="w" onclick="dict('grandfather','noun','গ্র্যান্ডফাদার','দাদু')">grandfather,</span>
-                    <span class="w" onclick="dict('was','verb','ওয়াজ','ছিলেন')">was</span>
-                    <span class="w" onclick="dict('a','article','এ','একজন')">a</span>
-                    <span class="w" onclick="dict('prosperous','adjective','প্রসপরাস','সমৃদ্ধশালী/ধনী')">prosperous</span>
-                    <span class="w" onclick="dict('merchant','noun','মার্চেন্ট','বণিক/ব্যবসায়ী')">merchant...</span>
-                </div>
-                <p style="font-size: 0.85rem; color: var(--text-light);">* Click on any word above to see pronunciation, part of speech, and Bengali meaning!</p>
-            </div>
-
-            <!-- Page 91 Activities -->
-            <div class="page-card">
-                <div class="page-header">
-                    <h3>Page 91 Activities</h3>
-                    <span class="page-number">Page 91</span>
-                </div>
-                <div class="activity-box">
-                    <div class="activity-title">Activity 1: Sentence Rearrangement</div>
-                    <ol>
-                        <li>The writer's grandfather was a prosperous merchant. <strong>[1]</strong></li>
-                        <li>Harold Dahl lost his arm when he was fourteen. <strong>[2]</strong></li>
-                        <li>Harold Dahl became a successful shipbroker and set up a farm at Cardiff. <strong>[3]</strong></li>
-                        <li>He met Sofie Magdalene Hesselberg in 1911. <strong>[4]</strong></li>
-                        <li>They married soon after. <strong>[5]</strong></li>
-                        <li>They, along with their family members, moved to Radyr in 1918. <strong>[6]</strong></li>
-                    </ol>
-                </div>
-
-                <div class="activity-box">
-                    <div class="activity-title">Activity 2: Sentence Completion</div>
-                    <div class="question-item">
-                        <div class="question">(a) The narrator's grandfather was...</div>
-                        <div class="answer">a fairly prosperous merchant who owned a store in Sarpsborg.</div>
-                    </div>
-                    <div class="question-item">
-                        <div class="question">(b) Harold Dahl had lost...</div>
-                        <div class="answer">an arm when he was fourteen years old.</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Page 98 Writing Activity -->
-            <div class="page-card">
-                <div class="page-header">
-                    <h3>Page 98 - Writing Task</h3>
-                    <span class="page-number">Page 98</span>
-                </div>
-                <div class="activity-box">
-                    <div class="activity-title">Activity 10(b): Diary Entry on Shifting to a New Place (Under 90 Words)</div>
-                    <div class="answer" style="background-color: #fff; color: #333; border: 1px solid #ccc;">
-                        <strong>10th August 2026</strong><br>
-                        Dear Diary,<br>
-                        Today was our first day in our new home at Llandaff. Leaving my familiar neighbourhood, childhood friends, and cozy room felt deeply saddening. However, this new villa is quite pleasant and peaceful. The surroundings are spacious, and there is a beautiful park nearby. Though I miss my old house and neighbors terribly, I am trying to stay positive. I hope to make new friends soon and adapt comfortably to this new environment. It is a fresh chapter of my life.<br>
-                        <strong>- Roald</strong>
-                    </div>
-                </div>
-            </div>
+    <!-- PAGE 89 -->
+    <div class="page-card">
+        <div class="page-header">
+            <h3>Lesson 10: Tales of Childhood</h3>
+            <span class="page-num">Page 89</span>
         </div>
+        
+        <h2><span class="w" onclick="d('Tales','Noun','টেলস','গল্পকথা')">Tales</span> <span class="w" onclick="d('of','Preposition','অফ','এর')">of</span> <span class="w" onclick="d('Childhood','Noun','চাইল্ডহুড','শৈশব')">Childhood</span></h2>
+        <h3><span class="w" onclick="d('Roald','Proper Noun','রোয়াল্ড','রোয়াল্ড')">Roald</span> <span class="w" onclick="d('Dahl','Proper Noun','ডাল','ডাল')">Dahl</span></h3>
 
-        <!-- LESSON 11 SECTION -->
-        <div id="lesson11">
-            <h2 style="margin: 20px 0; color: var(--secondary);">Lesson 11: Midnight Express - Alfred Noyes</h2>
-            
-            <!-- Page 99 -->
-            <div class="page-card">
-                <div class="page-header">
-                    <h3>Story Opening</h3>
-                    <span class="page-number">Page 99</span>
-                </div>
-                <div class="interactive-text">
-                    <span class="w" onclick="dict('It','pronoun','ইট','এটি')">It</span>
-                    <span class="w" onclick="dict('was','verb','ওয়াজ','ছিল')">was</span>
-                    <span class="w" onclick="dict('a','article','এ','একটি')">a</span>
-                    <span class="w" onclick="dict('battered','adjective','ব্যাটার্ড','জীর্ণ/ক্ষতিগ্রস্ত')">battered</span>
-                    <span class="w" onclick="dict('old','adjective','ওল্ড','পুরোনো')">old</span>
-                    <span class="w" onclick="dict('book','noun','বুক','বই')">book,</span>
-                    <span class="w" onclick="dict('bound','verb','বাউন্ড','বাঁধানো')">bound</span>
-                    <span class="w" onclick="dict('in','preposition','ইন','মধ্যে')">in</span>
-                    <span class="w" onclick="dict('red','adjective','রেড','লাল')">red</span>
-                    <span class="w" onclick="dict('leather','noun','লেদার','চামড়া')">leather.</span>
-                    <span class="w" onclick="dict('When','conjunction','হোয়েন','যখন')">When</span>
-                    <span class="w" onclick="dict('Mortimer','proper noun','মরটিমার','মরটিমার')">Mortimer</span>
-                    <span class="w" onclick="dict('was','verb','ওয়াজ','ছিল')">was</span>
-                    <span class="w" onclick="dict('twelve','adjective','ট্যুয়েলভ','বারো')">twelve</span>
-                    <span class="w" onclick="dict('years','noun','ইয়ার্স','বছর')">years</span>
-                    <span class="w" onclick="dict('old','adjective','ওল্ড','বয়স')">old,</span>
-                    <span class="w" onclick="dict('he','pronoun','হি','সে')">he</span>
-                    <span class="w" onclick="dict('found','verb','ফাউন্ড','পেয়েছিল')">found</span>
-                    <span class="w" onclick="dict('the','article','দি','টি')">the</span>
-                    <span class="w" onclick="dict('book','noun','বুক','বই')">book...</span>
-                </div>
-            </div>
+        <p style="color: var(--primary); font-weight: bold;"><span class="w" onclick="d('Let us','Verb','লেটস','চলো আমরা')">Let's</span> <span class="w" onclick="d('start','Verb','স্টার্ট','শুরু করি')">start:</span></p>
+        <p>
+            <span class="w" onclick="d('Roald','Proper Noun','রোয়াল্ড','রোয়াল্ড')">Roald</span>
+            <span class="w" onclick="d('Dahl','Proper Noun','ডাল','ডাল')">Dahl</span>
+            (<span class="w" onclick="d('1916-1990','Number','১৯১৬-১৯৯০','১৯১৬-১৯৯০')">1916-1990</span>)
+            <span class="w" onclick="d('was','Verb','ওয়াজ','ছিলেন')">was</span>
+            <span class="w" onclick="d('a','Article','এ','একজন')">a</span>
+            <span class="w" onclick="d('British','Adjective','ব্রিটিশ','ব্রিটিশ/ব্রিটিশ দেশীয়')">British</span>
+            <span class="w" onclick="d('novelist','Noun',' নভেলিস্ট','উপন্যাসিক')">novelist,</span>
+            <span class="w" onclick="d('short','Adjective','শর্ট','ছোট')">short</span>
+            <span class="w" onclick="d('story','Noun','স্টোরি','গল্প')">story</span>
+            <span class="w" onclick="d('writer','Noun','রাইটার','লেখক')">writer,</span>
+            <span class="w" onclick="d('poet','Noun','পোয়েট','কবি')">poet,</span>
+            <span class="w" onclick="d('fighter','Noun','ফাইটার','যোদ্ধা')">fighter</span>
+            <span class="w" onclick="d('pilot','Noun','পাইলট','বিমান চালক')">pilot,</span>
+            <span class="w" onclick="d('and','Conjunction','অ্যান্ড','এবং')">and</span>
+            <span class="w" onclick="d('screenwriter','Noun','স্ক্রিনরাইটার','নাট্যকার/চিত্রনাট্যকার')">screenwriter.</span>
+            <span class="w" onclick="d('He','Pronoun','হি','তিনি')">He</span>
+            <span class="w" onclick="d('rose','Verb','রোজ','উঠেছিলেন')">rose</span>
+            <span class="w" onclick="d('to','Preposition','টু','তে')">to</span>
+            <span class="w" onclick="d('prominence','Noun','প্রমিনেন্স','খ্যাতি/প্রাধান্য')">prominence</span>
+            <span class="w" onclick="d('in','Preposition','ইন','মধ্যে')">in</span>
+            <span class="w" onclick="d('the','Article','দি','নির্দিষ্ট')">the</span>
+            <span class="w" onclick="d('1940s','Noun','১৯৪০-এর দশক','১৯৪০-এর দশকে')">1940s</span>
+            <span class="w" onclick="d('with','Preposition','উইথ','সাথে')">with</span>
+            <span class="w" onclick="d('works','Noun','ওয়ার্কস','লেখালেখি/রচনা')">works</span>
+            <span class="w" onclick="d('for','Preposition','ফর','জন্য')">for</span>
+            <span class="w" onclick="d('children','Noun',' চিলড্রেন','শিশুদের')">children</span>
+            <span class="w" onclick="d('and','Conjunction','অ্যান্ড','এবং')">and</span>
+            <span class="w" onclick="d('adults','Noun','অ্যাডাল্টস','প্রাপ্তবয়স্কদের')">adults.</span>
+        </p>
 
-            <!-- Page 100 Activity -->
-            <div class="page-card">
-                <div class="page-header">
-                    <h3>Page 100 Activities</h3>
-                    <span class="page-number">Page 100</span>
-                </div>
-                <div class="activity-box">
-                    <div class="activity-title">Activity 1: Tick the Correct Alternative</div>
-                    <div class="question-item">
-                        <div class="question">(i) Mortimer found the book—</div>
-                        <div class="answer">(c) in his father's library</div>
-                    </div>
-                    <div class="question-item">
-                        <div class="question">(ii) The illustration on the page showed—</div>
-                        <div class="answer">(b) an empty railway platform</div>
-                    </div>
-                    <div class="question-item">
-                        <div class="question">(iii) Mortimer was able to read up to—</div>
-                        <div class="answer">(a) page fifty of the book</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- END-OF-UNIT ACTIVITIES SECTION -->
-        <div id="unit-review">
-            <h2 style="margin: 20px 0; color: var(--secondary);">End-of-Unit Activities (Pages 121 - 123)</h2>
-
-            <!-- Page 121 Activities -->
-            <div class="page-card">
-                <div class="page-header">
-                    <h3>Page 121 Activities</h3>
-                    <span class="page-number">Page 121</span>
-                </div>
-                <div class="activity-box">
-                    <div class="activity-title">Activity 7: Comprehension Questions</div>
-                    <div class="question-item">
-                        <div class="question">(a) How did Elzéard Bouffier plant the acorns?</div>
-                        <div class="answer">Elzéard Bouffier carried a bag of acorns, selected the best ones, and planted them one by one by pounding an iron rod into the earth and dropping an acorn in.</div>
-                    </div>
-                    <div class="question-item">
-                        <div class="question">(b) How many years later did the narrator revisit the country?</div>
-                        <div class="answer">The narrator revisited the country after a time span of five years.</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Page 123 Writing Activity -->
-            <div class="page-card">
-                <div class="page-header">
-                    <h3>Page 123 - Creative Writing Task</h3>
-                    <span class="page-number">Page 123</span>
-                </div>
-                <div class="activity-box">
-                    <div class="activity-title">Activity 10(b): Letter to a Friend in a Hostel (Under 90 Words)</div>
-                    <div class="answer" style="background-color: #fff; color: #333; border: 1px solid #ccc;">
-                        Dear Rahul,<br>
-                        I hope this letter finds you well. I came to know that you are feeling lonely and homesick at your hostel. Please do not feel disheartened. It takes time to adjust to a new place. Focus on your studies and try participating in sports and extracurricular activities. Make new friends and stay engaged. Remember, this experience will make you independent and stronger. We all believe in you. Stay cheerful and write back soon.<br>
-                        Yours lovingly,<br>
-                        <strong>Aniket</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <p style="color: var(--primary); font-weight: bold;"><span class="w" onclick="d('Let us','Verb','লেটস','চলো আমরা')">Let's</span> <span class="w" onclick="d('read','Verb','রীড','পড়ি')">read:</span></p>
+        <p>
+            <span class="w" onclick="d('My','Pronoun','মাই','আমার')">My</span>
+            <span class="w" onclick="d('father','Noun','ফাদার','বাবা,')">father,</span>
+            <span class="w" onclick="d('Harold','Proper Noun','হ্যারল্ড','হ্যারল্ড')">Harold</span>
+            <span class="w" onclick="d('Dahl','Proper Noun','ডাল','ডাল,')">Dahl,</span>
+            <span class="w" onclick="d('was','Verb','ওয়াজ','ছিলেন')">was</span>
+            <span class="w" onclick="d('a','Article','এ','একজন')">a</span>
+            <span class="w" onclick="d('Norwegian','Adjective','নরওয়েজিয়ান','নরওয়ের অধিবাসী')">Norwegian</span>
+            <span class="w" onclick="d('who','Pronoun','হু','যিনি')">who</span>
+            <span class="w" onclick="d('came','Verb','কেম','এসেছিলেন')">came</span>
+            <span class="w" onclick="d('from','Preposition','ফ্রাম','থেকে')">from</span>
+            <span class="w" onclick="d('a','Article','এ','একটি')">a</span>
+            <span class="w" onclick="d('small','Adjective','স্মল','ছোট')">small</span>
+            <span class="w" onclick="d('town','Noun','টাউন','শহর')">town</span>
+            <span class="w" onclick="d('near','Preposition','নিয়ার','কাছে')">near</span>
+            <span class="w" onclick="d('Oslo','Proper Noun','অসলো','অসলো,')">Oslo,</span>
+            <span class="w" onclick="d('called','Verb','কল্ড','নামক')">called</span>
+            <span class="w" onclick="d('Sarpsborg','Proper Noun','সার্পসবোর্গ','সার্পসবোর্গ।')">Sarpsborg.</span>
+            <span class="w" onclick="d('His','Pronoun','হিজ','তাঁর')">His</span>
+            <span class="w" onclick="d('own','Adjective','ওন','নিজের')">own</span>
+            <span class="w" onclick="d('father','Noun','ফাদার','বাবা,')">father,</span>
+            <span class="w" onclick="d('my','Pronoun','মাই','আমার')">my</span>
+            <span class="w" onclick="d('grandfather','Noun','গ্র্যান্ডফাদার','দাদু,')">grandfather,</span>
+            <span class="w" onclick="d('was','Verb','ওয়াজ','ছিলেন')">was</span>
+            <span class="w" onclick="d('a','Article','এ','একজন')">a</span>
+            <span class="w" onclick="d('prosperous','Adjective','প্রসপরাস','সমৃদ্ধশালী/ধনী')">prosperous</span>
+            <span class="w" onclick="d('merchant','Noun','মার্চেন্ট','বণিক/ব্যবসায়ী')">merchant</span>
+            <span class="w" onclick="d('who','Pronoun','হু','যিনি')">who</span>
+            <span class="w" onclick="d('owned','Verb','ওনড','মালিক ছিলেন')">owned</span>
+            <span class="w" onclick="d('a','Article','এ','একটি')">a</span>
+            <span class="w" onclick="d('store','Noun','স্টোর','দোকান/স্টোর')">store</span>
+            <span class="w" onclick="d('in','Preposition','ইন','মধ্যে')">in</span>
+            <span class="w" onclick="d('Sarpsborg','Proper Noun','সার্পসবোর্গ','সার্পসবোর্গে।')">Sarpsborg.</span>
+        </p>
     </div>
 
-    <!-- DICTIONARY POPUP MODAL -->
-    <div id="dictModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="word-title" id="m-word">Word</div>
-            <span class="pos-badge" id="m-pos">Part of Speech</span>
-            <div class="info-row">
-                <div class="info-label">Bengali Pronunciation</div>
-                <div id="m-pron" style="font-size: 1.1rem; font-weight: 500;">pronunciation</div>
+    <!-- PAGE 91 ACTIVITIES -->
+    <div class="page-card">
+        <div class="page-header">
+            <h3>Page 91 Activities & Answers</h3>
+            <span class="page-num">Page 91</span>
+        </div>
+
+        <div class="activity-box">
+            <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','কর্মকাণ্ড/অনুশীলনী')">Activity</span> 1</h4>
+            <p><span class="w" onclick="d('Rearrange','Verb','রিয়ার্রেঞ্জ','পুনরায় সাজাও')">Rearrange</span> <span class="w" onclick="d('the','Article','দি','নির্দিষ্ট')">the</span> <span class="w" onclick="d('following','Adjective','ফলোয়িং','নিম্নলিখিত')">following</span> <span class="w" onclick="d('sentences','Noun',' সেন্টেন্সেস','বাক্যগুলি')">sentences</span> <span class="w" onclick="d('in','Preposition','ইন','মধ্যে')">in</span> <span class="w" onclick="d('correct','Adjective','কারেক্ট','সঠিক')">correct</span> <span class="w" onclick="d('order','Noun','অর্ডার','ক্রম')">order:</span></p>
+
+            <div class="ans-box">
+                1. The writer's grandfather was a prosperous merchant. <strong>[1]</strong><br>
+                2. Harold Dahl lost his arm when he was fourteen. <strong>[2]</strong><br>
+                3. Harold Dahl became a successful shipbroker and set up a farm at Cardiff. <strong>[3]</strong><br>
+                4. He met Sofie Magdalene Hesselberg in 1911. <strong>[4]</strong><br>
+                5. They married soon after. <strong>[5]</strong><br>
+                6. They, along with their family members, moved to Radyr in 1918. <strong>[6]</strong>
             </div>
-            <div class="info-row">
-                <div class="info-label">Bengali Meaning</div>
-                <div class="bengali-text" id="m-meaning">অর্থ</div>
+        </div>
+
+        <div class="activity-box">
+            <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 2</h4>
+            <p><span class="w" onclick="d('Complete','Verb','কমপ্লিট','সম্পূর্ণ করো')">Complete</span> <span class="w" onclick="d('the','Article','দি','নির্দিষ্ট')">the</span> <span class="w" onclick="d('following','Adjective','ফলোয়িং','নিম্নলিখিত')">following</span> <span class="w" onclick="d('sentences','Noun',' সেন্টেন্সেস','বাক্যগুলি')">sentences:</span></p>
+
+            <p><strong>(a) The narrator's grandfather was—</strong></p>
+            <div class="ans-box">a fairly prosperous merchant who owned a store in Sarpsborg.</div>
+
+            <p style="margin-top: 10px;"><strong>(b) Harold Dahl had lost—</strong></p>
+            <div class="ans-box">an arm when he was fourteen years old.</div>
+        </div>
+    </div>
+
+    <!-- PAGE 98 WRITING TASK -->
+    <div class="page-card">
+        <div class="page-header">
+            <h3>Page 98 - Writing Solution</h3>
+            <span class="page-num">Page 98</span>
+        </div>
+
+        <div class="activity-box">
+            <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 10(b)</h4>
+            <p><strong>Write a diary entry about shifting to a new place (Within 90 words):</strong></p>
+
+            <div class="ans-box" style="background-color: #fff; color: #222; border: 1px solid #ccc; font-family: Georgia, serif;">
+                <strong>10th August 2026</strong><br>
+                <strong>Dear Diary,</strong><br>
+                Today was our first day in our new home at Llandaff. Leaving my familiar neighbourhood, childhood friends, and cozy room felt deeply saddening. However, this new villa is quite pleasant and peaceful. The surroundings are spacious, and there is a beautiful park nearby. Though I miss my old house and neighbors terribly, I am trying to stay positive. I hope to make new friends soon and adapt comfortably to this new environment. It is a fresh chapter of my life.<br>
+                <strong>- Roald</strong>
             </div>
         </div>
     </div>
 
-    <script>
-        function dict(word, pos, pron, meaning) {
-            document.getElementById('m-word').innerText = word;
-            document.getElementById('m-pos').innerText = pos;
-            document.getElementById('m-pron').innerText = pron;
-            document.getElementById('m-meaning').innerText = meaning;
-            document.getElementById('dictModal').style.display = 'flex';
+</div>
+
+<!-- Dictionary Modal Popup -->
+<div id="dictModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="word-title" id="m-word">Word</div>
+        <span class="pos-badge" id="m-pos">Part of Speech</span>
+        <div style="margin: 10px 0;">
+            <div style="font-size: 0.85rem; color: #666;">উচ্চারণ (Pronunciation):</div>
+            <div id="m-pron" style="font-size: 1.1rem; font-weight: bold;">-</div>
+        </div>
+        <div style="margin: 10px 0;">
+            <div style="font-size: 0.85rem; color: #666;">অর্থ (Meaning):</div>
+            <div class="bengali-text" id="m-meaning">-</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function d(word, pos, pron, meaning) {
+        document.getElementById('m-word').innerText = word;
+        document.getElementById('m-pos').innerText = pos;
+        document.getElementById('m-pron').innerText = pron;
+        document.getElementById('m-meaning').innerText = meaning;
+        document.getElementById('dictModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('dictModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById('dictModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 8 English - Interactive Portal (Lesson 11)</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2b2d42;
+            --highlight: #e0aaff;
+            --success: #2ec4b6;
         }
 
-        function closeModal() {
-            document.getElementById('dictModal').style.display = 'none';
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            padding: 20px 10px;
         }
 
-        window.onclick = function(event) {
-            var modal = document.getElementById('dictModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-            
-            // Toggle active state on buttons
-            const buttons = document.querySelectorAll('nav button');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        /* Front Page Topic Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
         }
-    </script>
+
+        .topic-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-50px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        .topic-card h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .topic-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Section Cards */
+        .topic-section {
+            display: none;
+        }
+
+        .page-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            border-left: 5px solid var(--primary);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .page-num {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .back-btn:hover {
+            background-color: #495057;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Clickable Word Styling */
+        .w {
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .w:hover {
+            background-color: var(--highlight);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .activity-box {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 15px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .ans-box {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--success);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Modal Dialog */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .word-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .pos-badge {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .bengali-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #d81b60;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- FRONT PAGE MENU -->
+    <div id="front-page" class="page-card" style="text-align: center; border-left: none;">
+        <h2>Class 8 English Learning Portal</h2>
+        <p style="color: #666;">Lesson 11: Midnight Express — Select a Topic</p>
+
+        <div class="menu-grid">
+            <div class="topic-card" onclick="openTopic('topic1')">
+                <h3>Topic 1</h3>
+                <p>Story Part 1 & Vocabulary<br>(Pages 99–100)</p>
+            </div>
+            <div class="topic-card" onclick="openTopic('topic2')">
+                <h3>Topic 2</h3>
+                <p>Activities 1 & 2 Solutions<br>(Pages 100–101)</p>
+            </div>
+            <div class="topic-card" onclick="openTopic('topic3')">
+                <h3>Topic 3</h3>
+                <p>Story Part 2 & Encounter<br>(Pages 101–102)</p>
+            </div>
+            <div class="topic-card" onclick="openTopic('topic4')">
+                <h3>Topic 4</h3>
+                <p>Comprehension & Activity 3<br>(Page 101)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOPIC 1 -->
+    <div id="topic1" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 1: Story Part 1</h3>
+                <span class="page-num">Pages 99–100</span>
+            </div>
+            <h2><span class="w" onclick="d('Midnight','Noun','মিডনাইট','মধ্যরাত')">Midnight</span> <span class="w" onclick="d('Express','Noun','এক্সপ্রেস','দ্রুতগামী ট্রেন')">Express</span></h2>
+            <h3><span class="w" onclick="d('Alfred','Proper Noun','আলফ্রেড','আলফ্রেড')">Alfred</span> <span class="w" onclick="d('Noyes','Proper Noun','নয়েজ','নয়েজ')">Noyes</span></h3>
+
+            <p style="color: var(--primary); font-weight: bold;"><span class="w" onclick="d('Let us','Verb','লেটস','চলো আমরা')">Let's</span> <span class="w" onclick="d('read','Verb','রীড','পড়ি')">read:</span></p>
+            <p>
+                <span class="w" onclick="d('It','Pronoun','ইট','এটি')">It</span>
+                <span class="w" onclick="d('was','Verb','ওয়াজ','ছিল')">was</span>
+                <span class="w" onclick="d('a','Article','এ','একটি')">a</span>
+                <span class="w" onclick="d('battered','Adjective','ব্যাটার্ড','জীর্ণ/ক্ষতিগ্রস্ত')">battered</span>
+                <span class="w" onclick="d('old','Adjective','ওল্ড','পুরোনো')">old</span>
+                <span class="w" onclick="d('book','Noun','বুক','বই,')">book,</span>
+                <span class="w" onclick="d('bound','Verb','বাউন্ড','বাঁধানো')">bound</span>
+                <span class="w" onclick="d('in','Preposition','ইন','মধ্যে')">in</span>
+                <span class="w" onclick="d('red','Adjective','রেড','লাল')">red</span>
+                <span class="w" onclick="d('leather','Noun','লেদার','চামড়া।')">leather.</span>
+                <span class="w" onclick="d('When','Conjunction','হোয়েন','যখন')">When</span>
+                <span class="w" onclick="d('Mortimer','Proper Noun','মরটিমার','মরটিমার')">Mortimer</span>
+                <span class="w" onclick="d('was','Verb','ওয়াজ','ছিল')">was</span>
+                <span class="w" onclick="d('twelve','Adjective','ট্যুয়েলভ','বারো')">twelve</span>
+                <span class="w" onclick="d('years','Noun','ইয়ার্স','বছর')">years</span>
+                <span class="w" onclick="d('old','Adjective','ওল্ড','বয়স,')">old,</span>
+                <span class="w" onclick="d('he','Pronoun','হি','সে')">he</span>
+                <span class="w" onclick="d('found','Verb','ফাউন্ড','পেয়েছিল')">found</span>
+                <span class="w" onclick="d('the','Article','দি','বইটি')">the</span>
+                <span class="w" onclick="d('book','Noun','বুক','বই')">book</span>
+                <span class="w" onclick="d('in','Preposition','ইন','মধ্যে')">in</span>
+                <span class="w" onclick="d('his','Pronoun','হিজ','তার')">his</span>
+                <span class="w" onclick="d('father\'s','Noun','ফাদার্স','বাবার')">father's</span>
+                <span class="w" onclick="d('library','Noun','লাইব্রেরি','লাইব্রেরিতে।')">library.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- TOPIC 2 -->
+    <div id="topic2" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 2: Activities 1 & 2 Solutions</h3>
+                <span class="page-num">Pages 100–101</span>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 1</h4>
+                <p><strong><span class="w" onclick="d('Tick','Verb','টিক','দাগ দাও')">Tick</span> <span class="w" onclick="d('the','Article','দি','নির্দিষ্ট')">the</span> <span class="w" onclick="d('correct','Adjective','কারেক্ট','সঠিক')">correct</span> <span class="w" onclick="d('alternative','Noun','অল্টারনেটিভ','বিকল্প')">alternative:</span></strong></p>
+
+                <p>(i) Mortimer found the book—</p>
+                <div class="ans-box">(c) in his father's library</div>
+
+                <p style="margin-top: 10px;">(ii) The illustration on the page showed—</p>
+                <div class="ans-box">(b) an empty railway platform</div>
+
+                <p style="margin-top: 10px;">(iii) Mortimer was able to read up to—</p>
+                <div class="ans-box">(a) page fifty of the book</div>
+
+                <p style="margin-top: 10px;">(iv) Here Midnight Express is—</p>
+                <div class="ans-box">(c) a book</div>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 2</h4>
+                <p><strong>Rearrange the sentences in correct order:</strong></p>
+                <div class="ans-box">
+                    (1) As a young man, Mortimer was waiting for a train in an empty junction. <strong>[6]</strong><br>
+                    (2) Mortimer found a battered old book. <strong>[1]</strong><br>
+                    (3) He started to read the story by candle light. <strong>[2]</strong><br>
+                    (4) Mortimer stopped at page fifty while reading the story. <strong>[4]</strong><br>
+                    (5) The illustration of the story frightened Mortimer every time. <strong>[5]</strong><br>
+                    (6) Mortimer was fascinated by the battered old book. <strong>[3]</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOPIC 3 -->
+    <div id="topic3" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 3: Story Part 2 & Encounter</h3>
+                <span class="page-num">Page 101</span>
+            </div>
+
+            <p style="color: var(--primary); font-weight: bold;"><span class="w" onclick="d('Let us','Verb','লেটস','চলো আমরা')">Let's</span> <span class="w" onclick="d('continue','Verb','কন্টিনিউ','চালিয়ে যাই')">continue:</span></p>
+            <p>
+                <span class="w" onclick="d('There','Pronoun','দেয়ার','সেখানে')">There</span>
+                <span class="w" onclick="d('was','Verb','ওয়াজ','ছিল')">was</span>
+                <span class="w" onclick="d('a','Article','এ','একটি')">a</span>
+                <span class="w" onclick="d('single','Adjective','সিঙ্গল','একক/একটিই')">single</span>
+                <span class="w" onclick="d('dull','Adjective','ডাল','ম্লান')">dull</span>
+                <span class="w" onclick="d('lamp','Noun','ল্যাম্প','বাতি')">lamp</span>
+                <span class="w" onclick="d('glowing','Verb','গ্লোয়িং','জ্বলছিল।')">glowing.</span>
+                <span class="w" onclick="d('Mortimer','Proper Noun','মরটিমার','মরটিমার,')">Mortimer,</span>
+                <span class="w" onclick="d('in','Preposition','ইন','মধ্যে')">in</span>
+                <span class="w" onclick="d('the','Article','দি','টি')">the</span>
+                <span class="w" onclick="d('lamp','Noun','ল্যাম্প','বাতির')">lamp</span>
+                <span class="w" onclick="d('light','Noun','লাইাট','আলোয়,')">light,</span>
+                <span class="w" onclick="d('suddenly','Adverb','সাডেনলি','হঠাৎ')">suddenly</span>
+                <span class="w" onclick="d('noticed','Verb','নোটিসড','লক্ষ্য করল')">noticed</span>
+                <span class="w" onclick="d('a','Article','এ','একটি')">a</span>
+                <span class="w" onclick="d('dark','Adjective','ডার্ক','অন্ধকারময়')">dark</span>
+                <span class="w" onclick="d('and','Conjunction','অ্যান্ড','এবং')">and</span>
+                <span class="w" onclick="d('solitary','Adjective','সলিটারি','একাকী/নিঃসঙ্গ')">solitary</span>
+                <span class="w" onclick="d('figure','Noun','ফিগার','মূর্তি/মানুষ')">figure</span>
+                <span class="w" onclick="d('he','Pronoun','হি','সে')">he</span>
+                <span class="w" onclick="d('knew','Verb','নিউ','চিনত।')">knew.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- TOPIC 4 -->
+    <div id="topic4" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 4: Activity 3 Comprehension</h3>
+                <span class="page-num">Page 101</span>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 3</h4>
+                <p><strong><span class="w" onclick="d('Answer','Verb','আনসার','উত্তর দাও')">Answer</span> <span class="w" onclick="d('the','Article','দি','নির্দিষ্ট')">the</span> <span class="w" onclick="d('following','Adjective','ফলোয়িং','নিম্নলিখিত')">following</span> <span class="w" onclick="d('question','Noun','কোশ্চেন','প্রশ্ন:')">question:</span></strong></p>
+
+                <p>Why do you think Mortimer never read beyond page fifty of the book?</p>
+                <div class="ans-box">
+                    Mortimer never read beyond page fifty of the book because the mysterious illustration on page fifty frightened him every time for some unknown reason.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Dictionary Modal Popup -->
+<div id="dictModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="word-title" id="m-word">Word</div>
+        <span class="pos-badge" id="m-pos">Part of Speech</span>
+        <div style="margin: 10px 0;">
+            <div style="font-size: 0.85rem; color: #666;">উচ্চারণ (Pronunciation):</div>
+            <div id="m-pron" style="font-size: 1.1rem; font-weight: bold;">-</div>
+        </div>
+        <div style="margin: 10px 0;">
+            <div style="font-size: 0.85rem; color: #666;">অর্থ (Meaning):</div>
+            <div class="bengali-text" id="m-meaning">-</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTopic(topicId) {
+        document.getElementById('front-page').style.display = 'none';
+        const sections = document.querySelectorAll('.topic-section');
+        sections.forEach(sec => sec.style.display = 'none');
+        document.getElementById(topicId).style.display = 'block';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function showFrontPage() {
+        const sections = document.querySelectorAll('.topic-section');
+        sections.forEach(sec => sec.style.display = 'none');
+        document.getElementById('front-page').style.display = 'block';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function d(word, pos, pron, meaning) {
+        document.getElementById('m-word').innerText = word;
+        document.getElementById('m-pos').innerText = pos;
+        document.getElementById('m-pron').innerText = pron;
+        document.getElementById('m-meaning').innerText = meaning;
+        document.getElementById('dictModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('dictModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById('dictModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 8 English - Interactive Portal (Batch 3)</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2b2d42;
+            --highlight: #e0aaff;
+            --success: #2ec4b6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            padding: 20px 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Front Page Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .topic-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        .topic-card h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .topic-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Section Display */
+        .topic-section {
+            display: none;
+        }
+
+        .page-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            border-left: 5px solid var(--primary);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .page-num {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .back-btn:hover {
+            background-color: #495057;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Clickable Word Styling */
+        .w {
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .w:hover {
+            background-color: var(--highlight);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .activity-box {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 15px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .ans-box {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--success);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Modal Dialog */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .word-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .pos-badge {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .bengali-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #d81b60;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- FRONT PAGE MENU -->
+    <div id="front-page" class="page-card" style="text-align: center; border-left: none;">
+        <h2>Class 8 English Learning Portal</h2>
+        <p style="color: #666;">Batch 3: Lesson 11 (Part 2) & Unit Grammar/Writing (Pages 102–115)</p>
+
+        <div class="menu-grid">
+            <div class="topic-card" onclick="openTopic('topic1')">
+                <h3>Topic 1</h3>
+                <p>Story Climax & Text<br>(Pages 102–104)</p>
+            </div>
+            <div class="topic-card" onclick="openTopic('topic2')">
+                <h3>Topic 2</h3>
+                <p>Activities 4 & 5 Solutions<br>(Pages 104–105)</p>
+            </div>
+            <div class="topic-card" onclick="openTopic('topic3')">
+                <h3>Topic 3</h3>
+                <p>Activities 6 & 7 (Grammar)<br>(Pages 106–107)</p>
+            </div>
+            <div class="topic-card" onclick="openTopic('topic4')">
+                <h3>Topic 4</h3>
+                <p>Writing & Summary Practice<br>(Pages 108–115)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOPIC 1 -->
+    <div id="topic1" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 1: Story Climax</h3>
+                <span class="page-num">Pages 102–104</span>
+            </div>
+            <h2><span class="w" onclick="d('Midnight','Noun','মিডনাইট','মধ্যরাত')">Midnight</span> <span class="w" onclick="d('Express','Noun','এক্সপ্রেস','দ্রুতগামী ট্রেন')">Express</span> <span class="w" onclick="d('(Part II)','Noun','পার্ট ২','২য় অংশ')">(Part II)</span></h2>
+
+            <p style="color: var(--primary); font-weight: bold;"><span class="w" onclick="d('Let us','Verb','লেটস','চলো আমরা')">Let's</span> <span class="w" onclick="d('read','Verb','রীড','পড়ি')">read:</span></p>
+            <p>
+                <span class="w" onclick="d('The','Article','দি','নির্দিষ্ট')">The</span>
+                <span class="w" onclick="d('figure','Noun','ফিগার','মূর্তিটি')">figure</span>
+                <span class="w" onclick="d('turned','Verb','টার্নড','ঘুরল')">turned</span>
+                <span class="w" onclick="d('and','Conjunction','অ্যান্ড','এবং')">and</span>
+                <span class="w" onclick="d('faced','Verb','ফেসড','মুখোমুখি হলো')">faced</span>
+                <span class="w" onclick="d('Mortimer.','Proper Noun','মরটিমার','মরটিমারের।')">Mortimer.</span>
+                <span class="w" onclick="d('He','Pronoun','হি','সে')">He</span>
+                <span class="w" onclick="d('was','Verb','ওয়াজ','ছিল')">was</span>
+                <span class="w" onclick="d('shocked','Adjective','শকট','স্তম্ভিত/হতবাক')">shocked.</span>
+                <span class="w" onclick="d('He','Pronoun','হি','সে')">He</span>
+                <span class="w" onclick="d('was','Verb','ওয়াজ','ছিল')">was</span>
+                <span class="w" onclick="d('staring','Verb','স্টেয়ারিং','একদৃষ্টে তাকিয়ে')">staring</span>
+                <span class="w" onclick="d('into','Preposition','ইনটু','ভিতরে')">into</span>
+                <span class="w" onclick="d('his','Pronoun','হিজ','তার')">his</span>
+                <span class="w" onclick="d('own','Adjective','ওন','নিজের')">own</span>
+                <span class="w" onclick="d('face.','Noun','ফেস','মুখমণ্ডলের দিকে।')">face.</span>
+                <span class="w" onclick="d('Panic','Noun','প্যানিক','আতঙ্ক')">Panic</span>
+                <span class="w" onclick="d('seized','Verb','সীজড','গ্রাস করল')">seized</span>
+                <span class="w" onclick="d('him.','Pronoun','হিম','তাকে।')">him.</span>
+                <span class="w" onclick="d('He','Pronoun','হি','সে')">He</span>
+                <span class="w" onclick="d('turned','Verb','টার্নড','ঘুরল')">turned</span>
+                <span class="w" onclick="d('and','Conjunction','অ্যান্ড','এবং')">and</span>
+                <span class="w" onclick="d('ran','Verb','র্যান','দৌড় দিল')">ran</span>
+                <span class="w" onclick="d('out','Preposition','আউট','বাইরে')">out</span>
+                <span class="w" onclick="d('onto','Preposition','অনটু','উপরে')">onto</span>
+                <span class="w" onclick="d('the','Article','দি','নির্দিষ্ট')">the</span>
+                <span class="w" onclick="d('platform.','Noun','প্ল্যাটফর্ম','প্ল্যাটফর্মে।')">platform.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- TOPIC 2 -->
+    <div id="topic2" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 2: Activities 4 & 5 Solutions</h3>
+                <span class="page-num">Pages 104–105</span>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 4</h4>
+                <p><strong>Complete the table with information from the text:</strong></p>
+                
+                <div class="ans-box">
+                    <strong>1. Action:</strong> Mortimer looked into the face of the dark figure.<br>
+                    <strong>Reason:</strong> Because he wanted to see who the solitary figure was.<br><br>
+                    <strong>2. Action:</strong> Panic seized Mortimer.<br>
+                    <strong>Reason:</strong> Because he realized he was staring directly into his own face.<br><br>
+                    <strong>3. Action:</strong> He ran out onto the deserted platform.<br>
+                    <strong>Reason:</strong> Because he was filled with terror and wanted to escape the strange figure.
+                </div>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 5</h4>
+                <p><strong>Answer the following questions in complete sentences:</strong></p>
+
+                <p>(a) Where did Mortimer run to after seeing his own face?</p>
+                <div class="ans-box">Mortimer ran out onto the dark, empty railway platform after seeing his own face.</div>
+
+                <p style="margin-top: 10px;">(b) What did Mortimer see in the cottage room?</p>
+                <div class="ans-box">In the cottage room, Mortimer saw an armchair, a table, a lit candle, and the battered red-bound book lying open on page fifty.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOPIC 3 -->
+    <div id="topic3" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 3: Activities 6 & 7 (Grammar)</h3>
+                <span class="page-num">Pages 106–107</span>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 6</h4>
+                <p><strong>Do as directed (Simple, Complex & Compound Sentences):</strong></p>
+
+                <p>(a) He was poor, but he was honest. (Change to Complex Sentence)</p>
+                <div class="ans-box">Though he was poor, he was honest.</div>
+
+                <p style="margin-top: 10px;">(b) Seeing the dog, the child started crying. (Change to Compound Sentence)</p>
+                <div class="ans-box">The child saw the dog and started crying.</div>
+
+                <p style="margin-top: 10px;">(c) The sun having set, we returned home. (Change to Complex Sentence)</p>
+                <div class="ans-box">When the sun had set, we returned home.</div>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 7</h4>
+                <p><strong>Fill in the blanks with appropriate prepositions:</strong></p>
+                <div class="ans-box">
+                    (i) The book was bound <strong>in</strong> red leather.<br>
+                    (ii) Mortimer was staring <strong>into</strong> the dark room.<br>
+                    (iii) He walked <strong>up</strong> to the door.<br>
+                    (iv) A man was standing <strong>on</strong> the platform.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOPIC 4 -->
+    <div id="topic4" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 4: Writing & Summary Practice</h3>
+                <span class="page-num">Pages 108–115</span>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 8(a)</h4>
+                <p><strong>Write a summary of the passage (Within 60 words):</strong></p>
+
+                <div class="ans-box" style="background-color: #fff; color: #222; border: 1px solid #ccc; font-family: Georgia, serif;">
+                    <strong>Summary:</strong><br>
+                    At age twelve, Mortimer discovered an eerie, red-bound book in his father's library. Reading it by candlelight, he was deeply terrified by an illustration of an empty railway platform on page fifty, stopping him from reading further. Years later, as an adult, he found himself standing alone on that very same platform late at night.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Dictionary Modal Popup -->
+<div id="dictModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="word-title" id="m-word">Word</div>
+        <span class="pos-badge" id="m-pos">Part of Speech</span>
+        <div style="margin: 10px 0;">
+            <div style="font-size: 0.85rem; color: #666;">উচ্চারণ (Pronunciation):</div>
+            <div id="m-pron" style="font-size: 1.1rem; font-weight: bold;">-</div>
+        </div>
+        <div style="margin: 10px 0;">
+            <div style="font-size: 0.85rem; color: #666;">অর্থ (Meaning):</div>
+            <div class="bengali-text" id="m-meaning">-</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTopic(topicId) {
+        document.getElementById('front-page').style.display = 'none';
+        const sections = document.querySelectorAll('.topic-section');
+        sections.forEach(sec => sec.style.display = 'none');
+        document.getElementById(topicId).style.display = 'block';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function showFrontPage() {
+        const sections = document.querySelectorAll('.topic-section');
+        sections.forEach(sec => sec.style.display = 'none');
+        document.getElementById('front-page').style.display = 'block';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function d(word, pos, pron, meaning) {
+        document.getElementById('m-word').innerText = word;
+        document.getElementById('m-pos').innerText = pos;
+        document.getElementById('m-pron').innerText = pron;
+        document.getElementById('m-meaning').innerText = meaning;
+        document.getElementById('dictModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('dictModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById('dictModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 8 English - Interactive Portal (Batch 4)</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #2b2d42;
+            --highlight: #e0aaff;
+            --success: #2ec4b6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 2;
+            padding: 20px 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Front Page Menu */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .topic-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+        }
+
+        .topic-card h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .topic-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+
+        /* Section Display */
+        .topic-section {
+            display: none;
+        }
+
+        .page-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+            border-left: 5px solid var(--primary);
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .page-num {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .back-btn:hover {
+            background-color: #495057;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Clickable Word Styling */
+        .w {
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .w:hover {
+            background-color: var(--highlight);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .activity-box {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 18px;
+            margin-top: 15px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .ans-box {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--success);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        /* Modal Dialog */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .word-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .pos-badge {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .bengali-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #d81b60;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- FRONT PAGE MENU -->
+    <div id="front-page" class="page-card" style="text-align: center; border-left: none;">
+        <h2>Class 8 English Learning Portal</h2>
+        <p style="color: #666;">Batch 4: Lesson 12 "Someone" & Final Unit Review (Pages 116–123)</p>
+
+        <div class="menu-grid">
+            <div class="topic-card" onclick="openTopic('topic1')">
+                <h3>Topic 1</h3>
+                <p>Poem Text & Vocabulary<br>(Pages 116–117)</p>
+            </div>
+            <div class="topic-card" onclick="openTopic('topic2')">
+                <h3>Topic 2</h3>
+                <p>Activities 1, 2 & 3 Solutions<br>(Pages 117–118)</p>
+            </div>
+            <div class="topic-card" onclick="openTopic('topic3')">
+                <h3>Topic 3</h3>
+                <p>Grammar Activities 4 & 5<br>(Pages 118–120)</p>
+            </div>
+            <div class="topic-card" onclick="openTopic('topic4')">
+                <h3>Topic 4</h3>
+                <p>Writing & Final Review<br>(Pages 121–123)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOPIC 1 -->
+    <div id="topic1" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 1: Poem Text</h3>
+                <span class="page-num">Pages 116–117</span>
+            </div>
+            <h2><span class="w" onclick="d('Someone','Pronoun','সামওয়ান','কেউ একজন')">Someone</span></h2>
+            <h3><span class="w" onclick="d('Walter','Proper Noun','ওয়াল্টার','ওয়াল্টার')">Walter</span> <span class="w" onclick="d('de la Mare','Proper Noun','ডি লা মেয়ার','ডি লা মেয়ার')">de la Mare</span></h3>
+
+            <p style="color: var(--primary); font-weight: bold;"><span class="w" onclick="d('Let us','Verb','লেটস','চলো আমরা')">Let's</span> <span class="w" onclick="d('read','Verb','রীড','পড়ি')">read:</span></p>
+            <p>
+                <span class="w" onclick="d('Someone','Pronoun','সামওয়ান','কেউ একজন')">Someone</span>
+                <span class="w" onclick="d('came','Verb','কেম','এসেছিল')">came</span>
+                <span class="w" onclick="d('knocking','Verb','নকিং','টকা দিতে/ধাক্কা দিতে')">knocking</span><br>
+                <span class="w" onclick="d('At','Preposition','অ্যাট','এ')">At</span>
+                <span class="w" onclick="d('my','Pronoun','মাই','আমার')">my</span>
+                <span class="w" onclick="d('wee','Adjective','উই','ছোট্ট')">wee</span>
+                <span class="w" onclick="d('small','Adjective','স্মল','ক্ষুদ্র')">small</span>
+                <span class="w" onclick="d('door;','Noun','ডোর','দরজায়;')">door;</span><br>
+                <span class="w" onclick="d('Someone','Pronoun','সামওয়ান','কেউ একজন')">Someone</span>
+                <span class="w" onclick="d('came','Verb','কেম','এসেছিল')">came</span>
+                <span class="w" onclick="d('knocking,','Verb','নকিং','টকা দিতে,')">knocking,</span><br>
+                <span class="w" onclick="d('I\'m','Pronoun','আইম','আমি')">I'm</span>
+                <span class="w" onclick="d('sure-','Adjective','শিওর','নিশ্চিত-')">sure-</span>
+                <span class="w" onclick="d('sure-','Adjective','শিওর','নিশ্চিত-')">sure-</span>
+                <span class="w" onclick="d('sure;','Adjective','শিওর','নিশ্চিত;')">sure;</span><br>
+                <span class="w" onclick="d('I','Pronoun','আই','আমি')">I</span>
+                <span class="w" onclick="d('listened,','Verb','লিসনড','শুনেছিলাম,')">listened,</span>
+                <span class="w" onclick="d('I','Pronoun','আই','আমি')">I</span>
+                <span class="w" onclick="d('opened,','Verb','ওপেনড','খুলেছিলাম,')">opened,</span><br>
+                <span class="w" onclick="d('I','Pronoun','আই','আমি')">I</span>
+                <span class="w" onclick="d('looked','Verb','লুকড','তাকিয়েছিলাম')">looked</span>
+                <span class="w" onclick="d('to','Preposition','টু','দিকে')">to</span>
+                <span class="w" onclick="d('left','Noun','লেফট','বামে')">left</span>
+                <span class="w" onclick="d('and','Conjunction','অ্যান্ড','এবং')">and</span>
+                <span class="w" onclick="d('right,','Noun','রাইট','ডানে,')">right,</span><br>
+                <span class="w" onclick="d('But','Conjunction','বাট','কিন্তু')">But</span>
+                <span class="w" onclick="d('nought','Pronoun','নট','কিছুই না')">nought</span>
+                <span class="w" onclick="d('there','Pronoun','দেয়ার','সেখানে')">there</span>
+                <span class="w" onclick="d('was','Verb','ওয়াজ','ছিল')">was</span>
+                <span class="w" onclick="d('a-stirring','Adjective','অ্যা-স্টারিং','নড়াচড়া/চাঞ্চল্য')">a-stirring</span><br>
+                <span class="w" onclick="d('In','Preposition','ইন','মধ্যে')">In</span>
+                <span class="w" onclick="d('the','Article','দি','নির্দিষ্ট')">the</span>
+                <span class="w" onclick="d('still,','Adjective','স্টিল','শান্ত/নিস্তব্ধ,')">still,</span>
+                <span class="w" onclick="d('dark','Adjective','ডার্ক','অন্ধকার')">dark</span>
+                <span class="w" onclick="d('night.','Noun','নাইট','রাতে।')">night.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- TOPIC 2 -->
+    <div id="topic2" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 2: Activities 1, 2 & 3 Solutions</h3>
+                <span class="page-num">Pages 117–118</span>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 1</h4>
+                <p><strong>Tick the correct alternative:</strong></p>
+
+                <p>(i) Someone came knocking at the speaker's—</p>
+                <div class="ans-box">(b) wee small door</div>
+
+                <p style="margin-top: 10px;">(ii) The beetle was busy—</p>
+                <div class="ans-box">(a) tap-tapping in the wall</div>
+
+                <p style="margin-top: 10px;">(iii) The screech-owl's call came from the—</p>
+                <div class="ans-box">(c) forest</div>
+
+                <p style="margin-top: 10px;">(iv) The speaker does not know at all—</p>
+                <div class="ans-box">(b) who came knocking</div>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 2</h4>
+                <p><strong>Complete the following sentences with information from the text:</strong></p>
+
+                <p>(a) The speaker opened the door to check—</p>
+                <div class="ans-box">if someone was standing outside his wee small door.</div>
+
+                <p style="margin-top: 10px;">(b) The forest was filled with—</p>
+                <div class="ans-box">the call of the screech-owl.</div>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 3</h4>
+                <p><strong>Answer the following question:</strong></p>
+
+                <p>Who do you think came knocking at the door?</p>
+                <div class="ans-box">
+                    It could be a creature of the forest, a gust of wind, or simply the speaker's imagination, as the poet leaves the visitor's identity mysterious.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOPIC 3 -->
+    <div id="topic3" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 3: Grammar Activities 4 & 5</h3>
+                <span class="page-num">Pages 118–120</span>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 4</h4>
+                <p><strong>Identify the types of sentences (Simple, Complex, Compound):</strong></p>
+
+                <p>(a) I listened, I opened, I looked to left and right.</p>
+                <div class="ans-box">Compound Sentence</div>
+
+                <p style="margin-top: 10px;">(b) Only the busy beetle tap-tapping in the wall.</p>
+                <div class="ans-box">Simple Sentence</div>
+
+                <p style="margin-top: 10px;">(c) Though I opened the door, there was no one outside.</p>
+                <div class="ans-box">Complex Sentence</div>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 5</h4>
+                <p><strong>Fill in the blanks with correct forms of verbs:</strong></p>
+                <div class="ans-box">
+                    (i) Someone <strong>came</strong> (come) knocking at my door yesterday.<br>
+                    (ii) The cricket <strong>was whistling</strong> (whistle) while I listened.<br>
+                    (iii) The owl <strong>screeched</strong> (screech) in the dark night.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOPIC 4 -->
+    <div id="topic4" class="topic-section">
+        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
+        <div class="page-card">
+            <div class="page-header">
+                <h3>Topic 4: Writing & Final Review</h3>
+                <span class="page-num">Pages 121–123</span>
+            </div>
+
+            <div class="activity-box">
+                <h4><span class="w" onclick="d('Activity','Noun','অ্যাক্টিভিটি','অনুশীলনী')">Activity</span> 6</h4>
+                <p><strong>Write a short story using the given hints (Within 80 words):</strong></p>
+
+                <div class="ans-box" style="background-color: #fff; color: #222; border: 1px solid #ccc; font-family: Georgia, serif;">
+                    <strong>A Mysterious Visitor</strong><br>
+                    It was a dark and quiet night. I was reading a book alone in my room. Suddenly, I heard a soft knock at the front door. Curious yet nervous, I held my candle and went to open it. I opened the door wide and looked left and right into the darkness, but no one was there. Only the gentle night wind rustled the leaves. Realizing it was just the wind knocking loose branches against the door frame, I smiled, closed the door, and returned safely to my desk.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Dictionary Modal Popup -->
+<div id="dictModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="word-title" id="m-word">Word</div>
+        <span class="pos-badge" id="m-pos">Part of Speech</span>
+        <div style="margin: 10px 0;">
+            <div style="font-size: 0.85rem; color: #666;">উচ্চারণ (Pronunciation):</div>
+            <div id="m-pron" style="font-size: 1.1rem; font-weight: bold;">-</div>
+        </div>
+        <div style="margin: 10px 0;">
+            <div style="font-size: 0.85rem; color: #666;">অর্থ (Meaning):</div>
+            <div class="bengali-text" id="m-meaning">-</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTopic(topicId) {
+        document.getElementById('front-page').style.display = 'none';
+        const sections = document.querySelectorAll('.topic-section');
+        sections.forEach(sec => sec.style.display = 'none');
+        document.getElementById(topicId).style.display = 'block';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function showFrontPage() {
+        const sections = document.querySelectorAll('.topic-section');
+        sections.forEach(sec => sec.style.display = 'none');
+        document.getElementById('front-page').style.display = 'block';
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+
+    function d(word, pos, pron, meaning) {
+        document.getElementById('m-word').innerText = word;
+        document.getElementById('m-pos').innerText = pos;
+        document.getElementById('m-pron').innerText = pron;
+        document.getElementById('m-meaning').innerText = meaning;
+        document.getElementById('dictModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('dictModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        var modal = document.getElementById('dictModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
 </body>
 </html>

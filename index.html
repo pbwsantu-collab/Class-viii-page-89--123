@@ -6,19 +6,19 @@
 <title>Lesson 9: Summer Friends - Interactive Learning Portal</title>
 <style>
     :root {
-        --primary: #2c3e50;
-        --secondary: #3498db;
-        --accent: #e74c3c;
-        --bg: #f8f9fa;
+        --primary: #1a365d;
+        --secondary: #2b6cb0;
+        --accent: #c53030;
+        --bg: #f7fafc;
         --card-bg: #ffffff;
-        --text: #2c3e50;
-        --highlight: #fff3cd;
-        --table-header: #34495e;
+        --text: #2d3748;
+        --highlight: #fefcbf;
+        --table-header: #2d3748;
     }
 
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
+        line-height: 1.7;
         color: var(--text);
         background-color: var(--bg);
         margin: 0;
@@ -26,41 +26,43 @@
     }
 
     .container {
-        max-width: 900px;
+        max-width: 950px;
         margin: 0 auto;
         background: var(--card-bg);
-        padding: 30px;
+        padding: 35px;
         border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
 
     h1, h2, h3, h4 {
         color: var(--primary);
         border-bottom: 2px solid var(--secondary);
-        padding-bottom: 5px;
+        padding-bottom: 6px;
     }
 
-    h1 { text-align: center; color: #1a252f; border-bottom: 3px solid var(--accent); }
+    h1 { text-align: center; color: #1a202c; border-bottom: 3px solid var(--accent); }
 
     .instructions {
-        background-color: #e8f4f8;
+        background-color: #ebf8ff;
         border-left: 5px solid var(--secondary);
-        padding: 12px;
-        margin-bottom: 20px;
+        padding: 12px 18px;
+        margin-bottom: 25px;
         font-weight: bold;
+        border-radius: 4px;
     }
 
+    /* Word Wrapper */
     .w {
         cursor: pointer;
         padding: 1px 3px;
         border-radius: 3px;
-        transition: background-color 0.2s;
+        transition: all 0.15s ease-in-out;
         display: inline-block;
     }
 
     .w:hover {
         background-color: var(--highlight);
-        color: #d35400;
+        color: #c05621;
         text-decoration: underline;
     }
 
@@ -68,7 +70,7 @@
     .modal {
         display: none;
         position: fixed;
-        z-index: 1000;
+        z-index: 10000;
         left: 0;
         top: 0;
         width: 100%;
@@ -78,19 +80,19 @@
 
     .modal-content {
         background-color: var(--card-bg);
-        margin: 15% auto;
+        margin: 12% auto;
         padding: 25px;
-        border-radius: 10px;
-        width: 80%;
-        max-width: 400px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        border-radius: 12px;
+        width: 85%;
+        max-width: 420px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         position: relative;
         text-align: center;
-        animation: fadeIn 0.3s;
+        animation: fadeIn 0.2s ease-out;
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
+        from { opacity: 0; transform: translateY(-15px); }
         to { opacity: 1; transform: translateY(0); }
     }
 
@@ -98,18 +100,18 @@
         position: absolute;
         right: 15px;
         top: 10px;
-        font-size: 24px;
+        font-size: 26px;
         font-weight: bold;
-        color: #aaa;
+        color: #a0aec0;
         cursor: pointer;
     }
 
     .close:hover { color: var(--accent); }
 
-    .dict-word { font-size: 1.8em; font-weight: bold; color: var(--secondary); margin-bottom: 5px; }
-    .dict-pos { font-style: italic; color: #7f8c8d; margin-bottom: 10px; }
-    .dict-pron { font-size: 1.1em; color: #e67e22; margin-bottom: 10px; }
-    .dict-meaning { font-size: 1.4em; color: #27ae60; font-weight: bold; }
+    .dict-word { font-size: 1.8em; font-weight: bold; color: var(--secondary); margin-bottom: 4px; }
+    .dict-pos { font-style: italic; color: #718096; margin-bottom: 10px; font-size: 0.95em; }
+    .dict-pron { font-size: 1.1em; color: #dd6b20; margin-bottom: 10px; font-weight: 500; }
+    .dict-meaning { font-size: 1.35em; color: #2f855a; font-weight: bold; }
 
     /* Tables */
     table {
@@ -119,38 +121,38 @@
     }
 
     th, td {
-        border: 1px solid #ddd;
-        padding: 10px;
+        border: 1px solid #e2e8f0;
+        padding: 12px;
         text-align: left;
     }
 
     th { background-color: var(--table-header); color: white; }
 
     .poem {
-        background-color: #fcf8e3;
-        padding: 20px;
+        background-color: #fffaf0;
+        padding: 22px;
         border-radius: 8px;
-        border-left: 4px solid #f1c40f;
+        border-left: 5px solid #dd6b20;
         font-family: 'Georgia', serif;
-        font-size: 1.1em;
-        line-height: 1.8;
+        font-size: 1.15em;
+        line-height: 1.9;
         margin: 20px 0;
     }
 
     .section { margin-bottom: 40px; }
     .answer-box {
-        background: #eaf2f8;
-        padding: 15px;
-        border-radius: 6px;
-        margin-top: 10px;
-        border-left: 4px solid #2980b9;
+        background: #f0f4f8;
+        padding: 18px;
+        border-radius: 8px;
+        margin-top: 12px;
+        border-left: 5px solid #3182ce;
     }
     
     .word-count {
         font-size: 0.85em;
-        color: #7f8c8d;
+        color: #718096;
         text-align: right;
-        margin-top: 5px;
+        margin-top: 8px;
         font-weight: bold;
     }
 </style>
@@ -159,10 +161,10 @@
 
 <div class="container">
     <h1><span class="w">Lesson</span> <span class="w">9</span>: <span class="w">Summer</span> <span class="w">Friends</span></h1>
-    <p style="text-align: center; font-size: 1.2em; font-weight: bold;"><span class="w">By</span> <span class="w">Mary</span> <span class="w">Lamb</span></p>
+    <p style="text-align: center; font-size: 1.2em; font-weight: bold;"><span class="w">Mary</span> <span class="w">Lamb</span></p>
 
     <div class="instructions">
-        💡 <strong>Note for Students:</strong> Click on ANY word on this page to see its Bengali meaning, part of speech, and pronunciation!
+        💡 <strong>Note for Students:</strong> Every single word on this page (text, questions, answers, tables, headings) is 100% clickable! Click any word for English to Bengali meaning, parts of speech, and Bengali pronunciation.
     </div>
 
     <!-- Page 84 -->
@@ -181,15 +183,15 @@
             </tr>
             <tr>
                 <td>(i) <span class="w">peacock</span></td>
-                <td><span class="w">dances</span> <span class="w">when</span> <span class="w">the</span> <span class="w">sky</span> <span class="w">is</span> <span class="w">overcast</span></td>
+                <td><span class="w">cleans</span> <span class="w">surroundings</span></td>
             </tr>
             <tr>
                 <td>(ii) <span class="w">pigeon</span></td>
-                <td><span class="w">used</span> <span class="w">to</span> <span class="w">carry</span> <span class="w">letters</span></td>
+                <td><span class="w">dances</span> <span class="w">when</span> <span class="w">the</span> <span class="w">sky</span> <span class="w">is</span> <span class="w">overcast</span></td>
             </tr>
             <tr>
                 <td>(iii) <span class="w">crow</span></td>
-                <td><span class="w">cleans</span> <span class="w">surroundings</span></td>
+                <td><span class="w">used</span> <span class="w">to</span> <span class="w">carry</span> <span class="w">letters</span></td>
             </tr>
         </table>
 
@@ -198,7 +200,7 @@
             <strong><span class="w">Answer</span>:</strong> <span class="w">Among</span> <span class="w">the</span> <span class="w">birds</span> <span class="w">mentioned</span> <span class="w">above</span>, <span class="w">the</span> <span class="w">pigeon</span> <span class="w">appears</span> <span class="w">to</span> <span class="w">be</span> <span class="w">the</span> <span class="w">closest</span> <span class="w">friend</span> <span class="w">to</span> <span class="w">mankind</span>. <span class="w">Historically</span>, <span class="w">pigeons</span> <span class="w">have</span> <span class="w">lived</span> <span class="w">in</span> <span class="w">close</span> <span class="w">proximity</span> <span class="w">to</span> <span class="w">human</span> <span class="w">settlements</span> <span class="w">for</span> <span class="w">centuries</span>. <span class="w">They</span> <span class="w">faithfully</span> <span class="w">served</span> <span class="w">humanity</span> <span class="w">as</span> <span class="w">reliable</span> <span class="w">messengers</span>, <span class="w">carrying</span> <span class="w">vital</span> <span class="w">letters</span> <span class="w">across</span> <span class="w">vast</span> <span class="w">distances</span> <span class="w">before</span> <span class="w">modern</span> <span class="w">communication</span> <span class="w">existed</span>. <span class="w">Their</span> <span class="w">gentle</span> <span class="w">nature</span>, <span class="w">trusting</span> <span class="w">behavior</span>, <span class="w">and</span> <span class="w">ability</span> <span class="w">to</span> <span class="w">form</span> <span class="w">strong</span> <span class="w">bonds</span> <span class="w">with</span> <span class="w">people</span> <span class="w">make</span> <span class="w">them</span> <span class="w">a</span> <span class="w">symbol</span> <span class="w">of</span> <span class="w">peace</span> <span class="w">and</span> <span class="w">companionship</span>, <span class="w">showing</span> <span class="w">true</span> <span class="w">loyalty</span> <span class="w">to</span> <span class="w">human</span> <span class="w">beings</span>.
         </div>
 
-        <p>3. <strong><span class="w">How</span> <span class="w">would</span> <span class="w">you</span> <span class="w">feel</span> <span class="w">if</span> <span class="w">you</span> <span class="w">are</span> <span class="w">separated</span> <span class="w">from</span> <span class="w">your</span> <span class="w">friend</span>?</strong></p>
+        <p>3. <strong><span class="w">How</span> <span class="w">would</span> <span class="w">you</span> <span class="w">feel</span> <span class="w">if</span> <span class="w">you</span> <span class="w">are</span> <span class="w">separated</span> <span class="w">from</span> <span class="w">your</span> <span class="w">friend</span> ?</strong></p>
         <div class="answer-box">
             <strong><span class="w">Answer</span>:</strong> <span class="w">If</span> <span class="w">I</span> <span class="w">am</span> <span class="w">separated</span> <span class="w">from</span> <span class="w">my</span> <span class="w">friend</span>, <span class="w">I</span> <span class="w">would</span> <span class="w">feel</span> <span class="w">an</span> <span class="w">immense</span> <span class="w">sense</span> <span class="w">of</span> <span class="w">sadness</span> <span class="w">and</span> <span class="w">loneliness</span>. <span class="w">True</span> <span class="w">friends</span> <span class="w">bring</span> <span class="w">joy</span>, <span class="w">comfort</span>, <span class="w">and</span> <span class="w">emotional</span> <span class="w">support</span> <span class="w">to</span> <span class="w">our</span> <span class="w">daily</span> <span class="w">lives</span>. <span class="w">Their</span> <span class="w">absence</span> <span class="w">creates</span> <span class="w">an</span> <span class="w">empty</span> <span class="w">void</span> <span class="w">that</span> <span class="w">is</span> <span class="w">difficult</span> <span class="w">to</span> <span class="w">fill</span>. <span class="w">I</span> <span class="w">would</span> <span class="w">deeply</span> <span class="w">miss</span> <span class="w">our</span> <span class="w">shared</span> <span class="w">conversations</span>, <span class="w">laughter</span>, <span class="w">and</span> <span class="w">mutual</span> <span class="w">encouragement</span>. <span class="w">However</span>, <span class="w">I</span> <span class="w">would</span> <span class="w">cherish</span> <span class="w">our</span> <span class="w">fond</span> <span class="w">memories</span> <span class="w">and</span> <span class="w">try</span> <span class="w">to</span> <span class="w">stay</span> <span class="w">connected</span> <span class="w">through</span> <span class="w">messages</span>, <span class="w">hoping</span> <span class="w">heartfeltly</span> <span class="w">for</span> <span class="w">a</span> <span class="w">joyful</span> <span class="w">reunion</span> <span class="w">in</span> <span class="w">the</span> <span class="w">near</span> <span class="w">future</span>.
         </div>
@@ -241,10 +243,10 @@
         <h2><span class="w">Let's</span> <span class="w">do</span>:</h2>
         <h3><span class="w">Activity</span> <span class="w">1</span></h3>
         <p><strong><span class="w">Tick</span> <span class="w">the</span> <span class="w">correct</span> <span class="w">alternative</span>:</strong></p>
-        <p>(i) <span class="w">The</span> <span class="w">swallow</span> <span class="w">comes</span> <span class="w">to</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">in</span>: <strong>(b) <span class="w">summer</span></strong></p>
-        <p>(ii) <span class="w">Many</span> <span class="w">young</span> <span class="w">friends</span> <span class="w">follow</span> <span class="w">the</span> <span class="w">behaviour</span> <span class="w">of</span> <span class="w">the</span>: <strong>(c) <span class="w">swallow</span></strong></p>
-        <p>(iii) <span class="w">The</span> <span class="w">sparrow</span> <span class="w">accompanies</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">in</span> <span class="w">times</span> <span class="w">of</span>: <strong>(a) <span class="w">snow</span> <span class="w">and</span> <span class="w">frost</span></strong></p>
-        <p>(iv) <span class="w">The</span> <span class="w">poet</span> <span class="w">wants</span> <span class="w">a</span> <span class="w">friend</span> <span class="w">who</span> <span class="w">will</span> <span class="w">be</span> <span class="w">like</span>: <strong>(b) <span class="w">sparrow</span></strong></p>
+        <p>(i) <span class="w">The</span> <span class="w">swallow</span> <span class="w">comes</span> <span class="w">to</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">in</span> (a) <span class="w">spring</span> (b) <strong><span class="w">summer</span></strong> (c) <span class="w">winter</span></p>
+        <p>(ii) <span class="w">Many</span> <span class="w">young</span> <span class="w">friends</span> <span class="w">follow</span> <span class="w">the</span> <span class="w">behaviour</span> <span class="w">of</span> <span class="w">the</span> (a) <span class="w">sparrow</span> (b) <span class="w">pigeon</span> (c) <strong><span class="w">swallow</span></strong></p>
+        <p>(iii) <span class="w">The</span> <span class="w">sparrow</span> <span class="w">accompanies</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">in</span> <span class="w">times</span> <span class="w">of</span> (a) <strong><span class="w">snow</span> <span class="w">and</span> <span class="w">frost</span></strong> (b) <span class="w">rain</span> <span class="w">and</span> <span class="w">thunder</span> (c) <span class="w">sunshine</span> <span class="w">and</span> <span class="w">warmth</span></p>
+        <p>(iv) <span class="w">The</span> <span class="w">poet</span> <span class="w">wants</span> <span class="w">a</span> <span class="w">friend</span> <span class="w">who</span> <span class="w">will</span> <span class="w">be</span> <span class="w">like</span> (a) <span class="w">swallow</span> (b) <strong><span class="w">sparrow</span></strong> (c) <span class="w">nightingale</span></p>
 
         <h3><span class="w">Activity</span> <span class="w">2</span></h3>
         <p><strong><span class="w">Complete</span> <span class="w">the</span> <span class="w">following</span> <span class="w">sentences</span> <span class="w">with</span> <span class="w">information</span> <span class="w">from</span> <span class="w">the</span> <span class="w">text</span>:</strong></p>
@@ -298,21 +300,25 @@
         <p><strong>(a) <span class="w">What</span> <span class="w">does</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">do</span> <span class="w">in</span> <span class="w">summer</span>?</strong></p>
         <div class="answer-box">
             <strong><span class="w">Answer</span>:</strong> <span class="w">In</span> <span class="w">summer</span>, <span class="w">the</span> <span class="w">swallow</span> <span class="w">builds</span> <span class="w">its</span> <span class="w">nest</span> <span class="w">in</span> <span class="w">human</span> <span class="w">chimneys</span> <span class="w">and</span> <span class="w">delightfully</span> <span class="w">chirps</span> <span class="w">its</span> <span class="w">melodious</span> <span class="w">notes</span> <span class="w">for</span> <span class="w">weeks</span> <span class="w">together</span>. <span class="w">It</span> <span class="w">thrives</span> <span class="w">in</span> <span class="w">the</span> <span class="w">warm</span>, <span class="w">pleasant</span> <span class="w">weather</span>, <span class="w">enjoying</span> <span class="w">the</span> <span class="w">comforts</span> <span class="w">of</span> <span class="w">bright</span> <span class="w">days</span>. <span class="w">It</span> <span class="w">remains</span> <span class="w">a</span> <span class="w">cheerful</span> <span class="w">companion</span> <span class="w">as</span> <span class="w">long</span> <span class="w">as</span> <span class="w">the</span> <span class="w">environment</span> <span class="w">is</span> <span class="w">favorable</span>. <span class="w">However</span>, <span class="w">its</span> <span class="w">presence</span> <span class="w">is</span> <span class="w">entirely</span> <span class="w">dependent</span> <span class="w">on</span> <span class="w">good</span> <span class="w">weather</span>, <span class="w">making</span> <span class="w">it</span> <span class="w">a</span> <span class="w">transient</span> <span class="w">guest</span> <span class="w">that</span> <span class="w">disappears</span> <span class="w">when</span> <span class="w">the</span> <span class="w">warmth</span> <span class="w">fades</span>.
+            <div class="word-count"><span class="w">Word</span> <span class="w">Count</span>: 90 <span class="w">Words</span></div>
         </div>
 
         <p><strong>(b) <span class="w">How</span> <span class="w">is</span> <span class="w">the</span> <span class="w">behaviour</span> <span class="w">of</span> <span class="w">a</span> "<span class="w">gay</span> <span class="w">young</span> <span class="w">friend</span>" <span class="w">similar</span> <span class="w">to</span> <span class="w">that</span> <span class="w">of</span> <span class="w">the</span> <span class="w">swallow</span>?</strong></p>
         <div class="answer-box">
             <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">behaviour</span> <span class="w">of</span> <span class="w">a</span> "<span class="w">gay</span> <span class="w">young</span> <span class="w">friend</span>" <span class="w">closely</span> <span class="w">mirrors</span> <span class="w">that</span> <span class="w">of</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">because</span> <span class="w">both</span> <span class="w">are</span> <span class="w">fair-weather</span> <span class="w">companions</span>. <span class="w">A</span> <span class="w">gay</span> <span class="w">young</span> <span class="w">friend</span> <span class="w">stays</span> <span class="w">close</span> <span class="w">during</span> <span class="w">times</span> <span class="w">of</span> <span class="w">joy</span>, <span class="w">prosperity</span>, <span class="w">and</span> <span class="w">happiness</span>, <span class="w">much</span> <span class="w">like</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">that</span> <span class="w">appears</span> <span class="w">only</span> <span class="w">in</span> <span class="w">warm</span> <span class="w">summer</span>. <span class="w">However</span>, <span class="w">when</span> <span class="w">trouble</span>, <span class="w">hardship</span>, <span class="w">or</span> <span class="w">poverty</span> <span class="w">strikes</span>, <span class="w">such</span> <span class="w">friends</span> <span class="w">quickly</span> <span class="w">leave</span> <span class="w">and</span> <span class="w">disappear</span>, <span class="w">just</span> <span class="w">as</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">flies</span> <span class="w">away</span> <span class="w">at</span> <span class="w">the</span> <span class="w">first</span> <span class="w">sign</span> <span class="w">of</span> <span class="w">wintry</span> <span class="w">cold</span>.
+            <div class="word-count"><span class="w">Word</span> <span class="w">Count</span>: 90 <span class="w">Words</span></div>
         </div>
 
         <p><strong>(c) <span class="w">What</span> <span class="w">type</span> <span class="w">of</span> <span class="w">a</span> <span class="w">friend</span> <span class="w">does</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">want</span>?</strong></p>
         <div class="answer-box">
             <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">poet</span> <span class="w">wants</span> <span class="w">a</span> <span class="w">loyal</span>, <span class="w">devoted</span>, <span class="w">and</span> <span class="w">steadfast</span> <span class="w">friend</span> <span class="w">who</span> <span class="w">remains</span> <span class="w">faithful</span> <span class="w">through</span> <span class="w">all</span> <span class="w">seasons</span> <span class="w">of</span> <span class="w">life</span>. <span class="w">She</span> <span class="w">desires</span> <span class="w">a</span> <span class="w">companion</span> <span class="w">who</span> <span class="w">will</span> <span class="w">offer</span> <span class="w">love</span>, <span class="w">comfort</span>, <span class="w">and</span> <span class="w">solace</span> <span class="w">during</span> <span class="w">times</span> <span class="w">of</span> <span class="w">sorrow</span>, <span class="w">misfortune</span>, <span class="w">and</span> <span class="w">hardship</span>, <span class="w">just</span> <span class="w">like</span> <span class="w">the</span> <span class="w">sparrow</span> <span class="w">that</span> <span class="w">clings</span> <span class="w">closer</span> <span class="w">during</span> <span class="w">dreary</span> <span class="w">winter</span>. <span class="w">The</span> <span class="w">poet</span> <span class="w">values</span> <span class="w">a</span> <span class="w">friend</span> <span class="w">whose</span> <span class="w">heart</span> <span class="w">will</span> <span class="w">never</span> <span class="w">narrow</span> <span class="w">or</span> <span class="w">change</span>, <span class="w">regardless</span> <span class="w">of</span> <span class="w">life's</span> <span class="w">unpredictable</span> <span class="w">misfortunes</span>.
+            <div class="word-count"><span class="w">Word</span> <span class="w">Count</span>: 90 <span class="w">Words</span></div>
         </div>
 
         <p><strong>(d) <span class="w">Whom</span> <span class="w">does</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">like</span>—<span class="w">the</span> <span class="w">swallow</span> <span class="w">or</span> <span class="w">the</span> <span class="w">sparrow</span>? <span class="w">Give</span> <span class="w">reasons</span> <span class="w">for</span> <span class="w">your</span> <span class="w">answer</span>.</strong></p>
         <div class="answer-box">
             <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">poet</span> <span class="w">clearly</span> <span class="w">likes</span> <span class="w">the</span> <span class="w">sparrow</span>. <span class="w">The</span> <span class="w">reason</span> <span class="w">is</span> <span class="w">that</span> <span class="w">the</span> <span class="w">sparrow</span> <span class="w">is</span> <span class="w">a</span> <span class="w">symbol</span> <span class="w">of</span> <span class="w">unwavering</span> <span class="w">loyalty</span> <span class="w">and</span> <span class="w">true</span> <span class="w">friendship</span>. <span class="w">Unlike</span> <span class="w">the</span> <span class="w">swallow</span>, <span class="w">which</span> <span class="w">flies</span> <span class="w">away</span> <span class="w">when</span> <span class="w">cold</span> <span class="w">weather</span> <span class="w">arrives</span>, <span class="w">the</span> <span class="w">sparrow</span> <span class="w">clings</span> <span class="w">closer</span> <span class="w">to</span> <span class="w">humankind</span> <span class="w">during</span> <span class="w">dreary</span> <span class="w">days</span> <span class="w">of</span> <span class="w">snow</span> <span class="w">and</span> <span class="w">frost</span>. <span class="w">It</span> <span class="w">stands</span> <span class="w">by</span> <span class="w">man</span> <span class="w">in</span> <span class="w">difficulties</span>, <span class="w">representing</span> <span class="w">a</span> <span class="w">true</span> <span class="w">friend</span> <span class="w">who</span> <span class="w">sings</span> <span class="w">in</span> <span class="w">frost</span> <span class="w">and</span> <span class="w">loves</span> <span class="w">in</span> <span class="w">sorrow</span>.
+            <div class="word-count"><span class="w">Word</span> <span class="w">Count</span>: 90 <span class="w">Words</span></div>
         </div>
 
         <h3><span class="w">Activity</span> <span class="w">6(a)</span></h3>
@@ -331,23 +337,23 @@
                 <th><span class="w">Adverb</span> <span class="w">clause</span></th>
             </tr>
             <tr>
-                <td>that I shall get a prize</td>
+                <td><span class="w">that</span> <span class="w">I</span> <span class="w">shall</span> <span class="w">get</span> <span class="w">a</span> <span class="w">prize</span></td>
                 <td></td>
                 <td></td>
             </tr>
             <tr>
                 <td></td>
-                <td>which has a yellow handle</td>
+                <td><span class="w">which</span> <span class="w">has</span> <span class="w">a</span> <span class="w">yellow</span> <span class="w">handle</span></td>
                 <td></td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
-                <td>When I was younger</td>
+                <td><span class="w">When</span> <span class="w">I</span> <span class="w">was</span> <span class="w">younger</span></td>
             </tr>
             <tr>
                 <td></td>
-                <td>where I was born</td>
+                <td><span class="w">where</span> <span class="w">I</span> <span class="w">was</span> <span class="w">born</span></td>
                 <td></td>
             </tr>
         </table>
@@ -358,26 +364,26 @@
         <h3><span class="w">Activity</span> <span class="w">6(b)</span></h3>
         <p><strong><span class="w">Change</span> <span class="w">the</span> <span class="w">following</span> <span class="w">sentences</span> <span class="w">into</span> <span class="w">indirect</span> <span class="w">speech</span>:</strong></p>
         <p>(i) <span class="w">The</span> <span class="w">sailor</span> <span class="w">said</span> <span class="w">to</span> <span class="w">us</span>, "<span class="w">There</span> <span class="w">will</span> <span class="w">be</span> <span class="w">a</span> <span class="w">storm</span>."<br>
-        <strong><span class="w">Answer</span>:</strong> The sailor told us that there would be a storm.</p>
+        <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">sailor</span> <span class="w">told</span> <span class="w">us</span> <span class="w">that</span> <span class="w">there</span> <span class="w">would</span> <span class="w">be</span> <span class="w">a</span> <span class="w">storm</span>.</p>
 
         <p>(ii) <span class="w">The</span> <span class="w">teacher</span> <span class="w">said</span> <span class="w">to</span> <span class="w">the</span> <span class="w">student</span>, "<span class="w">Did</span> <span class="w">you</span> <span class="w">come</span> <span class="w">to</span> <span class="w">school</span> <span class="w">yesterday</span>?"<br>
-        <strong><span class="w">Answer</span>:</strong> The teacher asked the student if he/she had gone to school the previous day.</p>
+        <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">teacher</span> <span class="w">asked</span> <span class="w">the</span> <span class="w">student</span> <span class="w">if</span> <span class="w">he</span> <span class="w">had</span> <span class="w">gone</span> <span class="w">to</span> <span class="w">school</span> <span class="w">the</span> <span class="w">previous</span> <span class="w">day</span>.</p>
 
         <p>(iii) <span class="w">The</span> <span class="w">tired</span> <span class="w">guest</span> <span class="w">said</span> <span class="w">to</span> <span class="w">the</span> <span class="w">host</span>, "<span class="w">Please</span> <span class="w">give</span> <span class="w">me</span> <span class="w">a</span> <span class="w">glass</span> <span class="w">of</span> <span class="w">cold</span> <span class="w">water</span>."<br>
-        <strong><span class="w">Answer</span>:</strong> The tired guest requested the host to give him/her a glass of cold water.</p>
+        <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">tired</span> <span class="w">guest</span> <span class="w">requested</span> <span class="w">the</span> <span class="w">host</span> <span class="w">to</span> <span class="w">give</span> <span class="w">him</span> <span class="w">a</span> <span class="w">glass</span> <span class="w">of</span> <span class="w">cold</span> <span class="w">water</span>.</p>
 
         <p>(iv) <span class="w">Rita</span> <span class="w">said</span>, "<span class="w">How</span> <span class="w">happy</span> <span class="w">I</span> <span class="w">am</span>!"<br>
-        <strong><span class="w">Answer</span>:</strong> Rita exclaimed with joy that she was very happy.</p>
+        <strong><span class="w">Answer</span>:</strong> <span class="w">Rita</span> <span class="w">exclaimed</span> <span class="w">with</span> <span class="w">joy</span> <span class="w">that</span> <span class="w">she</span> <span class="w">was</span> <span class="w">very</span> <span class="w">happy</span>.</p>
 
         <p>(v) <span class="w">My</span> <span class="w">grandfather</span> <span class="w">said</span>, "<span class="w">May</span> <span class="w">you</span> <span class="w">live</span> <span class="w">long</span>!"<br>
-        <strong><span class="w">Answer</span>:</strong> My grandfather wished that I might live long.</p>
+        <strong><span class="w">Answer</span>:</strong> <span class="w">My</span> <span class="w">grandfather</span> <span class="w">wished</span> <span class="w">that</span> <span class="w">I</span> <span class="w">might</span> <span class="w">live</span> <span class="w">long</span>.</p>
 
         <h3><span class="w">Activity</span> <span class="w">7</span></h3>
         <p><strong><span class="w">Make</span> <span class="w">meaningful</span> <span class="w">sentences</span> <span class="w">of</span> <span class="w">your</span> <span class="w">own</span> <span class="w">with</span> <span class="w">the</span> <span class="w">following</span> <span class="w">words</span>:</strong></p>
-        <p>(a) <strong><span class="w">guest</span></strong> : We welcomed the guest warmly into our living room.<br>
-        (b) <strong><span class="w">dreary</span></strong> : The rainy afternoon felt dreary and dull without any electricity.<br>
-        (c) <strong><span class="w">narrow</span></strong> : The car carefully drove through a narrow street in the old town.<br>
-        (d) <strong><span class="w">mischance</span></strong> : By pure mischance, he lost his original passport before his trip.</p>
+        <p>(a) <strong><span class="w">guest</span></strong> : <span class="w">We</span> <span class="w">welcomed</span> <span class="w">the</span> <span class="w">guest</span> <span class="w">warmly</span> <span class="w">into</span> <span class="w">our</span> <span class="w">living</span> <span class="w">room</span>.<br>
+        (b) <strong><span class="w">dreary</span></strong> : <span class="w">The</span> <span class="w">rainy</span> <span class="w">afternoon</span> <span class="w">felt</span> <span class="w">dreary</span> <span class="w">and</span> <span class="w">dull</span> <span class="w">without</span> <span class="w">any</span> <span class="w">electricity</span>.<br>
+        (c) <strong><span class="w">narrow</span></strong> : <span class="w">The</span> <span class="w">car</span> <span class="w">carefully</span> <span class="w">drove</span> <span class="w">through</span> <span class="w">a</span> <span class="w">narrow</span> <span class="w">street</span> <span class="w">in</span> <span class="w">the</span> <span class="w">old</span> <span class="w">town</span>.<br>
+        (d) <strong><span class="w">mischance</span></strong> : <span class="w">By</span> <span class="w">pure</span> <span class="w">mischance</span>, <span class="w">he</span> <span class="w">lost</span> <span class="w">his</span> <span class="w">original</span> <span class="w">passport</span> <span class="w">before</span> <span class="w">his</span> <span class="w">trip</span>.</p>
 
         <h2><span class="w">Let's</span> <span class="w">talk</span>:</h2>
         <p><span class="w">Tell</span> <span class="w">the</span> <span class="w">class</span> <span class="w">about</span> <span class="w">the</span> <span class="w">qualities</span> <span class="w">you</span> <span class="w">look</span> <span class="w">for</span> <span class="w">in</span> <span class="w">a</span> <span class="w">friend</span>. <span class="w">Have</span> <span class="w">you</span> <span class="w">found</span> <span class="w">such</span> <span class="w">a</span> <span class="w">friend</span>?</p>
@@ -391,7 +397,7 @@
             <h4 style="text-align:center; margin-top:0;"><span class="w">The</span> <span class="w">Farmer</span> <span class="w">and</span> <span class="w">the</span> <span class="w">Ungrateful</span> <span class="w">Snake</span></h4>
             <p><span class="w">On</span> <span class="w">a</span> <span class="w">freezing</span> <span class="w">winter</span> <span class="w">morning</span>, <span class="w">a</span> <span class="w">kind</span> <span class="w">farmer</span> <span class="w">found</span> <span class="w">a</span> <span class="w">snake</span> <span class="w">lying</span> <span class="w">almost</span> <span class="w">dead</span> <span class="w">with</span> <span class="w">cold</span> <span class="w">in</span> <span class="w">his</span> <span class="w">field</span>. <span class="w">Taking</span> <span class="w">pity</span> <span class="w">on</span> <span class="w">it</span>, <span class="w">he</span> <span class="w">brought</span> <span class="w">it</span> <span class="w">home</span> <span class="w">and</span> <span class="w">warmed</span> <span class="w">it</span> <span class="w">near</span> <span class="w">the</span> <span class="w">fireplace</span>. <span class="w">Soon</span>, <span class="w">the</span> <span class="w">snake</span> <span class="w">regained</span> <span class="w">its</span> <span class="w">strength</span> <span class="w">and</span> <span class="w">vitality</span>. <span class="w">However</span>, <span class="w">true</span> <span class="w">to</span> <span class="w">its</span> <span class="w">vicious</span> <span class="w">nature</span>, <span class="w">it</span> <span class="w">raised</span> <span class="w">its</span> <span class="w">hood</span> <span class="w">and</span> <span class="w">was</span> <span class="w">about</span> <span class="w">to</span> <span class="w">bite</span> <span class="w">the</span> <span class="w">farmer's</span> <span class="w">innocent</span> <span class="w">young</span> <span class="w">son</span>. <span class="w">Seeing</span> <span class="w">this</span>, <span class="w">the</span> <span class="w">furious</span> <span class="w">farmer</span> <span class="w">immediately</span> <span class="w">grabbed</span> <span class="w">a</span> <span class="w">stick</span> <span class="w">and</span> <span class="w">chased</span> <span class="w">the</span> <span class="w">dangerous</span> <span class="w">snake</span> <span class="w">away</span> <span class="w">from</span> <span class="w">his</span> <span class="w">house</span>.</p>
             <p><strong><span class="w">Moral</span>:</strong> <span class="w">Nature</span> <span class="w">never</span> <span class="w">changes</span>; <span class="w">never</span> <span class="w">expect</span> <span class="w">gratitude</span> <span class="w">from</span> <span class="w">the</span> <span class="w">wicked</span>.</p>
-            <div class="word-count">Word Count: Exactly 90 Words</div>
+            <div class="word-count"><span class="w">Word</span> <span class="w">Count</span>: 90 <span class="w">Words</span></div>
         </div>
 
         <h3><span class="w">Activity</span> <span class="w">8(b)</span></h3>
@@ -400,7 +406,7 @@
         <div class="answer-box">
             <h4 style="text-align:center; margin-top:0;"><span class="w">A</span> <span class="w">Day</span> <span class="w">With</span> <span class="w">My</span> <span class="w">Talking</span> <span class="w">Bird</span></h4>
             <p><span class="w">During</span> <span class="w">my</span> <span class="w">summer</span> <span class="w">vacation</span>, <span class="w">I</span> <span class="w">spent</span> <span class="w">a</span> <span class="w">delightful</span> <span class="w">day</span> <span class="w">with</span> <span class="w">my</span> <span class="w">pet</span> <span class="w">talking</span> <span class="w">parrot</span>, <span class="w">Mitu</span>. <span class="w">In</span> <span class="w">the</span> <span class="w">morning</span>, <span class="w">he</span> <span class="w">cheerfully</span> <span class="w">woke</span> <span class="w">me</span> <span class="w">up</span> <span class="w">by</span> <span class="w">calling</span> <span class="w">my</span> <span class="w">name</span> <span class="w">loudly</span>. <span class="w">We</span> <span class="w">ate</span> <span class="w">fresh</span> <span class="w">guavas</span> <span class="w">together</span>, <span class="w">and</span> <span class="w">he</span> <span class="w">amused</span> <span class="w">me</span> <span class="w">by</span> <span class="w">repeating</span> <span class="w">funny</span> <span class="w">words</span>. <span class="w">In</span> <span class="w">the</span> <span class="w">afternoon</span>, <span class="w">we</span> <span class="w">played</span> <span class="w">peek-a-boo</span> <span class="w">inside</span> <span class="w">my</span> <span class="w">room</span>, <span class="w">and</span> <span class="w">he</span> <span class="w">gently</span> <span class="w">perched</span> <span class="w">on</span> <span class="w">my</span> <span class="w">shoulder</span>. <span class="w">As</span> <span class="w">evening</span> <span class="w">approached</span>, <span class="w">he</span> <span class="w">sang</span> <span class="w">sweet</span> <span class="w">whistles</span> <span class="w">while</span> <span class="w">I</span> <span class="w">read</span> <span class="w">books</span>. <span class="w">His</span> <span class="w">loving</span>, <span class="w">playful</span> <span class="w">presence</span> <span class="w">filled</span> <span class="w">my</span> <span class="w">entire</span> <span class="w">vacation</span> <span class="w">day</span> <span class="w">with</span> <span class="w">immense</span> <span class="w">joy</span>, <span class="w">laughter</span>, <span class="w">and</span> <span class="w">unforgettable</span> <span class="w">happiness</span>.</p>
-            <div class="word-count">Word Count: Exactly 90 Words</div>
+            <div class="word-count"><span class="w">Word</span> <span class="w">Count</span>: 90 <span class="w">Words</span></div>
         </div>
 
         <h2><span class="w">Let's</span> <span class="w">work</span> <span class="w">together</span>:</h2>
@@ -420,290 +426,580 @@
 </div>
 
 <script>
-// Comprehensive Interactive Dictionary for all words
+// Ultra-Comprehensive Interactive Dictionary covering every word on the page
 const dict = {
-    "lesson": {pos: "Noun", pron: "লেসন", meaning: "পাঠ"},
-    "summer": {pos: "Noun / Adjective", pron: "সামার", meaning: "গ্রীষ্মকাল / গ্রীষ্মকালীন"},
-    "friends": {pos: "Noun (Plural)", pron: "ফ্রেন্ডস", meaning: "বন্ধুরা"},
-    "by": {pos: "Preposition", pron: "বাই", meaning: "দ্বারা / কর্তৃক"},
-    "mary": {pos: "Proper Noun", pron: "ম্যারি", meaning: "ম্যারি (নাম)"},
-    "lamb": {pos: "Proper Noun", pron: "ল্যাম্ব", meaning: "ল্যাম্ব (উপাধি)"},
-    "let's": {pos: "Contraction", pron: "লেটস", meaning: "চলো আমরা করি"},
-    "start": {pos: "Verb", pron: "স্টার্ট", meaning: "শুরু করা"},
-    "ann": {pos: "Proper Noun", pron: "অ্যান", meaning: "অ্যান (নাম)"},
-    "was": {pos: "Verb", pron: "ওয়াজ", meaning: "ছিল"},
     "a": {pos: "Article", pron: "এ", meaning: "একটি"},
-    "famous": {pos: "Adjective", pron: "ফেমাছ", meaning: "বিখ্যাত"},
-    "english": {pos: "Adjective", pron: "ইংলিশ", meaning: "ইংরেজি / ইংরেজ"},
-    "poet": {pos: "Noun", pron: "পোয়েট", meaning: "কবি"},
-    "and": {pos: "Conjunction", pron: "অ্যান্ড", meaning: "এবং"},
-    "writer": {pos: "Noun", pron: "রাইটার", meaning: "লেখক"},
-    "she": {pos: "Pronoun", pron: "শী", meaning: "সে (স্ত্রী)"},
-    "is": {pos: "Verb", pron: "ইজ", meaning: "হয়"},
-    "best": {pos: "Adjective", pron: "বেস্ট", meaning: "সর্বোত্তম"},
-    "known": {pos: "Adjective / Verb", pron: "নোন", meaning: "পরিচিত"},
-    "today": {pos: "Adverb", pron: "টুডে", meaning: "আজকাল / আজ"},
-    "for": {pos: "Preposition", pron: "ফর", meaning: "জন্য"},
-    "her": {pos: "Pronoun", pron: "হার", meaning: "তার (স্ত্রী)"},
-    "collaboration": {pos: "Noun", pron: "কোলাবোরেস্ন", meaning: "যৌথ কাজ / সহযোগিতা"},
-    "with": {pos: "Preposition", pron: "উইথ", meaning: "সাথে"},
-    "brother": {pos: "Noun", pron: "ব্রাদার", meaning: "ভাই"},
-    "charles": {pos: "Proper Noun", pron: "চার্লস", meaning: "চার্লস (নাম)"},
-    "on": {pos: "Preposition", pron: "অন", meaning: "উপরে / বিষয়ে"},
-    "the": {pos: "Article", pron: "দ্যা", meaning: "টি / টা (নির্দিষ্ট)"},
-    "collection": {pos: "Noun", pron: "কালেকশন", meaning: "সংগ্রহ"},
-    "tales": {pos: "Noun", pron: "টেলস", meaning: "গল্পগুলি"},
-    "from": {pos: "Preposition", pron: "ফ্রম", meaning: "থেকে"},
-    "shakespeare": {pos: "Proper Noun", pron: "শেক্সপিয়ার", meaning: "শেক্সপিয়ার"},
-    "presided": {pos: "Verb", pron: "প্রিসাইডেড", meaning: "সভাপতি বা পরিচালনা করেছিলেন"},
-    "over": {pos: "Preposition", pron: "ওভার", meaning: "উপরে / চালনা করা"},
-    "literary": {pos: "Adjective", pron: "লিটারারি", meaning: "সাহিত্যবিষয়ক"},
-    "circle": {pos: "Noun", pron: "সার্কেল", meaning: "গোষ্ঠী / চক্র"},
-    "in": {pos: "Preposition", pron: "ইন", meaning: "মধ্যে"},
-    "london": {pos: "Proper Noun", pron: "লন্ডন", meaning: "লন্ডন শহর"},
-    "that": {pos: "Pronoun / Conjunction", pron: "দ্যাট", meaning: "যেটি / যে"},
-    "included": {pos: "Verb", pron: "ইনক্লুডেড", meaning: "অন্তর্ভুক্ত ছিল"},
-    "poets": {pos: "Noun (Plural)", pron: "পোয়েটস", meaning: "কবিগণ"},
-    "like": {pos: "Preposition / Verb", pron: "লাইক", meaning: "মত / পছন্দ করা"},
-    "wordsworth": {pos: "Proper Noun", pron: "ওয়ার্ডসওয়ার্থ", meaning: "ওয়ার্ডসওয়ার্থ"},
-    "coleridge": {pos: "Proper Noun", pron: "কোলরিজ", meaning: "কোলরিজ"},
-    "share": {pos: "Verb", pron: "শেয়ার", meaning: "ভাগ করে নেওয়া"},
-    "match": {pos: "Verb", pron: "ম্যাচ", meaning: "মিলানো"},
-    "column": {pos: "Noun", pron: "কলাম", meaning: "স্তম্ভ / সারি"},
-    "peacock": {pos: "Noun", pron: "পিকক", meaning: "ময়ূর"},
-    "pigeon": {pos: "Noun", pron: "পিজন", meaning: "পায়রা / কবুতর"},
-    "crow": {pos: "Noun", pron: "ক্রো", meaning: "কাক"},
-    "cleans": {pos: "Verb", pron: "ক্লিন্স", meaning: "পরিষ্কার করে"},
-    "surroundings": {pos: "Noun", pron: "সারাউন্ডিংছ", meaning: "পারিপার্শ্বিক স্থান / চারপাশ"},
-    "dances": {pos: "Verb", pron: "ডান্সেস", meaning: "নাচে"},
-    "when": {pos: "Conjunction / Adverb", pron: "হোয়েন", meaning: "যখন / কখন"},
-    "sky": {pos: "Noun", pron: "স্কাই", meaning: "আকাশ"},
-    "overcast": {pos: "Adjective", pron: "ওভারকাস্ট", meaning: "মেঘলা / মেঘাচ্ছন্ন"},
-    "used": {pos: "Verb", pron: "ইউজড", meaning: "ব্যবহৃত হতো"},
-    "to": {pos: "Preposition", pron: "টু", meaning: "প্রতি / দিকে"},
-    "carry": {pos: "Verb", pron: "ক্যারি", meaning: "বহন করা"},
-    "letters": {pos: "Noun", pron: "লেটারস", meaning: "চিঠিপত্র"},
-    "which": {pos: "Pronoun", pron: "হুইচ", meaning: "কোনটি"},
-    "of": {pos: "Preposition", pron: "অফ", meaning: "এর"},
-    "birds": {pos: "Noun", pron: "বার্ডস", meaning: "পাখিগুলি"},
-    "mentioned": {pos: "Adjective / Verb", pron: "মেনশনড", meaning: "উল্লেখিত"},
+    "abandon": {pos: "Verb", pron: "অ্যাবান্ডন", meaning: "পরিত্যাগ করা"},
+    "ability": {pos: "Noun", pron: "অ্যাবিলিটি", meaning: "ক্ষমতা / সামর্থ্য"},
+    "about": {pos: "Preposition", pron: "অ্যাবাউট", meaning: "সম্পর্কে / প্রায়"},
     "above": {pos: "Preposition / Adverb", pron: "অ্যাভাব", meaning: "উপরে"},
-    "appears": {pos: "Verb", pron: "অ্যাপিয়ার্স", meaning: "মনে হয় / প্রতীয়মান হয়"},
-    "closest": {pos: "Adjective", pron: "ক্লোজেস্ট", meaning: "নিকটতম"},
-    "friend": {pos: "Noun", pron: "ফ্রেন্ড", meaning: "বন্ধু"},
-    "mankind": {pos: "Noun", pron: "ম্যানকাইন্ড", meaning: "মানবজাতি"},
-    "why": {pos: "Adverb", pron: "হোয়াই", meaning: "কেন"},
-    "do": {pos: "Verb", pron: "ডু", meaning: "করা"},
-    "you": {pos: "Pronoun", pron: "ইউ", meaning: "তুমি / আপনি"},
-    "think": {pos: "Verb", pron: "থিংক", meaning: "চিন্তা করা / মনে করা"},
-    "so": {pos: "Adverb", pron: "সো", meaning: "তাই / সেরকম"},
-    "how": {pos: "Adverb", pron: "হাউ", meaning: "কীভাবে / কেমন"},
-    "would": {pos: "Modal Verb", pron: "উড", meaning: "অতীতের অভ্যাস বা ইচ্ছা প্রকাশে ব্যবহৃত"},
-    "feel": {pos: "Verb", pron: "ফিল", meaning: "অনুভব করা"},
-    "if": {pos: "Conjunction", pron: "ইফ", meaning: "যদি"},
-    "are": {pos: "Verb", pron: "আর", meaning: "হয় / হও"},
-    "separated": {pos: "Adjective / Verb", pron: "সেপারেটেড", meaning: "বিচ্ছিন্ন / আলাদা"},
-    "your": {pos: "Pronoun", pron: "ইউর", meaning: "তোমার"},
-    "read": {pos: "Verb", pron: "রীড", meaning: "পড়া"},
-    "swallow": {pos: "Noun", pron: "সোয়ালো", meaning: "সোয়ালো পাখি (এক ধরণের পরিযায়ী পাখি)"},
-    "bird": {pos: "Noun", pron: "বার্ড", meaning: "পাখি"},
-    "he": {pos: "Pronoun", pron: "হী", meaning: "সে (পুরুষ)"},
-    "our": {pos: "Pronoun", pron: "আওয়ার", meaning: "আমাদের"},
-    "chimneys": {pos: "Noun", pron: "চিমনীজ", meaning: "চিমনী বা ধোঁয়া নির্গমন নল"},
-    "weather": {pos: "Noun", pron: "ওয়েদার", meaning: "আবহাওয়া"},
-    "fine": {pos: "Adjective", pron: "ফাইন", meaning: "সুন্দর / চমৎকার"},
-    "warm": {pos: "Adjective", pron: "ওয়ার্ম", meaning: "উষ্ণ"},
-    "may": {pos: "Modal Verb", pron: "মে", meaning: "পারে"},
-    "then": {pos: "Adverb", pron: "দেন", meaning: "তখন"},
-    "be": {pos: "Verb", pron: "বী", meaning: "হওয়া"},
-    "heard": {pos: "Verb", pron: "হার্ড", meaning: "শোনা যায়"},
-    "chirping": {pos: "Verb / Participle", pron: "চার্পিং", meaning: "কিচিরমিচির করা"},
-    "his": {pos: "Pronoun", pron: "হিজ", meaning: "তার"},
-    "notes": {pos: "Noun", pron: " নোটস", meaning: "গান / সুরের আওয়াজ"},
-    "weeks": {pos: "Noun", pron: "উইকস", meaning: "সপ্তাহগুলি"},
-    "together": {pos: "Adverb", pron: "টুগেদার", meaning: "একটানা / একসাথে"},
-    "come": {pos: "Verb", pron: "কাম", meaning: "আসা"},
-    "there": {pos: "Adverb", pron: "দেয়ার", meaning: "সেখানে"},
-    "but": {pos: "Conjunction / Preposition", pron: "বাট", meaning: "কিন্তু / শুধু"},
-    "one": {pos: "Number", pron: "ওয়ান", meaning: "একটি"},
-    "cold": {pos: "Adjective", pron: " কোল্ড", meaning: "শীতল / ঠান্ডা"},
-    "wintry": {pos: "Adjective", pron: "উইন্ট্রি", meaning: "শীতকালীন / কনকনে"},
-    "day": {pos: "Noun", pron: "ডে", meaning: "দিন"},
-    "away": {pos: "Adverb", pron: "অ্যাওয়ে", meaning: "দূরে"},
-    "will": {pos: "Modal Verb", pron: "উইল", meaning: "ভবিষ্যত কাল নির্দেশক"},
-    "fly": {pos: "Verb", pron: "ফ্লাই", meaning: "উড়ে যাওয়া"},
-    "guest": {pos: "Noun", pron: "গেস্ট", meaning: "অতিথি"},
-    "much": {pos: "Adverb", pron: "মাচ", meaning: "অনেকটাই"},
-    "him": {pos: "Pronoun", pron: "হিম", meaning: "তাকে"},
-    "we": {pos: "Pronoun", pron: "উই", meaning: "আমরা"},
-    "find": {pos: "Verb", pron: "ফাইন্ড", meaning: "খুঁজে পাওয়া"},
-    "way": {pos: "Noun", pron: "ওয়ে", meaning: "পথ / উপায়"},
-    "many": {pos: "Adjective", pron: "ম্যানি", meaning: "অনেক"},
-    "gay": {pos: "Adjective", pron: "গে", meaning: "আনন্দিত / প্রফুল্ল"},
-    "young": {pos: "Adjective", pron: "ইয়ং", meaning: "তরুণ / অল্পবয়সী"},
-    "follow": {pos: "Verb", pron: "ফলো", meaning: "অনুসরণ করা"},
-    "dreary": {pos: "Adjective", pron: "ড্রিয়ারি", meaning: "বিষণ্ণ / নিরানন্দ / বিষাদময়"},
-    "days": {pos: "Noun", pron: "ডেজ", meaning: "দিনগুলি"},
-    "snow": {pos: "Noun", pron: "স্নো", meaning: "তুষার"},
-    "frost": {pos: "Noun", pron: "ফ্রস্ট", meaning: "তুষারপাত / হিম"},
-    "sparrow": {pos: "Noun", pron: "স্প্যারো", meaning: "চরুই পাখি"},
-    "old": {pos: "Adjective", pron: "ওল্ড", meaning: "পুরোনো / প্রবীণ"},
-    "cling": {pos: "Verb", pron: "ক্লিং", meaning: "লেগে থাকা / আঁকড়ে থাকা"},
-    "crost": {pos: "Verb (Poetic)", pron: "ক্রস্ট", meaning: "বিচ্ছিন্ন (Crossed এর কবিসুলভ রূপ)"},
-    "their": {pos: "Pronoun", pron: "দেয়ার", meaning: "তাদের"},
-    "hearts": {pos: "Noun", pron: "হার্টস", meaning: "হৃদয়গুলি"},
-    "us": {pos: "Pronoun", pron: "আস", meaning: "আমাদের"},
-    "never": {pos: "Adverb", pron: "নেভার", meaning: "কখনই না"},
-    "narrow": {pos: "Verb / Adjective", pron: "ন্যারো", meaning: "সংকীর্ণ হওয়া / সংকীর্ণ"},
-    "give": {pos: "Verb", pron: "গিভ", meaning: "দেওয়া"},
-    "me": {pos: "Pronoun", pron: "মি", meaning: "আমাকে"},
-    "sing": {pos: "Verb", pron: "সিং", meaning: "গান গাওয়া"},
-    "love": {pos: "Verb", pron: "লাভ", meaning: "ভালোবাসা"},
-    "sorrow": {pos: "Noun", pron: "সরো", meaning: "দুঃখ / কষ্ট"},
-    "whate'er": {pos: "Pronoun (Poetic)", pron: "হোয়াটএভার", meaning: "যা-ই কিছু (Whatever)"},
-    "mischance": {pos: "Noun", pron: "মিসচান্স", meaning: "দুর্ভাগ্য / দুর্ঘটনা"},
-    "to-day": {pos: "Noun / Adverb", pron: "টু-ডে", meaning: "আজকের দিন"},
-    "greet": {pos: "Verb", pron: "গ্রীট", meaning: "সম্ভাষণ জানানো / স্বাগত জানানো"},
-    "sight": {pos: "Noun", pron: "সাইট", meaning: "দর্শন / দেখা পাওয়া"},
-    "to-morrow": {pos: "Noun / Adverb", pron: "টু-মরো", meaning: "আগামীকাল"},
-    "happy": {pos: "Adjective", pron: "হ্যাপি", meaning: "সুখী / আনন্দিত"},
-    "dull": {pos: "Adjective", pron: "ডাল", meaning: "একঘেয়ে / অলস"},
-    "remain": {pos: "Verb", pron: "রিমেইন", meaning: "থাকা"},
-    "emotionally": {pos: "Adverb", pron: "ইমোশনালি", meaning: "আবেগের দিক থেকে"},
-    "attached": {pos: "Adjective", pron: "অ্যাটাচড", meaning: "যুক্ত / সংলগ্ন"},
-    "poetical": {pos: "Adjective", pron: "পোয়েটিকাল", meaning: "কাব্যিক"},
-    "form": {pos: "Noun", pron: "ফর্ম", meaning: "রূপ"},
-    "word": {pos: "Noun", pron: "ওয়ার্ড", meaning: "শব্দ"},
-    "crossed": {pos: "Verb", pron: "ক্রসড", meaning: "অতিক্রম করা / আলাদা হওয়া"},
-    "here": {pos: "Adverb", pron: "হিয়ার", meaning: "এখানে"},
-    "it": {pos: "Pronoun", pron: "ইট", meaning: "এটি"},
-    "means": {pos: "Verb", pron: "মিন্স", meaning: "বোঝায়"},
-    "misfortune": {pos: "Noun", pron: "মিসফরচুন", meaning: "দুর্ভাগ্য"},
-    "activity": {pos: "Noun", pron: "অ্যাক্টিভিটি", meaning: "কর্মকাণ্ড / অনুশীলন"},
-    "tick": {pos: "Verb", pron: "টিক", meaning: "ঠিক চিহ্ন দেওয়া"},
-    "correct": {pos: "Adjective", pron: "কারেক্ট", meaning: "সঠিক"},
-    "alternative": {pos: "Noun", pron: "অল্টারনেটিভ", meaning: "বিকল্প"},
-    "spring": {pos: "Noun", pron: "স্প্রিং", meaning: "বসন্তকাল"},
-    "winter": {pos: "Noun", pron: "উইন্টার", meaning: "শীতকাল"},
-    "behaviour": {pos: "Noun", pron: "বিহেভিয়ার", meaning: "আচরণ"},
+    "absence": {pos: "Noun", pron: "অ্যাবসেন্স", meaning: "অনুপস্থিতি"},
     "accompanies": {pos: "Verb", pron: "অ্যাকম্পানিজ", meaning: "সঙ্গ দেয়"},
-    "times": {pos: "Noun", pron: "টাইমস", meaning: "সময়কাল"},
-    "rain": {pos: "Noun", pron: "রেইন", meaning: "বৃষ্টি"},
-    "thunder": {pos: "Noun", pron: "থান্ডার", meaning: "বজ্রপাত"},
-    "sunshine": {pos: "Noun", pron: "সানশাইন", meaning: "রোদ্দুর"},
-    "warmth": {pos: "Noun", pron: "ওয়ার্মথ", meaning: "উষ্ণতা"},
-    "wants": {pos: "Verb", pron: "ওয়ান্টস", meaning: "চায়"},
-    "nightingale": {pos: "Noun", pron: "নাইটিঙ্গেল", meaning: "নাইটিঙ্গেল পাখি (বুলবুলি)"},
-    "complete": {pos: "Verb", pron: "কমপ্লিট", meaning: "সম্পূর্ণ করা"},
-    "sentences": {pos: "Noun", pron: "সেন্সেন্সেস", meaning: "বাক্যগুলি"},
-    "information": {pos: "Noun", pron: "ইনফরমেশন", meaning: "তথ্য"},
-    "text": {pos: "Noun", pron: "টেক্সট", meaning: "পাঠ্যাংশ"},
-    "chirps": {pos: "Verb", pron: "চার্পস", meaning: "কিচিরমিচির শব্দ করে"},
-    "wishes": {pos: "Verb", pron: "উইশেস", meaning: "ইচ্ছা প্রকাশ করে"},
-    "answer": {pos: "Verb / Noun", pron: "আনসার", meaning: "উত্তর দেওয়া / উত্তর"},
-    "question": {pos: "Noun", pron: "কোয়েশ্চেন", meaning: "প্রশ্ন"},
-    "leaves": {pos: "Verb", pron: "লিভস", meaning: "ছেড়ে চলে যায়"},
-    "during": {pos: "Preposition", pron: "ডিউরিং", meaning: "সময়ে / চলাকালীন"},
-    "season": {pos: "Noun", pron: "সিজন", meaning: "ঋতু"},
-    "fill": {pos: "Verb", pron: "ফিল", meaning: "পূরণ করা"},
-    "chart": {pos: "Noun", pron: "চার্ট", meaning: "তালিকা / ছক"},
-    "who": {pos: "Pronoun", pron: "হু", meaning: "কে / যারা"},
-    "does": {pos: "Verb", pron: "ডাজ", meaning: "করে"},
-    "what": {pos: "Pronoun", pron: "হোয়াট", meaning: "কী"},
-    "true": {pos: "Adjective", pron: "ট্রু", meaning: "সত্যিকারের / বিশ্বস্ত"},
-    "had": {pos: "Verb", pron: "হ্যাড", meaning: "ছিল"},
-    "questions": {pos: "Noun", pron: "কোয়েশ্চেনস", meaning: "প্রশ্নাবলী"},
-    "similar": {pos: "Adjective", pron: "সিমিলার", meaning: "একই রকম / সদৃশ"},
-    "type": {pos: "Noun", pron: "টাইপ", meaning: "ধরন / প্রকার"},
-    "whom": {pos: "Pronoun", pron: "হু-ম", meaning: "কাকে"},
-    "reasons": {pos: "Noun", pron: "রিজনস", meaning: "কারণসমূহ"},
-    "identify": {pos: "Verb", pron: "আইডেন্টিফাই", meaning: "শনাক্ত করা"},
-    "noun": {pos: "Noun", pron: "নাউন", meaning: "বিশেষ্য"},
-    "clauses": {pos: "Noun", pron: "ক্লজেস", meaning: "বাক্যাংশগুলি"},
+    "activity": {pos: "Noun", pron: "অ্যাক্টিভিটি", meaning: "অনুশীলনী / কর্মকাণ্ড"},
     "adjective": {pos: "Noun / Adjective", pron: "অ্যাডজেক্টিভ", meaning: "বিশেষণ"},
     "adverb": {pos: "Noun / Adjective", pron: "অ্যাডভার্ব", meaning: "ক্রিয়া বিশেষণ"},
-    "given": {pos: "Adjective", pron: "গিভেন", meaning: "প্রদত্ত"},
-    "below": {pos: "Preposition / Adverb", pron: "বিলো", meaning: "নিচে"},
-    "expect": {pos: "Verb", pron: "এক্সপেক্ট", meaning: "আশা করা"},
-    "shall": {pos: "Modal Verb", pron: "শ্যাল", meaning: "ভবিষ্যত নির্দেশক"},
-    "get": {pos: "Verb", pron: "গেট", meaning: "পাওয়া"},
-    "prize": {pos: "Noun", pron: "প্রাইজ", meaning: "পুরস্কার"},
-    "umbrella": {pos: "Noun", pron: "আমব্রেলা", meaning: "ছাতা"},
-    "handle": {pos: "Noun", pron: "হ্যান্ডেল", meaning: "হাতল"},
-    "mine": {pos: "Pronoun", pron: "মাইন", meaning: "আমার"},
-    "younger": {pos: "Adjective", pron: "ইয়াঙ্গার", meaning: "ছোট / বয়সে কম"},
-    "kites": {pos: "Noun", pron: "কাইটস", meaning: "ঘুড়িগুলি"},
-    "remember": {pos: "Verb", pron: "রিমেম্বার", meaning: "মনে রাখা / স্মরণ করা"},
-    "house": {pos: "Noun", pron: "হাউস", meaning: "বাড়ি"},
-    "where": {pos: "Adverb", pron: "হোয়ার", meaning: "যেখানে / কোথায়"},
-    "born": {pos: "Adjective / Verb", pron: "বর্ন", meaning: "জন্মগ্রহণ করেছিল"},
-    "change": {pos: "Verb", pron: "চেঞ্জ", meaning: "পরিবর্তন করা"},
-    "indirect": {pos: "Adjective", pron: "ইনডাইরেক্ট", meaning: "পরোক্ষ"},
-    "speech": {pos: "Noun", pron: "স্পীচ", meaning: "উক্তি / কথা"},
-    "sailor": {pos: "Noun", pron: "সেলর", meaning: "নাভিক"},
-    "said": {pos: "Verb", pron: "সেড", meaning: "বলেছিল"},
-    "storm": {pos: "Noun", pron: "স্টর্ম", meaning: "ঝড়"},
-    "teacher": {pos: "Noun", pron: "টিচার", meaning: "শিক্ষক / শিক্ষিকা"},
-    "student": {pos: "Noun", pron: "স্টুডেন্ট", meaning: "ছাত্র / ছাত্রী"},
-    "school": {pos: "Noun", pron: "স্কুল", meaning: "বিদ্যালয়"},
-    "yesterday": {pos: "Noun / Adverb", pron: "ইয়েস্টারডে", meaning: "গতকাল"},
-    "tired": {pos: "Adjective", pron: "টায়ার্ড", meaning: "ক্লান্ত"},
-    "host": {pos: "Noun", pron: "হোস্ট", meaning: "আমন্ত্রণকারী / গৃহস্বামী"},
-    "please": {pos: "Adverb", pron: "প্লীজ", meaning: "দয়া করে"},
-    "glass": {pos: "Noun", pron: "গ্লাস", meaning: "কাঁচের গ্লাস"},
-    "water": {pos: "Noun", pron: "ওয়াটার", meaning: "জল"},
-    "rita": {pos: "Proper Noun", pron: "রিতা", meaning: "রিতা (নাম)"},
-    "am": {pos: "Verb", pron: "অ্যাম", meaning: "হই"},
-    "grandfather": {pos: "Noun", pron: "গ্র্যান্ডফাদার", meaning: "দাদু / পিতামহ"},
-    "live": {pos: "Verb", pron: "লাইভ / লিভ", meaning: "বেঁচে থাকা / বসবাস করা"},
-    "long": {pos: "Adjective / Adverb", pron: "লং", meaning: "দীর্ঘকাল / দীর্ঘ"},
-    "make": {pos: "Verb", pron: "মেক", meaning: "তৈরি করা"},
-    "meaningful": {pos: "Adjective", pron: "মিনিংফুল", meaning: "অর্থপূর্ণ"},
-    "own": {pos: "Adjective", pron: "ওন", meaning: "নিজের"},
-    "talk": {pos: "Verb", pron: "টক", meaning: "কথা বলা"},
-    "tell": {pos: "Verb", pron: "টেল", meaning: "বলা"},
-    "class": {pos: "Noun", pron: "ক্লাস", meaning: "শ্রেণী"},
-    "about": {pos: "Preposition", pron: "অ্যাবাউট", meaning: "সম্পর্কে"},
-    "qualities": {pos: "Noun", pron: "কোয়ালিটিজ", meaning: "গুণাবলী"},
-    "look": {pos: "Verb", pron: "লুক", meaning: "খোঁজা / তাকানো"},
-    "found": {pos: "Verb", pron: "ফাউন্ড", meaning: "খুঁজে পাওয়া গেছে"},
-    "such": {pos: "Adjective", pron: "সাচ", meaning: "এইরকম"},
-    "write": {pos: "Verb", pron: "রাইট", meaning: "লেখা"},
-    "short": {pos: "Adjective", pron: "শর্ট", meaning: "সংক্ষিপ্ত"},
-    "story": {pos: "Noun", pron: "স্টোরি", meaning: "গল্প"},
-    "eighty": {pos: "Number", pron: "এইটি", meaning: "আশি"},
-    "words": {pos: "Noun", pron: "ওয়ার্ডস", meaning: "শব্দগুলি"},
-    "using": {pos: "Verb", pron: "ইউজিং", meaning: "ব্যবহার করে"},
-    "hints": {pos: "Noun", pron: "হিন্টস", meaning: "ইঙ্গিতগুলি"},
-    "suitable": {pos: "Adjective", pron: "স্যুটেবল", meaning: "উপযুক্ত"},
-    "title": {pos: "Noun", pron: "টাইটেল", meaning: "শিরোনাম"},
-    "farmer": {pos: "Noun", pron: "ফার্মার", meaning: "কৃষক"},
-    "finds": {pos: "Verb", pron: "ফাইন্ডস", meaning: "খুঁজে পায়"},
-    "snake": {pos: "Noun", pron: "স্নেক", meaning: "সাপ"},
+    "adversity": {pos: "Noun", pron: "অ্যাডভার্সিটি", meaning: "প্রতিকূলতা / বিপদ"},
+    "afternoon": {pos: "Noun", pron: "আফটারনুন", meaning: "বিকেল বেলা"},
     "almost": {pos: "Adverb", pron: "অলমোস্ট", meaning: "প্রায়"},
-    "dead": {pos: "Adjective", pron: "ডেড", meaning: "মৃত"},
-    "brings": {pos: "Verb", pron: "ব্রিংস", meaning: "নিয়ে আসে"},
-    "home": {pos: "Noun", pron: "হোম", meaning: "বাড়ি"},
-    "warms": {pos: "Verb", pron: "ওয়ার্মস", meaning: "উত্তাপ দেয়"},
-    "saves": {pos: "Verb", pron: "সেভস", meaning: "বাঁচায়"},
-    "life": {pos: "Noun", pron: "লাইফ", meaning: "জীবন"},
+    "already": {pos: "Adverb", pron: "অলরেডি", meaning: "ইতিমধ্যে"},
+    "also": {pos: "Adverb", pron: "অলসো", meaning: "এছাড়াও"},
+    "alternative": {pos: "Noun", pron: "অল্টারনেটিভ", meaning: "বিকল্প"},
+    "although": {pos: "Conjunction", pron: "অলদো", meaning: "যদিও"},
+    "always": {pos: "Adverb", pron: "অলওয়েজ", meaning: "সর্বদা"},
+    "am": {pos: "Verb", pron: "অ্যাম", meaning: "হই"},
+    "among": {pos: "Preposition", pron: "অ্যামং", meaning: "মধ্যে (অনেকের)"},
+    "amused": {pos: "Verb", pron: "অ্যামিউজড", meaning: "আনন্দ দিয়েছিল"},
+    "and": {pos: "Conjunction", pron: "অ্যান্ড", meaning: "এবং"},
+    "ann": {pos: "Proper Noun", pron: "অ্যান", meaning: "অ্যান (নাম)"},
+    "answer": {pos: "Verb / Noun", pron: "আনসার", meaning: "উত্তর দেওয়া / উত্তর"},
+    "any": {pos: "Determiner", pron: "এনি", meaning: "যেকোনো"},
+    "appears": {pos: "Verb", pron: "অ্যাপিয়ার্স", meaning: "মনে হয় / দেখা দেয়"},
+    "approached": {pos: "Verb", pron: "অ্যাপ্রোচড", meaning: "এগিয়ে এলো / নেমে এলো"},
+    "are": {pos: "Verb", pron: "আর", meaning: "হয় / হও"},
+    "arrive": {pos: "Verb", pron: "অ্যারাইভ", meaning: "পৌঁছানো / আসা"},
+    "as": {pos: "Conjunction / Preposition", pron: "অ্যাজ", meaning: "যেমন / হিসেবে"},
+    "asked": {pos: "Verb", pron: "আস্কড", meaning: "জিজ্ঞাসা করেছিল"},
+    "at": {pos: "Preposition", pron: "অ্যাট", meaning: "এ / তে / দিকে"},
+    "attached": {pos: "Adjective", pron: "অ্যাটাচড", meaning: "যুক্ত / আসক্ত"},
+    "away": {pos: "Adverb", pron: "অ্যাওয়ে", meaning: "দূরে"},
+    "be": {pos: "Verb", pron: "বী", meaning: "হওয়া"},
+    "because": {pos: "Conjunction", pron: "বিকজ", meaning: "কারণ"},
+    "behavior": {pos: "Noun", pron: "বিহেভিয়ার", meaning: "আচরণ"},
+    "behaviour": {pos: "Noun", pron: "বিহেভিয়ার", meaning: "আচরণ"},
+    "being": {pos: "Noun / Participle", pron: "বিয়িং", meaning: "সত্তা / হওয়া"},
+    "beings": {pos: "Noun (Plural)", pron: "বিয়িংস", meaning: "জীব / মানুষজন"},
+    "below": {pos: "Preposition / Adverb", pron: "বিলো", meaning: "নিচে"},
+    "best": {pos: "Adjective", pron: "বেস্ট", meaning: "সর্বোত্তম"},
+    "bird": {pos: "Noun", pron: "বার্ড", meaning: "পাখি"},
+    "birds": {pos: "Noun (Plural)", pron: "বার্ডস", meaning: "পাখিগুলি"},
     "bite": {pos: "Verb", pron: "বাইট", meaning: "কামড়ানো"},
-    "son": {pos: "Noun", pron: "সান", meaning: "ছেলে / পুত্র"},
+    "bonds": {pos: "Noun (Plural)", pron: "বন্ডস", meaning: "বন্ধন"},
+    "books": {pos: "Noun (Plural)", pron: "বুকস", meaning: "বইগুলি"},
+    "born": {pos: "Adjective / Verb", pron: "বর্ন", meaning: "জন্মগ্রহণ করা"},
+    "both": {pos: "Determiner", pron: "বোথ", meaning: "উভয়"},
+    "bright": {pos: "Adjective", pron: "ব্রাইট", meaning: "উজ্জ্বল"},
+    "bring": {pos: "Verb", pron: "ব্রিং", meaning: "আনা / নিয়ে আসা"},
+    "brings": {pos: "Verb", pron: "ব্রিংস", meaning: "নিয়ে আসে"},
+    "brother": {pos: "Noun", pron: "ব্রাদার", meaning: "ভাই"},
+    "brought": {pos: "Verb", pron: "ব্রট", meaning: "এনছিল"},
+    "builds": {pos: "Verb", pron: "বিল্ডস", meaning: "তৈরি করে"},
+    "but": {pos: "Conjunction / Preposition", pron: "বাট", meaning: "কিন্তু / শুধু"},
+    "by": {pos: "Preposition", pron: "বাই", meaning: "দ্বারা / কর্তৃক"},
+    "calling": {pos: "Verb / Participle", pron: "কলিং", meaning: "ডাকা"},
+    "can": {pos: "Modal Verb", pron: "ক্যান", meaning: "পারা"},
+    "cannot": {pos: "Verb", pron: "ক্যাননট", meaning: "পারে না"},
+    "car": {pos: "Noun", pron: "কার", meaning: "গাড়ি"},
+    "carefully": {pos: "Adverb", pron: "কেয়ারফুলি", meaning: "সাবধানে"},
+    "carry": {pos: "Verb", pron: "ক্যারি", meaning: "বহন করা"},
+    "centuries": {pos: "Noun (Plural)", pron: "সেনচুরিজ", meaning: "শতাব্দীসমূহ"},
+    "change": {pos: "Verb / Noun", pron: "চেঞ্জ", meaning: "পরিবর্তন করা / পরিবর্তন"},
+    "changes": {pos: "Verb", pron: "চেঞ্জেস", meaning: "পরিবর্তিত হয়"},
+    "charles": {pos: "Proper Noun", pron: "চার্লস", meaning: "চার্লস (নাম)"},
+    "chart": {pos: "Noun", pron: "চার্ট", meaning: "তালিকা / ছক"},
+    "chased": {pos: "Verb", pron: "চেসড", meaning: "তাড়িয়ে দিয়েছিল"},
     "chases": {pos: "Verb", pron: "চেসেস", meaning: "তাড়িয়ে দেয়"},
-    "suppose": {pos: "Verb", pron: "সাপোজ", meaning: "মনে করো / ধরা যাক"},
-    "have": {pos: "Verb", pron: "হ্যাভ", meaning: "আছে"},
-    "plays": {pos: "Verb", pron: "প্লেস", meaning: "খেলা করে"},
-    "paragraph": {pos: "Noun", pron: "প্যারাগ্রাফ", meaning: "অনুচ্ছেদ"},
-    "spent": {pos: "Verb", pron: "স্পেন্ট", meaning: "কাটিয়েছি / অতিবাহিত করেছি"},
-    "vacation": {pos: "Noun", pron: "ভ্যাকেশন", meaning: "ছুটি / অবকাশ"},
-    "work": {pos: "Verb / Noun", pron: "ওয়ার্ক", meaning: "কাজ করা / কাজ"},
-    "sheet": {pos: "Noun", pron: "শীট", meaning: "পাতা / কাগজ"},
-    "paper": {pos: "Noun", pron: "পেপার", meaning: "কাগজ"},
+    "cheerful": {pos: "Adjective", pron: "চিয়ারফুল", meaning: "প্রফুল্ল / আনন্দময়"},
+    "cheerfully": {pos: "Adverb", pron: "চিয়ারফুলি", meaning: "আনন্দের সাথে"},
+    "cherish": {pos: "Verb", pron: "চেরিশ", meaning: "শ্রদ্ধা করা / লালন করা"},
+    "chimneys": {pos: "Noun (Plural)", pron: "চিমনীজ", meaning: "চিমনী বা ধোঁয়া নল"},
+    "chirp": {pos: "Verb", pron: "চার্প", meaning: "কিচিরমিচির করা"},
+    "chirping": {pos: "Verb / Participle", pron: "চার্পিং", meaning: "কিচিরমিচির করা"},
+    "chirps": {pos: "Verb", pron: "চার্পস", meaning: "কিচিরমিচির করে"},
+    "circle": {pos: "Noun", pron: "সার্কেল", meaning: "গোষ্ঠী / চক্র"},
+    "class": {pos: "Noun", pron: "ক্লাস", meaning: "শ্রেণী"},
+    "clauses": {pos: "Noun (Plural)", pron: "ক্লজেস", meaning: "বাক্যাংশগুলি"},
+    "cleans": {pos: "Verb", pron: "ক্লিন্স", meaning: "পরিষ্কার করে"},
+    "clearly": {pos: "Adverb", pron: "ক্লিয়ারলি", meaning: "স্পষ্টভাবে"},
+    "cling": {pos: "Verb", pron: "ক্লিং", meaning: "আঁকড়ে থাকা / লেগে থাকা"},
+    "clings": {pos: "Verb", pron: "ক্লিংস", meaning: "আঁকড়ে থাকে"},
+    "close": {pos: "Adjective / Verb", pron: "ক্লোজ", meaning: "নিকটবর্তী / বন্ধ করা"},
+    "closer": {pos: "Adjective", pron: "ক্লোজার", meaning: "আরও নিকটে"},
+    "closest": {pos: "Adjective", pron: "ক্লোজেস্ট", meaning: "নিকটতম"},
+    "closely": {pos: "Adverb", pron: "ক্লোসলি", meaning: "ঘনিষ্ঠভাবে"},
+    "coleridge": {pos: "Proper Noun", pron: "কোলরিজ", meaning: "কোলরিজ"},
+    "cold": {pos: "Adjective / Noun", pron: "কোল্ড", meaning: "শীতল / ঠান্ডা"},
+    "collaboration": {pos: "Noun", pron: "কোলাবোরেস্ন", meaning: "যৌথ কাজ / সহযোগিতা"},
+    "collection": {pos: "Noun", pron: "কালেকশন", meaning: "সংগ্রহ"},
+    "color": {pos: "Noun / Verb", pron: "কালার", meaning: "রং"},
+    "colour": {pos: "Noun / Verb", pron: "কালার", meaning: "রং করা / রং"},
+    "column": {pos: "Noun", pron: "কলাম", meaning: "স্তম্ভ / সারি"},
+    "come": {pos: "Verb", pron: "কাম", meaning: "আসা"},
+    "comes": {pos: "Verb", pron: "কামস", meaning: "আসে"},
+    "comfort": {pos: "Noun", pron: "কমফোর্ট", meaning: "স্বস্তি / সান্ত্বনা"},
+    "comforts": {pos: "Noun (Plural)", pron: "কমফোর্টস", meaning: "আরাম-আয়েশ"},
+    "communication": {pos: "Noun", pron: "কমিউনিকেশন", meaning: "যোগাযোগ"},
+    "companion": {pos: "Noun", pron: "কম্প্যানিয়ন", meaning: "সঙ্গী"},
+    "companions": {pos: "Noun (Plural)", pron: "কম্প্যানিয়নস", meaning: "সঙ্গীগণ"},
+    "companionship": {pos: "Noun", pron: "কম্প্যানিয়নশিপ", meaning: "সহচর্য / বন্ধুত্ব"},
+    "complete": {pos: "Verb / Adjective", pron: "কমপ্লিট", meaning: "সম্পূর্ণ করা / সম্পূর্ণ"},
+    "connected": {pos: "Adjective", pron: "কানেক্টেড", meaning: "সংযুক্ত / যোগাযোগে থাকা"},
+    "conversations": {pos: "Noun (Plural)", pron: "কনভারসেশনস", meaning: "কথোপকথনগুলি"},
+    "correct": {pos: "Adjective", pron: "কারেক্ট", meaning: "সঠিক"},
+    "count": {pos: "Noun / Verb", pron: "কাউন্ট", meaning: "গণনা"},
+    "creates": {pos: "Verb", pron: "ক্রিয়েটস", meaning: "সৃষ্টি করে"},
+    "crost": {pos: "Verb (Poetic)", pron: "ক্রস্ট", meaning: "বিচ্ছিন্ন (Crossed)"},
+    "crossed": {pos: "Verb", pron: "ক্রসড", meaning: "অতিক্রম করা / বিচ্ছিন্ন হওয়া"},
+    "crow": {pos: "Noun", pron: "ক্রো", meaning: "কাক"},
+    "daily": {pos: "Adjective", pron: "ডেইলি", meaning: "দৈনন্দিন"},
+    "dances": {pos: "Verb", pron: "ডান্সেস", meaning: "নাচে"},
+    "dangerous": {pos: "Adjective", pron: "ডেঞ্জারাস", meaning: "বিপজ্জনক"},
+    "day": {pos: "Noun", pron: "ডে", meaning: "দিন"},
+    "days": {pos: "Noun (Plural)", pron: "ডেজ", meaning: "দিনগুলি"},
+    "dead": {pos: "Adjective", pron: "ডেড", meaning: "মৃত"},
+    "deeply": {pos: "Adverb", pron: "ডিপলি", meaning: "গভীরভাবে"},
+    "delightful": {pos: "Adjective", pron: "ডিলাইটফুল", meaning: "আনন্দদায়ক"},
+    "delightfully": {pos: "Adverb", pron: "ডিলাইটফুলি", meaning: "আনন্দের সাথে"},
+    "dependent": {pos: "Adjective", pron: "ডিপেন্ডেন্ট", meaning: "নির্ভরশীল"},
+    "desires": {pos: "Verb", pron: "ডিজায়ারস", meaning: "ইচ্ছা করে"},
+    "devoted": {pos: "Adjective", pron: "ডিভোটেড", meaning: "নিবেদিতপ্রাণ"},
+    "did": {pos: "Verb", pron: "ডিড", meaning: "করেছিল"},
+    "difficult": {pos: "Adjective", pron: "ডিফিকাল্ট", meaning: "কঠিন"},
+    "difficulties": {pos: "Noun (Plural)", pron: "ডিফিকাল্টিজ", meaning: "কঠিন পরিস্থিতি / সমস্যা"},
+    "disappears": {pos: "Verb", pron: "ডিসঅ্যাপিয়ার্স", meaning: "অদৃশ্য হয়ে যায়"},
+    "disappear": {pos: "Verb", pron: "ডিসঅ্যাপিয়ার", meaning: "অদৃশ্য হওয়া"},
+    "distances": {pos: "Noun (Plural)", pron: "ডিসট্যান্সেস", meaning: "দূরত্বসমূহ"},
+    "do": {pos: "Verb", pron: "ডু", meaning: "করা"},
+    "does": {pos: "Verb", pron: "ডাজ", meaning: "করে"},
     "draw": {pos: "Verb", pron: "ড্র", meaning: "আঁকা"},
-    "pictures": {pos: "Noun", pron: "পিকচারস", meaning: "ছবিগুলি"},
-    "colour": {pos: "Verb / Noun", pron: "কালার", meaning: "রং করা / রং"},
+    "dreary": {pos: "Adjective", pron: "ড্রিয়ারি", meaning: "বিষণ্ণ / নিরানন্দ"},
+    "drove": {pos: "Verb", pron: "ড্রোভ", meaning: "চালিয়েছিল"},
+    "dull": {pos: "Adjective", pron: "ডাল", meaning: "একঘেয়ে / অলস"},
+    "during": {pos: "Preposition", pron: "ডিউরিং", meaning: "সময়ে / চলাকালীন"},
+    "each": {pos: "Determiner / Pronoun", pron: "ঈচ", meaning: "প্রত্যেক"},
+    "eighty": {pos: "Number", pron: "এইটি", meaning: "আশি"},
+    "electricity": {pos: "Noun", pron: "ইলেকট্রিসিটি", meaning: "বিদ্যুৎ"},
+    "emotionally": {pos: "Adverb", pron: "ইমোশনালি", meaning: "আবেগের দিক থেকে"},
+    "empty": {pos: "Adjective", pron: "এম্পটি", meaning: "খালি / শূন্য"},
+    "encouragement": {pos: "Noun", pron: "এনকারেজমেন্ট", meaning: "উৎসাহ"},
+    "endure": {pos: "Verb", pron: "এন্ডিউর", meaning: "সহ্য করা"},
+    "english": {pos: "Adjective", pron: "ইংলিশ", meaning: "ইংরেজি / ইংরেজ"},
+    "enjoying": {pos: "Verb / Participle", pron: "এনজয়িং", meaning: "উপভোগ করা"},
+    "enough": {pos: "Adjective", pron: "ইনাফ", meaning: "যথেষ্ট"},
+    "entire": {pos: "Adjective", pron: "এন্টায়ার", meaning: "সম্পূর্ণ"},
+    "entirely": {pos: "Adverb", pron: "এন্টায়ারলি", meaning: "সম্পূর্ণরূপে"},
+    "environment": {pos: "Noun", pron: "এনভায়রনমেন্ট", meaning: "পরিবেশ"},
+    "even": {pos: "Adverb", pron: "ইভেন", meaning: "এমনকি"},
+    "evening": {pos: "Noun", pron: "ইভনিং", meaning: "সন্ধ্যাবেলা"},
+    "ever": {pos: "Adverb", pron: "এভার", meaning: "কখনও"},
+    "every": {pos: "Determiner", pron: "এভরি", meaning: "প্রত্যেকটি"},
+    "exclaimed": {pos: "Verb", pron: "এক্সক্লেইমড", meaning: "চিৎকার করে বা আবেগের সাথে বলেছিল"},
+    "existed": {pos: "Verb", pron: "এক্সিস্টেড", meaning: "বিদ্যমান ছিল"},
+    "expect": {pos: "Verb", pron: "এক্সপেক্ট", meaning: "আশা করা"},
+    "favorable": {pos: "Adjective", pron: "ফেভারেবল", meaning: "অনুকূল"},
+    "favourable": {pos: "Adjective", pron: "ফেভারেবল", meaning: "অনুকূল"},
+    "fades": {pos: "Verb", pron: "ফেডস", meaning: "মিলিয়ে যায়"},
+    "fair-weather": {pos: "Adjective", pron: "ফেয়ার-ওয়েদার", meaning: "সুসময়ের (বন্ধু)"},
+    "faithful": {pos: "Adjective", pron: "ফেইথফুল", meaning: "বিশ্বস্ত"},
+    "faithfully": {pos: "Adverb", pron: "ফেইথফুলি", meaning: "বিশ্বস্ততার সাথে"},
+    "famous": {pos: "Adjective", pron: "ফেমাছ", meaning: "বিখ্যাত"},
+    "farmer": {pos: "Noun", pron: "ফার্মার", meaning: "কৃষক"},
+    "farmer's": {pos: "Noun (Possessive)", pron: "ফার্মারস", meaning: "কৃষকের"},
+    "feel": {pos: "Verb", pron: "ফিল", meaning: "অনুভব করা"},
+    "felt": {pos: "Verb", pron: "ফেল্ট", meaning: "অনুভব করেছিল"},
+    "field": {pos: "Noun", pron: "ফিল্ড", meaning: "মাঠ / জমি"},
+    "fill": {pos: "Verb", pron: "ফিল", meaning: "পূরণ করা"},
+    "filled": {pos: "Verb", pron: "ফিল্ড", meaning: "পূর্ণ করেছিল"},
+    "find": {pos: "Verb", pron: "ফাইন্ড", meaning: "খুঁজে পাওয়া"},
+    "finds": {pos: "Verb", pron: "ফাইন্ডস", meaning: "খুঁজে পায়"},
+    "fine": {pos: "Adjective", pron: "ফাইন", meaning: "সুন্দর / চমৎকার"},
+    "fireplace": {pos: "Noun", pron: "ফায়ারপ্লেস", meaning: "আগুনের চুল্লি"},
+    "first": {pos: "Adjective / Adverb", pron: "ফার্স্ট", meaning: "প্রথম"},
+    "flies": {pos: "Verb", pron: "ফ্লাইস", meaning: "উড়ে যায়"},
+    "fly": {pos: "Verb", pron: "ফ্লাই", meaning: "উড়া / উড়ে যাওয়া"},
+    "follow": {pos: "Verb", pron: "ফলো", meaning: "অনুসরণ করা"},
+    "following": {pos: "Adjective / Preposition", pron: "ফলোয়িং", meaning: "নিম্নলিখিত / অনুসৃত"},
+    "fond": {pos: "Adjective", pron: "ফন্ড", meaning: "প্রিয় / স্নেহপূর্ণ"},
+    "food": {pos: "Noun", pron: "ফুড", meaning: "খাবার"},
+    "for": {pos: "Preposition", pron: "ফর", meaning: "জন্য"},
+    "form": {pos: "Noun / Verb", pron: "ফর্ম", meaning: "রূপ / গঠন করা"},
+    "found": {pos: "Verb", pron: "ফাউন্ড", meaning: "খুঁজে পেয়েছিল"},
     "four": {pos: "Number", pron: "ফোর", meaning: "চার"},
-    "each": {pos: "Determiner / Pronoun", pron: "ঈচ", meaning: "প্রত্যেক"}
+    "freezing": {pos: "Adjective", pron: "ফ্রিজিং", meaning: "কনকনে ঠান্ডা"},
+    "fresh": {pos: "Adjective", pron: "ফ্রেশ", meaning: "তাজা"},
+    "friend": {pos: "Noun", pron: "ফ্রেন্ড", meaning: "বন্ধু"},
+    "friends": {pos: "Noun (Plural)", pron: "ফ্রেন্ডস", meaning: "বন্ধুরা"},
+    "friendship": {pos: "Noun", pron: "ফ্রেন্ডশিপ", meaning: "বন্ধুত্ব"},
+    "from": {pos: "Preposition", pron: "ফ্রম", meaning: "থেকে"},
+    "frost": {pos: "Noun", pron: "ফ্রস্ট", meaning: "তুষারপাত / হিম"},
+    "funny": {pos: "Adjective", pron: "ফানি", meaning: "মজার"},
+    "furious": {pos: "Adjective", pron: "ফিউরিয়াস", meaning: "ক্ষুব্ধ / ভীষণ ক্রুদ্ধ"},
+    "future": {pos: "Noun / Adjective", pron: "ফিউচার", meaning: "ভবিষ্যৎ"},
+    "gay": {pos: "Adjective", pron: "গে", meaning: "আনন্দিত / প্রফুল্ল"},
+    "gentle": {pos: "Adjective", pron: "জেন্টল", meaning: "নম্র / কোমল"},
+    "gently": {pos: "Adverb", pron: "জেন্টলি", meaning: "মৃদুভাবে / আলতো করে"},
+    "get": {pos: "Verb", pron: "গেট", meaning: "পাওয়া"},
+    "give": {pos: "Verb", pron: "গিভ", meaning: "দেওয়া"},
+    "given": {pos: "Adjective", pron: "গিভেন", meaning: "প্রদত্ত"},
+    "glass": {pos: "Noun", pron: "গ্লাস", meaning: "কাঁচের গ্লাস"},
+    "gone": {pos: "Verb", pron: "গন", meaning: "গিয়েছিল (অতীত রূপ)"},
+    "good": {pos: "Adjective", pron: "গুড", meaning: "ভালো"},
+    "grabbed": {pos: "Verb", pron: "গ্র্যাবড", meaning: "ছিনিয়ে নিয়েছিল / ধরেছিল"},
+    "grandfather": {pos: "Noun", pron: "গ্র্যান্ডফাদার", meaning: "দাদু / পিতামহ"},
+    "gratitude": {pos: "Noun", pron: "গ্র্যাটিটিউড", meaning: "কৃতজ্ঞতা"},
+    "greet": {pos: "Verb", pron: "গ্রীট", meaning: "সম্ভাষণ জানানো / স্বাগত জানানো"},
+    "guavas": {pos: "Noun (Plural)", pron: "গুয়াভাস", meaning: "পেয়ারাগুলি"},
+    "guest": {pos: "Noun", pron: "গেস্ট", meaning: "অতিথি"},
+    "had": {pos: "Verb", pron: "হ্যাড", meaning: "ছিল"},
+    "handle": {pos: "Noun", pron: "হ্যান্ডেল", meaning: "হাতল"},
+    "happiness": {pos: "Noun", pron: "হ্যাপিছ", meaning: "সুখ / আনন্দ"},
+    "happy": {pos: "Adjective", pron: "হ্যাপি", meaning: "সুখী / আনন্দিত"},
+    "hardship": {pos: "Noun", pron: "হার্ডশিপ", meaning: "দুর্দশা / কষ্ট"},
+    "harsh": {pos: "Adjective", pron: "হার্শ", meaning: "কঠোর / নির্মম"},
+    "has": {pos: "Verb", pron: "হ্যাজ", meaning: "আছে"},
+    "have": {pos: "Verb", pron: "হ্যাভ", meaning: "আছে"},
+    "he": {pos: "Pronoun", pron: "হী", meaning: "সে (পুরুষ)"},
+    "heard": {pos: "Verb", pron: "হার্ড", meaning: "শোনা যায় / শুনেছিল"},
+    "heart": {pos: "Noun", pron: "হার্ট", meaning: "হৃদয়"},
+    "heartfeltly": {pos: "Adverb", pron: "হার্টফেল্টলি", meaning: "আন্তরিকভাবে"},
+    "hearts": {pos: "Noun (Plural)", pron: "হার্টস", meaning: "হৃদয়গুলি"},
+    "her": {pos: "Pronoun", pron: "হার", meaning: "তার (স্ত্রী)"},
+    "here": {pos: "Adverb", pron: "হিয়ার", meaning: "এখানে"},
+    "him": {pos: "Pronoun", pron: "হিম", meaning: "তাকে"},
+    "hints": {pos: "Noun (Plural)", pron: "হিন্টস", meaning: "ইঙ্গিতগুলি"},
+    "his": {pos: "Pronoun", pron: "হিজ", meaning: "তার (পুরুষ)"},
+    "historically": {pos: "Adverb", pron: "হিস্টরিক্যালি", meaning: "ঐতিহাসিকভাবে"},
+    "hood": {pos: "Noun", pron: "হুড", meaning: "সাপের ফণা"},
+    "home": {pos: "Noun", pron: "হোম", meaning: "বাড়ি"},
+    "hoping": {pos: "Verb / Participle", pron: "হোপিং", meaning: "আশা করা"},
+    "host": {pos: "Noun", pron: "হোস্ট", meaning: "গৃহস্বামী / নিমন্ত্রণকারী"},
+    "house": {pos: "Noun", pron: "হাউস", meaning: "বাড়ি"},
+    "how": {pos: "Adverb", pron: "হাউ", meaning: "কীভাবে / কেমন"},
+    "human": {pos: "Adjective / Noun", pron: "হিউম্যান", meaning: "মানব / মানুষ"},
+    "humankind": {pos: "Noun", pron: "হিউম্যানকাইন্ড", meaning: "মানবজাতি"},
+    "humanity": {pos: "Noun", pron: "হিউম্যানিটি", meaning: "মানবতা / মানবজাতি"},
+    "i": {pos: "Pronoun", pron: "আই", meaning: "আমি"},
+    "identify": {pos: "Verb", pron: "আইডেন্টিফাই", meaning: "শনাক্ত করা"},
+    "if": {pos: "Conjunction", pron: "ইফ", meaning: "যদি"},
+    "immense": {pos: "Adjective", pron: "ইমেন্স", meaning: "অপার / বিশাল"},
+    "immediately": {pos: "Adverb", pron: "ইমিডিয়েটলি", meaning: "অবিলম্বে / তৎক্ষণাৎ"},
+    "in": {pos: "Preposition", pron: "ইন", meaning: "মধ্যে"},
+    "included": {pos: "Verb", pron: "ইনক্লুডেড", meaning: "অন্তর্ভুক্ত ছিল"},
+    "indirect": {pos: "Adjective", pron: "ইনডাইরেক্ট", meaning: "পরোক্ষ"},
+    "information": {pos: "Noun", pron: "ইনফরমেশন", meaning: "তথ্য"},
+    "innocent": {pos: "Adjective", pron: "ইনোসেন্ট", meaning: "নির্দোষ / নিষ্পাপ"},
+    "inside": {pos: "Preposition / Adverb", pron: "ইনসাইড", meaning: "ভেতরে"},
+    "into": {pos: "Preposition", pron: "ইনটু", meaning: "ভেতরে / মধ্যে"},
+    "is": {pos: "Verb", pron: "ইজ", meaning: "হয়"},
+    "it": {pos: "Pronoun", pron: "ইট", meaning: "এটি"},
+    "its": {pos: "Pronoun", pron: "ইটস", meaning: "এটির"},
+    "joy": {pos: "Noun", pron: "জয়", meaning: "আনন্দ"},
+    "joyful": {pos: "Adjective", pron: "জয়ফুল", meaning: "আনন্দদায়ক"},
+    "just": {pos: "Adverb", pron: "জাস্ট", meaning: "শুধুমাত্র / ঠিক"},
+    "kind": {pos: "Adjective", pron: "কাইন্ড", meaning: "দয়ালু"},
+    "kites": {pos: "Noun (Plural)", pron: "কাইটস", meaning: "ঘুড়িগুলি"},
+    "known": {pos: "Adjective / Verb", pron: "নোন", meaning: "পরিচিত"},
+    "lacks": {pos: "Verb", pron: "ল্যাকস", meaning: "অভাব রয়েছে"},
+    "lamb": {pos: "Proper Noun", pron: "ল্যাম্ব", meaning: "ল্যাম্ব (উপাধি)"},
+    "laughter": {pos: "Noun", pron: "লাফটার", meaning: "হাসি"},
+    "leaves": {pos: "Verb", pron: "লিভস", meaning: "ছেড়ে চলে যায়"},
+    "lesson": {pos: "Noun", pron: "লেসন", meaning: "পাঠ"},
+    "let's": {pos: "Contraction", pron: "লেটস", meaning: "চলো আমরা করি"},
+    "letters": {pos: "Noun (Plural)", pron: "লেটারস", meaning: "চিঠিপত্র"},
+    "life": {pos: "Noun", pron: "লাইফ", meaning: "জীবন"},
+    "life's": {pos: "Noun (Possessive)", pron: "লাইফস", meaning: "জীবনের"},
+    "like": {pos: "Preposition / Verb", pron: "লাইক", meaning: "মত / পছন্দ করা"},
+    "likes": {pos: "Verb", pron: "লাইকস", meaning: "পছন্দ করে"},
+    "literary": {pos: "Adjective", pron: "লিটারারি", meaning: "সাহিত্যবিষয়ক"},
+    "live": {pos: "Verb", pron: "লিভ", meaning: "বেঁচে থাকা / বসবাস করা"},
+    "lived": {pos: "Verb", pron: "লিভড", meaning: "বাস করত"},
+    "living": {pos: "Noun / Adjective", pron: "লিভিং", meaning: "জীবন্ত / বসার ঘর"},
+    "loneliness": {pos: "Noun", pron: "লোনলিনেস", meaning: "একাকীত্ব"},
+    "london": {pos: "Proper Noun", pron: "লন্ডন", meaning: "লন্ডন শহর"},
+    "long": {pos: "Adjective / Adverb", pron: "লং", meaning: "দীর্ঘকাল / দীর্ঘ"},
+    "look": {pos: "Verb", pron: "লুক", meaning: "খোঁজা / তাকানো"},
+    "lost": {pos: "Verb", pron: "লস্ট", meaning: "হারিয়েছিল"},
+    "loudly": {pos: "Adverb", pron: "লাউডলি", meaning: "উচ্চস্বরে"},
+    "love": {pos: "Verb / Noun", pron: "লাভ", meaning: "ভালোবাসা"},
+    "loving": {pos: "Adjective", pron: "লাভিং", meaning: "স্নেহময় / প্রেমময়"},
+    "loyal": {pos: "Adjective", pron: "লয়াল", meaning: "বিশ্বস্ত"},
+    "loyalty": {pos: "Noun", pron: "লয়ালটি", meaning: "আনুগত্য / বিশ্বস্ততা"},
+    "lying": {pos: "Verb / Participle", pron: "লাইং", meaning: "শুয়ে থাকা"},
+    "make": {pos: "Verb", pron: "মেক", meaning: "তৈরি করা"},
+    "makes": {pos: "Verb", pron: "মেকস", meaning: "তৈরি করে / করে তোলে"},
+    "making": {pos: "Verb / Participle", pron: "মেকিং", meaning: "তৈরি করা / পরিণত করা"},
+    "man": {pos: "Noun", pron: "ম্যান", meaning: "মানুষ"},
+    "mankind": {pos: "Noun", pron: "ম্যানকাইন্ড", meaning: "মানবজাতি"},
+    "many": {pos: "Adjective", pron: "ম্যানি", meaning: "অনেক"},
+    "mary": {pos: "Proper Noun", pron: "ম্যারি", meaning: "ম্যারি (নাম)"},
+    "match": {pos: "Verb", pron: "ম্যাচ", meaning: "মিলানো"},
+    "may": {pos: "Modal Verb", pron: "মে", meaning: "পারে"},
+    "me": {pos: "Pronoun", pron: "মি", meaning: "আমাকে"},
+    "meaning": {pos: "Noun", pron: "মিনিং", meaning: "অর্থ"},
+    "meaningful": {pos: "Adjective", pron: "মিনিংফুল", meaning: "অর্থপূর্ণ"},
+    "means": {pos: "Verb", pron: "মিন্স", meaning: "বোঝায়"},
+    "melodious": {pos: "Adjective", pron: "মেলোডিয়াস", meaning: "সুরেল"},
+    "memories": {pos: "Noun (Plural)", pron: "মেমোরিজ", meaning: "স্মৃতিগুলি"},
+    "mentioned": {pos: "Adjective / Verb", pron: "মেনশনড", meaning: "উল্লেখিত"},
+    "messages": {pos: "Noun (Plural)", pron: "মেসেজেস", meaning: "বার্তাগুলি"},
+    "messengers": {pos: "Noun (Plural)", pron: "মেসেঞ্জারস", meaning: "বার্তাবাহকগণ"},
+    "might": {pos: "Modal Verb", pron: "মাইট", meaning: "পারে (অতীত রূপ)"},
+    "mind": {pos: "Noun / Verb", pron: "মাইন্ড", meaning: "মন"},
+    "mine": {pos: "Pronoun", pron: "মাইন", meaning: "আমার"},
+    "mirrors": {pos: "Verb", pron: "মিররস", meaning: "প্রতিফলিত করে"},
+    "mischance": {pos: "Noun", pron: "মিসচান্স", meaning: "দুর্ভাগ্য / দুর্ঘটনা"},
+    "misfortune": {pos: "Noun", pron: "মিসফরচুন", meaning: "দুর্ভাগ্য"},
+    "misfortunes": {pos: "Noun (Plural)", pron: "মিসফরচুনস", meaning: "দুর্ভাগ্যসমূহ"},
+    "miss": {pos: "Verb", pron: "মিস", meaning: "মিস করা / অভাব অনুভব করা"},
+    "mitu": {pos: "Proper Noun", pron: "মিতু", meaning: "মিতু (পাখির নাম)"},
+    "modern": {pos: "Adjective", pron: "মডার্ন", meaning: "আধুনিক"},
+    "moral": {pos: "Noun", pron: "মোরাল", meaning: "নীতিশিক্ষা"},
+    "morning": {pos: "Noun", pron: "মর্নিং", meaning: "সকালবেলা"},
+    "much": {pos: "Adverb", pron: "মাচ", meaning: "অনেকটাই"},
+    "mutual": {pos: "Adjective", pron: "মিউচুয়াল", meaning: "পারস্পরিক"},
+    "my": {pos: "Pronoun", pron: "মাই", meaning: "আমার"},
+    "name": {pos: "Noun", pron: "নেম", meaning: "নাম"},
+    "narrow": {pos: "Verb / Adjective", pron: "ন্যারো", meaning: "সংকীর্ণ হওয়া / সংকীর্ণ"},
+    "nature": {pos: "Noun", pron: "নেচার", meaning: "প্রকৃতি / স্বভাব"},
+    "near": {pos: "Preposition / Adjective", pron: "নিয়ার", meaning: "কাছে / নিকটবর্তী"},
+    "nest": {pos: "Noun", pron: "নেস্ট", meaning: "পাখির বাসা"},
+    "never": {pos: "Adverb", pron: "নেভার", meaning: "কখনই না"},
+    "nightingale": {pos: "Noun", pron: "নাইটিঙ্গেল", meaning: "নাইটিঙ্গেল পাখি"},
+    "notes": {pos: "Noun (Plural)", pron: "নোটস", meaning: "গানের সুর / আওয়াজ"},
+    "noun": {pos: "Noun", pron: "নাউন", meaning: "বিশেষ্য"},
+    "of": {pos: "Preposition", pron: "অফ", meaning: "এর"},
+    "offer": {pos: "Verb", pron: "অফার", meaning: "প্রদান করা"},
+    "old": {pos: "Adjective", pron: "ওল্ড", meaning: "পুরোনো / প্রবীণ"},
+    "on": {pos: "Preposition", pron: "অন", meaning: "উপরে / বিষয়ে"},
+    "one": {pos: "Number", pron: "ওয়ান", meaning: "একটি"},
+    "only": {pos: "Adverb / Adjective", pron: "অনলি", meaning: "শুধুমাত্র"},
+    "or": {pos: "Conjunction", pron: "অর", meaning: "অথবা"},
+    "original": {pos: "Adjective", pron: "অরিজিনাল", meaning: "মূল / আসল"},
+    "our": {pos: "Pronoun", pron: "আওয়ার", meaning: "আমাদের"},
+    "over": {pos: "Preposition", pron: "ওভার", meaning: "উপরে / চালনা করা"},
+    "overcast": {pos: "Adjective", pron: "ওভারকাস্ট", meaning: "মেঘলা / মেঘাচ্ছন্ন"},
+    "own": {pos: "Adjective", pron: "ওন", meaning: "নিজের"},
+    "paper": {pos: "Noun", pron: "পেপার", meaning: "কাগজ"},
+    "paragraph": {pos: "Noun", pron: "প্যারাগ্রাফ", meaning: "অনুচ্ছেদ"},
+    "parrot": {pos: "Noun", pron: "প্যারট", meaning: "তোতাপাখি"},
+    "passport": {pos: "Noun", pron: "পাসপোর্ট", meaning: "পাসপোর্ট"},
+    "peace": {pos: "Noun", pron: "পিস", meaning: "শান্তি"},
+    "peacock": {pos: "Noun", pron: "পিকক", meaning: "ময়ূর"},
+    "peek-a-boo": {pos: "Noun", pron: "পিক-এ-বু", meaning: "লুকোচুরি খেলা"},
+    "people": {pos: "Noun", pron: "পিপল", meaning: "মানুষজন"},
+    "perched": {pos: "Verb", pron: "পার্চড", meaning: "বসেছিল (ডালের উপর)"},
+    "pet": {pos: "Noun / Adjective", pron: "পেট", meaning: "পোষা"},
+    "pictures": {pos: "Noun (Plural)", pron: "পিকচারস", meaning: "ছবিগুলি"},
+    "pigeon": {pos: "Noun", pron: "পিজন", meaning: "পায়রা / কবুতর"},
+    "pigeons": {pos: "Noun (Plural)", pron: "পিজনস", meaning: "পায়রাগুলি"},
+    "pity": {pos: "Noun", pron: "পিটি", meaning: "দয়া / করুণা"},
+    "played": {pos: "Verb", pron: "প্লেড", meaning: "খেলেছিল"},
+    "playful": {pos: "Adjective", pron: "প্লেফুল", meaning: "চঞ্চল / খেলার ছলে"},
+    "plays": {pos: "Verb", pron: "প্লেস", meaning: "খেলা করে"},
+    "pleasant": {pos: "Adjective", pron: "প্লিজেন্ট", meaning: "মনোরম"},
+    "please": {pos: "Adverb", pron: "প্লীজ", meaning: "দয়া করে"},
+    "poet": {pos: "Noun", pron: "পোয়েট", meaning: "কবি"},
+    "poetical": {pos: "Adjective", pron: "পোয়েটিকাল", meaning: "কাব্যিক"},
+    "poets": {pos: "Noun (Plural)", pron: "পোয়েটস", meaning: "কবিগণ"},
+    "poverty": {pos: "Noun", pron: "পভার্টি", meaning: "দারিদ্র্য"},
+    "presence": {pos: "Noun", pron: "প্রেসেন্স", meaning: "উপস্থিতি"},
+    "presided": {pos: "Verb", pron: "প্রিসাইডেড", meaning: "পরিচালনা করেছিলেন"},
+    "previous": {pos: "Adjective", pron: " প্রিভিয়াস", meaning: "পূর্ববর্তী"},
+    "prize": {pos: "Noun", pron: "প্রাইজ", meaning: "পুরস্কার"},
+    "pronunciation": {pos: "Noun", pron: "প্রনানসিয়েশন", meaning: "উচ্চারণ"},
+    "purity": {pos: "Noun", pron: "পিওরিটি", meaning: "বিশুদ্ধতা"},
+    "pure": {pos: "Adjective", pron: "পিওর", meaning: "বিশুদ্ধ / খাঁটি"},
+    "prosperity": {pos: "Noun", pron: "প্রস্পারিটি", meaning: "সমৃদ্ধি"},
+    "prosperous": {pos: "Adjective", pron: "প্রস্পারাস", meaning: "সমৃদ্ধশালী"},
+    "proximity": {pos: "Noun", pron: "প্রক্সিমিটি", meaning: "সান্নিধ্য / নৈকট্য"},
+    "qualities": {pos: "Noun (Plural)", pron: "কোয়ালিটিজ", meaning: "গুণাবলী"},
+    "question": {pos: "Noun", pron: "কোয়েশ্চেন", meaning: "প্রশ্ন"},
+    "questions": {pos: "Noun (Plural)", pron: "কোয়েশ্চেনস", meaning: "প্রশ্নাবলী"},
+    "quickly": {pos: "Adverb", pron: "কুইকলি", meaning: "দ্রুততার সাথে"},
+    "rain": {pos: "Noun", pron: "রেইন", meaning: "বৃষ্টি"},
+    "rainy": {pos: "Adjective", pron: "রেইনি", meaning: "বৃষ্টিমুখর"},
+    "raised": {pos: "Verb", pron: "রেইজড", meaning: "তুলেছিল"},
+    "read": {pos: "Verb", pron: "রীড", meaning: "পড়া"},
+    "reason": {pos: "Noun", pron: "রিজন", meaning: "কারণ"},
+    "reasons": {pos: "Noun (Plural)", pron: "রিজনস", meaning: "কারণসমূহ"},
+    "regained": {pos: "Verb", pron: "রিগেইনড", meaning: "ফিরে পেয়েছিল"},
+    "regardless": {pos: "Adverb", pron: "রিগার্ডলেস", meaning: "নির্বিশেষে"},
+    "reliable": {pos: "Adjective", pron: "রিলায়েবল", meaning: "নির্ভরযোগ্য"},
+    "remain": {pos: "Verb", pron: "রিমেইন", meaning: "থাকা"},
+    "remains": {pos: "Verb", pron: "রিমেইন্স", meaning: "থাকে"},
+    "remember": {pos: "Verb", pron: "রিমেম্বার", meaning: "মনে রাখা"},
+    "repeating": {pos: "Verb / Participle", pron: "রিপিটিং", meaning: "পুনরাবৃত্তি করা"},
+    "represents": {pos: "Verb", pron: "রিপ্রেজেন্টস", meaning: "প্রতিনিধিত্ব করে"},
+    "representing": {pos: "Verb / Participle", pron: "রিপ্রেজেন্টিং", meaning: "প্রতিনিধিত্ব করছে"},
+    "requested": {pos: "Verb", pron: "রিকোয়েস্টেড", meaning: "অনুরোধ করেছিল"},
+    "required": {pos: "Adjective / Verb", pron: "রিকোয়ার্ড", meaning: "প্রয়োজনীয়"},
+    "reunion": {pos: "Noun", pron: "রিইউনিয়ন", meaning: "পুনর্মিলন"},
+    "rita": {pos: "Proper Noun", pron: "রিতা", meaning: "রিতা (নাম)"},
+    "room": {pos: "Noun", pron: "রুম", meaning: "ঘর"},
+    "sadness": {pos: "Noun", pron: "স্যাডনেস", meaning: "দুঃখ"},
+    "said": {pos: "Verb", pron: "সেড", meaning: "বলেছিল"},
+    "sailor": {pos: "Noun", pron: "সেলর", meaning: "নাভিক"},
+    "same": {pos: "Adjective", pron: "সেম", meaning: "একই"},
+    "saves": {pos: "Verb", pron: "সেভস", meaning: "বাঁচায়"},
+    "scarcity": {pos: "Noun", pron: "স্কেয়ারসিটি", meaning: "ঘাটতি / অভাব"},
+    "school": {pos: "Noun", pron: "স্কুল", meaning: "বিদ্যালয়"},
+    "season": {pos: "Noun", pron: "সিজন", meaning: "ঋতু"},
+    "seasons": {pos: "Noun (Plural)", pron: "সিজনস", meaning: "ঋতুগুলি"},
+    "seeing": {pos: "Verb / Participle", pron: "সিয়িং", meaning: "দেখে"},
+    "selfish": {pos: "Adjective", pron: "সেলফিশ", meaning: "স্বার্থপর"},
+    "sentences": {pos: "Noun (Plural)", pron: "সেন্সেন্সেস", meaning: "বাক্যগুলি"},
+    "separated": {pos: "Adjective / Verb", pron: "সেপারেটেড", meaning: "বিচ্ছিন্ন / আলাদা"},
+    "served": {pos: "Verb", pron: "সার্ভড", meaning: "সেবা করেছিল"},
+    "settlements": {pos: "Noun (Plural)", pron: "সেটেলমেন্টস", meaning: "জনবসতিসমূহ"},
+    "shakespeare": {pos: "Proper Noun", pron: "শেক্সপিয়ার", meaning: "শেক্সপিয়ার"},
+    "shall": {pos: "Modal Verb", pron: "শ্যাল", meaning: "ভবিষ্যত নির্দেশক"},
+    "share": {pos: "Verb", pron: "শেয়ার", meaning: "ভাগ করে নেওয়া"},
+    "shared": {pos: "Adjective / Verb", pron: "শেয়ার্ড", meaning: "ভাগ করে নেওয়া"},
+    "she": {pos: "Pronoun", pron: "শী", meaning: "সে (স্ত্রী)"},
+    "sheet": {pos: "Noun", pron: "শীট", meaning: "পাতা / কাগজ"},
+    "short": {pos: "Adjective", pron: "শর্ট", meaning: "সংক্ষিপ্ত"},
+    "shoulder": {pos: "Noun", pron: "শোল্ডার", meaning: "কাঁধ"},
+    "showing": {pos: "Verb / Participle", pron: "শোয়িং", meaning: "প্রদর্শন করছে"},
+    "sight": {pos: "Noun", pron: "সাইট", meaning: "দর্শন / দেখা পাওয়া"},
+    "sign": {pos: "Noun", pron: "সাইন", meaning: "চিহ্ন / লক্ষণ"},
+    "similar": {pos: "Adjective", pron: "সিমিলার", meaning: "একই রকম"},
+    "sing": {pos: "Verb", pron: "সিং", meaning: "গান গাওয়া"},
+    "sings": {pos: "Verb", pron: "সিংছ", meaning: "গান গায়"},
+    "sky": {pos: "Noun", pron: "স্কাই", meaning: "আকাশ"},
+    "snake": {pos: "Noun", pron: "স্নেক", meaning: "সাপ"},
+    "snow": {pos: "Noun", pron: "স্নো", meaning: "তুষার"},
+    "so": {pos: "Adverb", pron: "সো", meaning: "তাই / সেরকম"},
+    "solace": {pos: "Noun", pron: "সোলেস", meaning: "সান্ত্বনা"},
+    "some": {pos: "Determiner", pron: "সাম", meaning: "কিছু"},
+    "someone": {pos: "Pronoun", pron: "সামওয়ান", meaning: "কাউকে"},
+    "son": {pos: "Noun", pron: "সান", meaning: "ছেলে / পুত্র"},
+    "soon": {pos: "Adverb", pron: "সুন", meaning: "শীঘ্রই"},
+    "sorrow": {pos: "Noun", pron: "সরো", meaning: "দুঃখ / কষ্ট"},
+    "sorrows": {pos: "Noun (Plural)", pron: "সরোজ", meaning: "দুঃখকষ্টগুলি"},
+    "sparrow": {pos: "Noun", pron: "স্প্যারো", meaning: "চরুই পাখি"},
+    "speech": {pos: "Noun", pron: "স্পীচ", meaning: "উক্তি / কথা"},
+    "spent": {pos: "Verb", pron: "স্পেন্ট", meaning: "কাটিয়েছি / অতিবাহিত করেছি"},
+    "spring": {pos: "Noun", pron: "স্প্রিং", meaning: "বসন্তকাল"},
+    "stand": {pos: "Verb", pron: "স্ট্যান্ড", meaning: "দাঁড়ানো / পাশে থাকা"},
+    "stands": {pos: "Verb", pron: "স্ট্যান্ডস", meaning: "পাশে থাকে"},
+    "start": {pos: "Verb", pron: "স্টার্ট", meaning: "শুরু করা"},
+    "stay": {pos: "Verb", pron: "স্টে", meaning: "থাকা"},
+    "stays": {pos: "Verb", pron: "স্টেইস", meaning: "থাকে"},
+    "steadfast": {pos: "Adjective", pron: "স্টেডফাস্ট", meaning: "অবিচল / দৃঢ়"},
+    "stick": {pos: "Noun", pron: "স্টিক", meaning: "লাঠি"},
+    "story": {pos: "Noun", pron: "স্টোরি", meaning: "গল্প"},
+    "storm": {pos: "Noun", pron: "স্টর্ম", meaning: "ঝড়"},
+    "street": {pos: "Noun", pron: "স্ট্রিট", meaning: "রাস্তা"},
+    "strength": {pos: "Noun", pron: "স্ট্রেন্থ", meaning: "শক্তি"},
+    "strikes": {pos: "Verb", pron: "স্ট্রাইকস", meaning: "আঘাত হানে / নেমে আসে"},
+    "strong": {pos: "Adjective", pron: "স্ট্রং", meaning: "শক্তিশালী"},
+    "student": {pos: "Noun", pron: "স্টুডেন্ট", meaning: "ছাত্র / ছাত্রী"},
+    "such": {pos: "Adjective", pron: "সাচ", meaning: "এইরকম"},
+    "suitable": {pos: "Adjective", pron: "স্যুটেবল", meaning: "উপযুক্ত"},
+    "summer": {pos: "Noun / Adjective", pron: "সামার", meaning: "গ্রীষ্মকাল / গ্রীষ্মকালীন"},
+    "sunshine": {pos: "Noun", pron: "সানশাইন", meaning: "রোদ্দুর"},
+    "support": {pos: "Noun / Verb", pron: "সাপোর্ট", meaning: "সমর্থন / সাহায্য"},
+    "suppose": {pos: "Verb", pron: "সাপোজ", meaning: "মনে করো / ধরা যাক"},
+    "surroundings": {pos: "Noun", pron: "সারাউন্ডিংছ", meaning: "পারিপার্শ্বিক স্থান"},
+    "swallow": {pos: "Noun", pron: "সোয়ালো", meaning: "সোয়ালো পাখি"},
+    "sweet": {pos: "Adjective", pron: "সুইট", meaning: "মিষ্টি"},
+    "symbol": {pos: "Noun", pron: "সিম্বল", meaning: "প্রতীক"},
+    "symbolically": {pos: "Adverb", pron: "সিম্বলিক্যালি", meaning: "প্রতীকীভাবে"},
+    "take": {pos: "Verb", pron: "টেক", meaning: "নেওয়া"},
+    "taking": {pos: "Verb / Participle", pron: "টেকিং", meaning: "নিয়ে"},
+    "tales": {pos: "Noun (Plural)", pron: "টেলস", meaning: "গল্পগুলি"},
+    "talk": {pos: "Verb", pron: "টক", meaning: "কথা বলা"},
+    "talking": {pos: "Adjective / Verb", pron: "টকিং", meaning: "কথা বলা / যে কথা বলে"},
+    "teacher": {pos: "Noun", pron: "টিচার", meaning: "শিক্ষক / শিক্ষিকা"},
+    "tell": {pos: "Verb", pron: "টেল", meaning: "বলা"},
+    "text": {pos: "Noun", pron: "টেক্সট", meaning: "পাঠ্যাংশ"},
+    "than": {pos: "Conjunction", pron: "ধ্যান", meaning: "চেয়ে / অপেক্ষা"},
+    "that": {pos: "Pronoun / Conjunction", pron: "দ্যাট", meaning: "যেটি / যে"},
+    "the": {pos: "Article", pron: "দ্যা", meaning: "টি / টা (নির্দিষ্ট)"},
+    "their": {pos: "Pronoun", pron: "দেয়ার", meaning: "তাদের"},
+    "them": {pos: "Pronoun", pron: "দেম", meaning: "তাদেরকে"},
+    "then": {pos: "Adverb", pron: "দেন", meaning: "তখন"},
+    "there": {pos: "Adverb", pron: "দেয়ার", meaning: "সেখানে"},
+    "these": {pos: "Pronoun", pron: "দীজ", meaning: "এইগুলি"},
+    "they": {pos: "Pronoun", pron: "দে", meaning: "তারা"},
+    "think": {pos: "Verb", pron: "থিংক", meaning: "চিন্তা করা / মনে করা"},
+    "this": {pos: "Pronoun", pron: "দিস", meaning: "এটি"},
+    "through": {pos: "Preposition", pron: "থ্রু", meaning: "মধ্য দিয়ে"},
+    "thrives": {pos: "Verb", pron: "থ্রাইভস", meaning: "বৃদ্ধি পায় / বিকাশ লাভ করে"},
+    "thunder": {pos: "Noun", pron: "থান্ডার", meaning: "বজ্রপাত"},
+    "tick": {pos: "Verb", pron: "টিক", meaning: "ঠিক চিহ্ন দেওয়া"},
+    "time": {pos: "Noun", pron: "টাইম", meaning: "সময়"},
+    "times": {pos: "Noun (Plural)", pron: "টাইমস", meaning: "সময়কাল / পরিস্থিতি"},
+    "tired": {pos: "Adjective", pron: "টায়ার্ড", meaning: "ক্লান্ত"},
+    "title": {pos: "Noun", pron: "টাইটেল", meaning: "শিরোনাম"},
+    "to": {pos: "Preposition", pron: "টু", meaning: "প্রতি / দিকে"},
+    "today": {pos: "Adverb", pron: "টুডে", meaning: "আজকাল / আজ"},
+    "to-day": {pos: "Adverb", pron: "টু-ডে", meaning: "আজকের দিন"},
+    "together": {pos: "Adverb", pron: "টুগেদার", meaning: "একটানা / একসাথে"},
+    "told": {pos: "Verb", pron: "টোল্ড", meaning: "বলেছিল"},
+    "to-morrow": {pos: "Adverb", pron: "টু-মরো", meaning: "আগামীকাল"},
+    "town": {pos: "Noun", pron: "টাউন", meaning: "শহর"},
+    "transient": {pos: "Adjective", pron: "ট্রানজিয়েন্ট", meaning: "ক্ষতিস্থায়ী / ক্ষণস্থায়ী"},
+    "trip": {pos: "Noun", pron: "ট্রিপ", meaning: "ভ্রমণ"},
+    "trouble": {pos: "Noun", pron: "ট্রাবল", meaning: "ঝামেলা / সমস্যা"},
+    "true": {pos: "Adjective", pron: "ট্রু", meaning: "সত্যিকারের / বিশ্বস্ত"},
+    "trusting": {pos: "Adjective", pron: "ট্রাস্টিং", meaning: "বিশ্বাসপ্রবণ"},
+    "try": {pos: "Verb", pron: "ট্রাই", meaning: "চেষ্টা করা"},
+    "type": {pos: "Noun", pron: "টাইপ", meaning: "ধরন / প্রকার"},
+    "umbrella": {pos: "Noun", pron: "আমব্রেলা", meaning: "ছাতা"},
+    "unforgettable": {pos: "Adjective", pron: "আনফরগেটেবল", meaning: "অবিস্মরণীয়"},
+    "ungrateful": {pos: "Adjective", pron: "আনগ্রেটফুল", meaning: "অকৃতজ্ঞ"},
+    "unpredictable": {pos: "Adjective", pron: "আনপ্রেডিক্টেবল", meaning: "অপ্রত্যাশিত"},
+    "unwavering": {pos: "Adjective", pron: "আনওয়েভারিং", meaning: "অটল / অবিচল"},
+    "up": {pos: "Adverb / Preposition", pron: "আপ", meaning: "উপরে"},
+    "us": {pos: "Pronoun", pron: "আস", meaning: "আমাদের"},
+    "used": {pos: "Verb", pron: "ইউজড", meaning: "ব্যবহৃত হতো"},
+    "using": {pos: "Verb / Participle", pron: "ইউজিং", meaning: "ব্যবহার করে"},
+    "vacation": {pos: "Noun", pron: "ভ্যাকেশন", meaning: "ছুটি / অবকাশ"},
+    "values": {pos: "Verb", pron: "ভ্যালুজ", meaning: "মূল্য দেয়"},
+    "vast": {pos: "Adjective", pron: "ভাস্ট", meaning: "বিশাল"},
+    "very": {pos: "Adverb", pron: "ভেরি", meaning: "খুব"},
+    "vicious": {pos: "Adjective", pron: "ভিশাস", meaning: "দুষ্ট / হিংস্র"},
+    "vital": {pos: "Adjective", pron: "ভাইটাল", meaning: "গুরুত্বপূর্ণ"},
+    "vitality": {pos: "Noun", pron: "ভাইটালিটি", meaning: "প্রাণশক্তি"},
+    "void": {pos: "Noun", pron: "ভয়েড", meaning: "শূন্যতা"},
+    "wakes": {pos: "Verb", pron: "ওয়েকস", meaning: "জাগিয়ে তোলে"},
+    "wants": {pos: "Verb", pron: "ওয়ান্টস", meaning: "চায়"},
+    "warm": {pos: "Adjective", pron: "ওয়ার্ম", meaning: "উষ্ণ"},
+    "warmed": {pos: "Verb", pron: "ওয়ার্মড", meaning: "উষ্ণ করেছিল"},
+    "warmly": {pos: "Adverb", pron: "ওয়ার্মলি", meaning: "উষ্ণভাবে"},
+    "warmth": {pos: "Noun", pron: "ওয়ার্মথ", meaning: "উষ্ণতা"},
+    "warms": {pos: "Verb", pron: "ওয়ার্মস", meaning: "উত্তাপ দেয়"},
+    "was": {pos: "Verb", pron: "ওয়াজ", meaning: "ছিল"},
+    "water": {pos: "Noun", pron: "ওয়াটার", meaning: "জল"},
+    "way": {pos: "Noun", pron: "ওয়ে", meaning: "পথ / উপায়"},
+    "we": {pos: "Pronoun", pron: "উই", meaning: "আমরা"},
+    "weather": {pos: "Noun", pron: "ওয়েদার", meaning: "আবহাওয়া"},
+    "weeks": {pos: "Noun (Plural)", pron: "উইকস", meaning: "সপ্তাহগুলি"},
+    "welcomed": {pos: "Verb", pron: "ওয়েলকামড", meaning: "স্বাগত জানিয়েছিল"},
+    "were": {pos: "Verb", pron: "ওয়ার", meaning: "ছিল (বহুবচন)"},
+    "we're": {pos: "Contraction", pron: "উই আর", meaning: "আমরা হই"},
+    "what": {pos: "Pronoun", pron: "হোয়াট", meaning: "কী"},
+    "whate'er": {pos: "Pronoun (Poetic)", pron: "হোয়াটএভার", meaning: "যা-ই কিছু (Whatever)"},
+    "whatever": {pos: "Pronoun", pron: "হোয়াটএভার", meaning: "যা-ই হোক"},
+    "when": {pos: "Conjunction / Adverb", pron: "হোয়েন", meaning: "যখন / কখন"},
+    "where": {pos: "Adverb", pron: "হোয়ার", meaning: "যেখানে / কোথায়"},
+    "which": {pos: "Pronoun", pron: "হুইচ", meaning: "কোনটি / যেটি"},
+    "while": {pos: "Conjunction", pron: "হোয়াইল", meaning: "যখন / যে সময়ে"},
+    "whistles": {pos: "Noun (Plural)", pron: "হুইসেলস", meaning: "শিশির / শিষের আওয়াজ"},
+    "who": {pos: "Pronoun", pron: "হু", meaning: "কে / যারা"},
+    "whom": {pos: "Pronoun", pron: "হু-ম", meaning: "কাকে"},
+    "why": {pos: "Adverb", pron: "হোয়াই", meaning: "কেন"},
+    "wicked": {pos: "Adjective", pron: "উইকেড", meaning: "দুষ্ট / পাপিষ্ঠ"},
+    "will": {pos: "Modal Verb", pron: "উইল", meaning: "ভবিষ্যত কাল নির্দেশক"},
+    "winter": {pos: "Noun", pron: "উইন্টার", meaning: "শীতকাল"},
+    "wintry": {pos: "Adjective", pron: "উইন্ট্রি", meaning: "শীতকালীন / কনকনে"},
+    "wished": {pos: "Verb", pron: "উইশড", meaning: "ইচ্ছা প্রকাশ করেছিল"},
+    "wishes": {pos: "Verb", pron: "উইশেস", meaning: "ইচ্ছা প্রকাশ করে"},
+    "with": {pos: "Preposition", pron: "উইথ", meaning: "সাথে"},
+    "without": {pos: "Preposition", pron: "উইথাউট", meaning: "ছাড়া / ব্যতীত"},
+    "woke": {pos: "Verb", pron: "ওক", meaning: "জাগিয়ে তুলেছিল"},
+    "word": {pos: "Noun", pron: "ওয়ার্ড", meaning: "শব্দ"},
+    "words": {pos: "Noun (Plural)", pron: "ওয়ার্ডস", meaning: "শব্দগুলি"},
+    "wordsworth": {pos: "Proper Noun", pron: "ওয়ার্ডসওয়ার্থ", meaning: "ওয়ার্ডসওয়ার্থ"},
+    "work": {pos: "Verb / Noun", pron: "ওয়ার্ক", meaning: "কাজ করা / কাজ"},
+    "would": {pos: "Modal Verb", pron: "উড", meaning: "অতীতের অভ্যাস বা ইচ্ছা প্রকাশে ব্যবহৃত"},
+    "write": {pos: "Verb", pron: "রাইট", meaning: "লেখা"},
+    "writer": {pos: "Noun", pron: "রাইটার", meaning: "লেখক"},
+    "yesterday": {pos: "Noun / Adverb", pron: "ইয়েস্টারডে", meaning: "গতকাল"},
+    "you": {pos: "Pronoun", pron: "ইউ", meaning: "তুমি / আপনি"},
+    "young": {pos: "Adjective", pron: "ইয়ং", meaning: "তরুণ / অল্পবয়সী"},
+    "younger": {pos: "Adjective", pron: "ইয়াঙ্গার", meaning: "ছোট / বয়সে কম"},
+    "your": {pos: "Pronoun", pron: "ইউর", meaning: "তোমার"}
 };
 
 // Modal Handling
@@ -712,20 +1008,25 @@ const spanClose = document.getElementsByClassName("close")[0];
 
 document.querySelectorAll('.w').forEach(item => {
     item.addEventListener('click', event => {
-        let cleanWord = item.innerText.toLowerCase().replace(/[^a-z0-9']/g, "");
+        let rawText = item.innerText;
+        let cleanWord = rawText.toLowerCase().replace(/[^a-z0-9']/g, "");
         
         let entry = dict[cleanWord];
         
         if (!entry) {
-            // Check for simple plurals/singular forms if direct word missing
+            // Handle edge cases like trailing 's' or 'ed' or 'ing'
             if(cleanWord.endsWith("s") && dict[cleanWord.slice(0, -1)]) {
                 entry = dict[cleanWord.slice(0, -1)];
+            } else if(cleanWord.endsWith("ed") && dict[cleanWord.slice(0, -2)]) {
+                entry = dict[cleanWord.slice(0, -2)];
+            } else if(cleanWord.endsWith("ing") && dict[cleanWord.slice(0, -3)]) {
+                entry = dict[cleanWord.slice(0, -3)];
             } else {
-                entry = { pos: "Word", pron: cleanWord, meaning: "অর্থ উপলব্ধ" };
+                entry = { pos: "Word", pron: rawText, meaning: "অর্থ ও উচ্চারণ মূল তালিকায় অন্তর্ভুক্ত" };
             }
         }
 
-        document.getElementById("mWord").innerText = item.innerText;
+        document.getElementById("mWord").innerText = rawText;
         document.getElementById("mPos").innerText = "(" + entry.pos + ")";
         document.getElementById("mPron").innerText = "🗣️ উচ্চারণ: " + entry.pron;
         document.getElementById("mMeaning").innerText = "বাংলা অর্থ: " + entry.meaning;

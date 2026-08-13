@@ -1,643 +1,741 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 8 English - Complete Interactive Portal (Pages 89–123)</title>
-    <style>
-        :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --text: #2b2d42;
-            --highlight: #e0aaff;
-            --success: #2ec4b6;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 9: Summer Friends - Interactive Learning Portal</title>
+<style>
+    :root {
+        --primary: #2c3e50;
+        --secondary: #3498db;
+        --accent: #e74c3c;
+        --bg: #f8f9fa;
+        --card-bg: #ffffff;
+        --text: #2c3e50;
+        --highlight: #fff3cd;
+        --table-header: #34495e;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 2;
-            padding: 20px 10px;
-        }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background-color: var(--bg);
+        margin: 0;
+        padding: 20px;
+    }
 
-        .container {
-            max-width: 950px;
-            margin: 0 auto;
-        }
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
 
-        .batch-header {
-            color: var(--secondary);
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 5px;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            text-align: left;
-        }
+    h1, h2, h3, h4 {
+        color: var(--primary);
+        border-bottom: 2px solid var(--secondary);
+        padding-bottom: 5px;
+    }
 
-        /* Front Page Menu Grid */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
+    h1 { text-align: center; color: #1a252f; border-bottom: 3px solid var(--accent); }
 
-        .topic-card {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
+    .instructions {
+        background-color: #e8f4f8;
+        border-left: 5px solid var(--secondary);
+        padding: 12px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
 
-        .topic-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.18);
-        }
+    .w {
+        cursor: pointer;
+        padding: 1px 3px;
+        border-radius: 3px;
+        transition: background-color 0.2s;
+        display: inline-block;
+    }
 
-        .topic-card h4 {
-            color: white;
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
+    .w:hover {
+        background-color: var(--highlight);
+        color: #d35400;
+        text-decoration: underline;
+    }
 
-        .topic-card p {
-            font-size: 0.85rem;
-            opacity: 0.9;
-            line-height: 1.3;
-            margin: 0;
-        }
+    /* Dictionary Popup Modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
 
-        /* Section View Management */
-        .topic-section {
-            display: none;
-        }
+    .modal-content {
+        background-color: var(--card-bg);
+        margin: 15% auto;
+        padding: 25px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 400px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        position: relative;
+        text-align: center;
+        animation: fadeIn 0.3s;
+    }
 
-        .page-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
-            border-left: 5px solid var(--primary);
-        }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        .page-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
+    .close {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+    }
 
-        .page-num {
-            background-color: var(--primary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
+    .close:hover { color: var(--accent); }
 
-        .back-btn {
-            display: inline-block;
-            background-color: #6c757d;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 20px;
-            border: none;
-        }
+    .dict-word { font-size: 1.8em; font-weight: bold; color: var(--secondary); margin-bottom: 5px; }
+    .dict-pos { font-style: italic; color: #7f8c8d; margin-bottom: 10px; }
+    .dict-pron { font-size: 1.1em; color: #e67e22; margin-bottom: 10px; }
+    .dict-meaning { font-size: 1.4em; color: #27ae60; font-weight: bold; }
 
-        .back-btn:hover {
-            background-color: #495057;
-        }
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
 
-        h1, h2, h3, h4 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
 
-        /* Clickable Words */
-        .w {
-            cursor: pointer;
-            padding: 2px 4px;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            display: inline-block;
-        }
+    th { background-color: var(--table-header); color: white; }
 
-        .w:hover {
-            background-color: var(--highlight);
-            color: #000;
-            font-weight: bold;
-        }
+    .poem {
+        background-color: #fcf8e3;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #f1c40f;
+        font-family: 'Georgia', serif;
+        font-size: 1.1em;
+        line-height: 1.8;
+        margin: 20px 0;
+    }
 
-        .activity-box {
-            background-color: #f1f5f9;
-            border-radius: 8px;
-            padding: 18px;
-            margin-top: 15px;
-            border: 1px solid #cbd5e1;
-        }
-
-        .ans-box {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            padding: 10px 15px;
-            border-radius: 6px;
-            border-left: 4px solid var(--success);
-            margin-top: 8px;
-            font-weight: 500;
-        }
-
-        /* Dictionary Popup Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            max-width: 380px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #aaa;
-        }
-
-        .word-title {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .pos-badge {
-            background-color: #e3f2fd;
-            color: #0d47a1;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .bengali-text {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #d81b60;
-        }
-    </style>
+    .section { margin-bottom: 40px; }
+    .answer-box {
+        background: #eaf2f8;
+        padding: 15px;
+        border-radius: 6px;
+        margin-top: 10px;
+        border-left: 4px solid #2980b9;
+    }
+    
+    .word-count {
+        font-size: 0.85em;
+        color: #7f8c8d;
+        text-align: right;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+</style>
 </head>
 <body>
 
 <div class="container">
+    <h1><span class="w">Lesson</span> <span class="w">9</span>: <span class="w">Summer</span> <span class="w">Friends</span></h1>
+    <p style="text-align: center; font-size: 1.2em; font-weight: bold;"><span class="w">By</span> <span class="w">Mary</span> <span class="w">Lamb</span></p>
 
-    <!-- MAIN FRONT PAGE DASHBOARD -->
-    <div id="front-page" class="page-card" style="text-align: center; border-left: none;">
-        <h2>Class 8 English Interactive Portal</h2>
-        <p style="color: #666; margin-bottom: 25px;">Select any topic across Lessons 10–12 (Pages 89–123)</p>
+    <div class="instructions">
+        💡 <strong>Note for Students:</strong> Click on ANY word on this page to see its Bengali meaning, part of speech, and pronunciation!
+    </div>
 
-        <!-- BATCH 1 -->
-        <div class="batch-header">Batch 1: Lesson 10 — Tales of Childhood (Pages 89–98)</div>
-        <div class="menu-grid">
-            <div class="topic-card" onclick="openTopic('b1-t1')">
-                <h4>Topic 1</h4>
-                <p>Story Text & Author Intro<br>(Pages 89–90)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b1-t2')">
-                <h4>Topic 2</h4>
-                <p>Activities 1 & 2 Solutions<br>(Page 91)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b1-t3')">
-                <h4>Topic 3</h4>
-                <p>Writing Activity 10(b)<br>(Page 98)</p>
-            </div>
+    <!-- Page 84 -->
+    <div class="section">
+        <h2><span class="w">Let's</span> <span class="w">start</span>:</h2>
+        <p>
+            <span class="w">Mary</span> <span class="w">Ann</span> <span class="w">Lamb</span> (1764 -1847) <span class="w">was</span> <span class="w">a</span> <span class="w">famous</span> <span class="w">English</span> <span class="w">poet</span> <span class="w">and</span> <span class="w">writer</span>. <span class="w">She</span> <span class="w">is</span> <span class="w">best</span> <span class="w">known</span> <span class="w">today</span> <span class="w">for</span> <span class="w">her</span> <span class="w">collaboration</span> <span class="w">with</span> <span class="w">her</span> <span class="w">brother</span> <span class="w">Charles</span> <span class="w">Lamb</span> <span class="w">on</span> <span class="w">the</span> <span class="w">collection</span> <em><span class="w">Tales</span> <span class="w">from</span> <span class="w">Shakespeare</span></em>. <span class="w">She</span> <span class="w">and</span> <span class="w">her</span> <span class="w">brother</span> <span class="w">presided</span> <span class="w">over</span> <span class="w">a</span> <span class="w">literary</span> <span class="w">circle</span> <span class="w">in</span> <span class="w">London</span> <span class="w">that</span> <span class="w">included</span> <span class="w">poets</span> <span class="w">like</span> <span class="w">Wordsworth</span> <span class="w">and</span> <span class="w">Coleridge</span>.
+        </p>
+
+        <h2><span class="w">Let's</span> <span class="w">share</span>:</h2>
+        <p>1. <strong><span class="w">Match</span> <span class="w">column</span> <span class="w">A</span> <span class="w">with</span> <span class="w">column</span> <span class="w">B</span>:</strong></p>
+        <table>
+            <tr>
+                <th><span class="w">A</span></th>
+                <th><span class="w">B</span></th>
+            </tr>
+            <tr>
+                <td>(i) <span class="w">peacock</span></td>
+                <td><span class="w">dances</span> <span class="w">when</span> <span class="w">the</span> <span class="w">sky</span> <span class="w">is</span> <span class="w">overcast</span></td>
+            </tr>
+            <tr>
+                <td>(ii) <span class="w">pigeon</span></td>
+                <td><span class="w">used</span> <span class="w">to</span> <span class="w">carry</span> <span class="w">letters</span></td>
+            </tr>
+            <tr>
+                <td>(iii) <span class="w">crow</span></td>
+                <td><span class="w">cleans</span> <span class="w">surroundings</span></td>
+            </tr>
+        </table>
+
+        <p>2. <strong><span class="w">Which</span> <span class="w">of</span> <span class="w">the</span> <span class="w">birds</span> <span class="w">mentioned</span> <span class="w">above</span> <span class="w">appears</span> <span class="w">to</span> <span class="w">be</span> <span class="w">the</span> <span class="w">closest</span> <span class="w">friend</span> <span class="w">to</span> <span class="w">mankind</span>? <span class="w">Why</span> <span class="w">do</span> <span class="w">you</span> <span class="w">think</span> <span class="w">so</span>?</strong></p>
+        <div class="answer-box">
+            <strong><span class="w">Answer</span>:</strong> <span class="w">Among</span> <span class="w">the</span> <span class="w">birds</span> <span class="w">mentioned</span> <span class="w">above</span>, <span class="w">the</span> <span class="w">pigeon</span> <span class="w">appears</span> <span class="w">to</span> <span class="w">be</span> <span class="w">the</span> <span class="w">closest</span> <span class="w">friend</span> <span class="w">to</span> <span class="w">mankind</span>. <span class="w">Historically</span>, <span class="w">pigeons</span> <span class="w">have</span> <span class="w">lived</span> <span class="w">in</span> <span class="w">close</span> <span class="w">proximity</span> <span class="w">to</span> <span class="w">human</span> <span class="w">settlements</span> <span class="w">for</span> <span class="w">centuries</span>. <span class="w">They</span> <span class="w">faithfully</span> <span class="w">served</span> <span class="w">humanity</span> <span class="w">as</span> <span class="w">reliable</span> <span class="w">messengers</span>, <span class="w">carrying</span> <span class="w">vital</span> <span class="w">letters</span> <span class="w">across</span> <span class="w">vast</span> <span class="w">distances</span> <span class="w">before</span> <span class="w">modern</span> <span class="w">communication</span> <span class="w">existed</span>. <span class="w">Their</span> <span class="w">gentle</span> <span class="w">nature</span>, <span class="w">trusting</span> <span class="w">behavior</span>, <span class="w">and</span> <span class="w">ability</span> <span class="w">to</span> <span class="w">form</span> <span class="w">strong</span> <span class="w">bonds</span> <span class="w">with</span> <span class="w">people</span> <span class="w">make</span> <span class="w">them</span> <span class="w">a</span> <span class="w">symbol</span> <span class="w">of</span> <span class="w">peace</span> <span class="w">and</span> <span class="w">companionship</span>, <span class="w">showing</span> <span class="w">true</span> <span class="w">loyalty</span> <span class="w">to</span> <span class="w">human</span> <span class="w">beings</span>.
         </div>
 
-        <!-- BATCH 2 -->
-        <div class="batch-header">Batch 2: Lesson 11 — Midnight Express Part 1 (Pages 99–101)</div>
-        <div class="menu-grid">
-            <div class="topic-card" onclick="openTopic('b2-t1')">
-                <h4>Topic 1</h4>
-                <p>Story Part 1 & Vocabulary<br>(Pages 99–100)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b2-t2')">
-                <h4>Topic 2</h4>
-                <p>Activities 1 & 2 Solutions<br>(Pages 100–101)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b2-t3')">
-                <h4>Topic 3</h4>
-                <p>Story Part 2 & Encounter<br>(Pages 101–102)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b2-t4')">
-                <h4>Topic 4</h4>
-                <p>Comprehension Activity 3<br>(Page 101)</p>
-            </div>
-        </div>
-
-        <!-- BATCH 3 -->
-        <div class="batch-header">Batch 3: Lesson 11 — Continuation & Grammar (Pages 102–115)</div>
-        <div class="menu-grid">
-            <div class="topic-card" onclick="openTopic('b3-t1')">
-                <h4>Topic 1</h4>
-                <p>Story Climax & Text<br>(Pages 102–104)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b3-t2')">
-                <h4>Topic 2</h4>
-                <p>Activities 4 & 5 Solutions<br>(Pages 104–105)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b3-t3')">
-                <h4>Topic 3</h4>
-                <p>Grammar Activities 6 & 7<br>(Pages 106–107)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b3-t4')">
-                <h4>Topic 4</h4>
-                <p>Writing & Summary Practice<br>(Pages 108–115)</p>
-            </div>
-        </div>
-
-        <!-- BATCH 4 -->
-        <div class="batch-header">Batch 4: Lesson 12 — Someone & Final Review (Pages 116–123)</div>
-        <div class="menu-grid">
-            <div class="topic-card" onclick="openTopic('b4-t1')">
-                <h4>Topic 1</h4>
-                <p>Poem Text & Vocabulary<br>(Pages 116–117)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b4-t2')">
-                <h4>Topic 2</h4>
-                <p>Activities 1, 2 & 3 Solutions<br>(Pages 117–118)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b4-t3')">
-                <h4>Topic 3</h4>
-                <p>Grammar Activities 4 & 5<br>(Pages 118–120)</p>
-            </div>
-            <div class="topic-card" onclick="openTopic('b4-t4')">
-                <h4>Topic 4</h4>
-                <p>Writing & Final Review<br>(Pages 121–123)</p>
-            </div>
+        <p>3. <strong><span class="w">How</span> <span class="w">would</span> <span class="w">you</span> <span class="w">feel</span> <span class="w">if</span> <span class="w">you</span> <span class="w">are</span> <span class="w">separated</span> <span class="w">from</span> <span class="w">your</span> <span class="w">friend</span>?</strong></p>
+        <div class="answer-box">
+            <strong><span class="w">Answer</span>:</strong> <span class="w">If</span> <span class="w">I</span> <span class="w">am</span> <span class="w">separated</span> <span class="w">from</span> <span class="w">my</span> <span class="w">friend</span>, <span class="w">I</span> <span class="w">would</span> <span class="w">feel</span> <span class="w">an</span> <span class="w">immense</span> <span class="w">sense</span> <span class="w">of</span> <span class="w">sadness</span> <span class="w">and</span> <span class="w">loneliness</span>. <span class="w">True</span> <span class="w">friends</span> <span class="w">bring</span> <span class="w">joy</span>, <span class="w">comfort</span>, <span class="w">and</span> <span class="w">emotional</span> <span class="w">support</span> <span class="w">to</span> <span class="w">our</span> <span class="w">daily</span> <span class="w">lives</span>. <span class="w">Their</span> <span class="w">absence</span> <span class="w">creates</span> <span class="w">an</span> <span class="w">empty</span> <span class="w">void</span> <span class="w">that</span> <span class="w">is</span> <span class="w">difficult</span> <span class="w">to</span> <span class="w">fill</span>. <span class="w">I</span> <span class="w">would</span> <span class="w">deeply</span> <span class="w">miss</span> <span class="w">our</span> <span class="w">shared</span> <span class="w">conversations</span>, <span class="w">laughter</span>, <span class="w">and</span> <span class="w">mutual</span> <span class="w">encouragement</span>. <span class="w">However</span>, <span class="w">I</span> <span class="w">would</span> <span class="w">cherish</span> <span class="w">our</span> <span class="w">fond</span> <span class="w">memories</span> <span class="w">and</span> <span class="w">try</span> <span class="w">to</span> <span class="w">stay</span> <span class="w">connected</span> <span class="w">through</span> <span class="w">messages</span>, <span class="w">hoping</span> <span class="w">heartfeltly</span> <span class="w">for</span> <span class="w">a</span> <span class="w">joyful</span> <span class="w">reunion</span> <span class="w">in</span> <span class="w">the</span> <span class="w">near</span> <span class="w">future</span>.
         </div>
     </div>
 
-    <!-- ==================== BATCH 1 SECTIONS ==================== -->
-    <div id="b1-t1" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 10: Tales of Childhood</h3>
-                <span class="page-num">Pages 89–90</span>
-            </div>
-            <h2><span class="w" onclick="d('Tales','Noun','টেলস','গল্পকথা')">Tales</span> <span class="w" onclick="d('of','Preposition','অফ','এর')">of</span> <span class="w" onclick="d('Childhood','Noun','চাইল্ডহুড','শৈশব')">Childhood</span></h2>
-            <h3><span class="w" onclick="d('Roald','Proper Noun','রোয়াল্ড','রোয়াল্ড')">Roald</span> <span class="w" onclick="d('Dahl','Proper Noun','ডাল','ডাল')">Dahl</span></h3>
-            <p>
-                <span class="w" onclick="d('My','Pronoun','মাই','আমার')">My</span>
-                <span class="w" onclick="d('father','Noun','ফাদার','বাবা,')">father,</span>
-                <span class="w" onclick="d('Harold','Proper Noun','হ্যারল্ড','হ্যারল্ড')">Harold</span>
-                <span class="w" onclick="d('Dahl','Proper Noun','ডাল','ডাল,')">Dahl,</span>
-                <span class="w" onclick="d('was','Verb','ওয়াজ','ছিলেন')">was</span>
-                <span class="w" onclick="d('a','Article','এ','একজন')">a</span>
-                <span class="w" onclick="d('Norwegian','Adjective','নরওয়েজিয়ান','নরওয়ের অধিবাসী')">Norwegian</span>
-                <span class="w" onclick="d('who','Pronoun','হু','যিনি')">who</span>
-                <span class="w" onclick="d('came','Verb','কেম','এসেছিলেন')">came</span>
-                <span class="w" onclick="d('from','Preposition','ফ্রাম','থেকে')">from</span>
-                <span class="w" onclick="d('a','Article','এ','একটি')">a</span>
-                <span class="w" onclick="d('small','Adjective','স্মল','ছোট')">small</span>
-                <span class="w" onclick="d('town','Noun','টাউন','শহর')">town</span>
-                <span class="w" onclick="d('near','Preposition','নিয়ার','কাছে')">near</span>
-                <span class="w" onclick="d('Oslo','Proper Noun','অসলো','অসলো।')">Oslo.</span>
-            </p>
+    <!-- Page 85 -->
+    <div class="section">
+        <h2><span class="w">Let's</span> <span class="w">read</span>:</h2>
+        <div class="poem">
+            <span class="w">The</span> <span class="w">Swallow</span> <span class="w">is</span> <span class="w">a</span> <span class="w">summer</span> <span class="w">bird</span>;<br>
+            <span class="w">He</span> <span class="w">in</span> <span class="w">our</span> <span class="w">chimneys</span>, <span class="w">when</span> <span class="w">the</span> <span class="w">weather</span><br>
+            <span class="w">Is</span> <span class="w">fine</span> <span class="w">and</span> <span class="w">warm</span>, <span class="w">may</span> <span class="w">then</span> <span class="w">be</span> <span class="w">heard</span><br>
+            <span class="w">Chirping</span> <span class="w">his</span> <span class="w">notes</span> <span class="w">for</span> <span class="w">weeks</span> <span class="w">together</span>.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="w">Come</span> <span class="w">there</span> <span class="w">but</span> <span class="w">one</span> <span class="w">cold</span> <span class="w">wintry</span> <span class="w">day</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="w">Away</span> <span class="w">will</span> <span class="w">fly</span> <span class="w">our</span> <span class="w">guest</span> <span class="w">the</span> <span class="w">Swallow</span>:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="w">And</span> <span class="w">much</span> <span class="w">like</span> <span class="w">him</span> <span class="w">we</span> <span class="w">find</span> <span class="w">the</span> <span class="w">way</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="w">Which</span> <span class="w">many</span> <span class="w">a</span> <strong><span class="w">gay</span></strong> <span class="w">young</span> <span class="w">friend</span> <span class="w">will</span> <span class="w">follow</span>.<br>
+            <span class="w">In</span> <strong><span class="w">dreary</span></strong> <span class="w">days</span> <span class="w">of</span> <span class="w">snow</span> <span class="w">and</span> <span class="w">frost</span><br>
+            <span class="w">Closer</span> <span class="w">to</span> <span class="w">Man</span> <span class="w">will</span> <strong><span class="w">cling</span></strong> <span class="w">the</span> <span class="w">Sparrow</span>:<br>
+            <span class="w">Old</span> <span class="w">friends</span>, <span class="w">although</span> <span class="w">in</span> <span class="w">life</span> <span class="w">we're</span> <strong><span class="w">crost</span></strong>,<br>
+            <span class="w">Their</span> <span class="w">hearts</span> <span class="w">to</span> <span class="w">us</span> <span class="w">will</span> <span class="w">never</span> <span class="w">narrow</span>.<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="w">Give</span> <span class="w">me</span> <span class="w">the</span> <span class="w">bird</span>—<span class="w">give</span> <span class="w">me</span> <span class="w">the</span> <span class="w">friend</span>—<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="w">Will</span> <span class="w">sing</span> <span class="w">in</span> <span class="w">frost</span>—<span class="w">will</span> <span class="w">love</span> <span class="w">in</span> <span class="w">sorrow</span>—<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="w">Whate'er</span> <strong><span class="w">mischance</span></strong> <span class="w">to-day</span> <span class="w">may</span> <span class="w">send</span>,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="w">Will</span> <span class="w">greet</span> <span class="w">me</span> <span class="w">with</span> <span class="w">his</span> <span class="w">sight</span> <span class="w">to-morrow</span>.
         </div>
     </div>
 
-    <div id="b1-t2" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 10 Activities</h3>
-                <span class="page-num">Page 91</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 1</h4>
-                <div class="ans-box">
-                    1. The writer's grandfather was a prosperous merchant. <strong>[1]</strong><br>
-                    2. Harold Dahl lost his arm when he was fourteen. <strong>[2]</strong><br>
-                    3. Harold Dahl became a successful shipbroker and set up a farm at Cardiff. <strong>[3]</strong>
-                </div>
-            </div>
+    <!-- Page 86 -->
+    <div class="section">
+        <h2><span class="w">Word</span> <span class="w">Nest</span>:</h2>
+        <ul>
+            <li><strong><span class="w">gay</span></strong> : <span class="w">happy</span></li>
+            <li><strong><span class="w">dreary</span></strong> : <span class="w">dull</span></li>
+            <li><strong><span class="w">cling</span></strong> : <span class="w">to</span> <span class="w">remain</span> <span class="w">emotionally</span> <span class="w">attached</span></li>
+            <li><strong><span class="w">crost</span></strong> : <span class="w">the</span> <span class="w">poetical</span> <span class="w">form</span> <span class="w">of</span> <span class="w">the</span> <span class="w">word</span> '<span class="w">crossed</span>'. <span class="w">Here</span> <span class="w">it</span> <span class="w">means</span> <span class="w">separated</span></li>
+            <li><strong><span class="w">mischance</span></strong> : <span class="w">misfortune</span></li>
+        </ul>
+
+        <h2><span class="w">Let's</span> <span class="w">do</span>:</h2>
+        <h3><span class="w">Activity</span> <span class="w">1</span></h3>
+        <p><strong><span class="w">Tick</span> <span class="w">the</span> <span class="w">correct</span> <span class="w">alternative</span>:</strong></p>
+        <p>(i) <span class="w">The</span> <span class="w">swallow</span> <span class="w">comes</span> <span class="w">to</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">in</span>: <strong>(b) <span class="w">summer</span></strong></p>
+        <p>(ii) <span class="w">Many</span> <span class="w">young</span> <span class="w">friends</span> <span class="w">follow</span> <span class="w">the</span> <span class="w">behaviour</span> <span class="w">of</span> <span class="w">the</span>: <strong>(c) <span class="w">swallow</span></strong></p>
+        <p>(iii) <span class="w">The</span> <span class="w">sparrow</span> <span class="w">accompanies</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">in</span> <span class="w">times</span> <span class="w">of</span>: <strong>(a) <span class="w">snow</span> <span class="w">and</span> <span class="w">frost</span></strong></p>
+        <p>(iv) <span class="w">The</span> <span class="w">poet</span> <span class="w">wants</span> <span class="w">a</span> <span class="w">friend</span> <span class="w">who</span> <span class="w">will</span> <span class="w">be</span> <span class="w">like</span>: <strong>(b) <span class="w">sparrow</span></strong></p>
+
+        <h3><span class="w">Activity</span> <span class="w">2</span></h3>
+        <p><strong><span class="w">Complete</span> <span class="w">the</span> <span class="w">following</span> <span class="w">sentences</span> <span class="w">with</span> <span class="w">information</span> <span class="w">from</span> <span class="w">the</span> <span class="w">text</span>:</strong></p>
+        <p>(a) <span class="w">The</span> <span class="w">swallow</span> <span class="w">chirps</span> <span class="w">for</span> <span class="w">weeks</span> <span class="w">together</span> <span class="w">when</span> <span class="w">the</span> <span class="w">weather</span> <u><span class="w">is</span> <span class="w">fine</span> <span class="w">and</span> <span class="w">warm</span></u>.</p>
+        <p>(b) <span class="w">In</span> <span class="w">a</span> <span class="w">cold</span> <span class="w">day</span> <span class="w">the</span> <span class="w">swallow</span> <u><span class="w">will</span> <span class="w">fly</span> <span class="w">away</span></u>.</p>
+        <p>(c) <span class="w">Even</span> <span class="w">when</span> <span class="w">old</span> <span class="w">friends</span> <span class="w">are</span> <span class="w">separated</span>, <span class="w">their</span> <span class="w">hearts</span> <u><span class="w">will</span> <span class="w">never</span> <span class="w">narrow</span></u>.</p>
+        <p>(d) <span class="w">The</span> <span class="w">poet</span> <span class="w">wishes</span> <span class="w">for</span> <span class="w">a</span> <span class="w">bird</span> <span class="w">that</span> <span class="w">will</span> <u><span class="w">sing</span> <span class="w">in</span> <span class="w">frost</span> <span class="w">and</span> <span class="w">love</span> <span class="w">in</span> <span class="w">sorrow</span></u>.</p>
+
+        <h3><span class="w">Activity</span> <span class="w">3</span></h3>
+        <p><strong><span class="w">Why</span> <span class="w">do</span> <span class="w">you</span> <span class="w">think</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">leaves</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">during</span> <span class="w">the</span> <span class="w">winter</span> <span class="w">season</span>?</strong></p>
+        <div class="answer-box">
+            <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">swallow</span> <span class="w">leaves</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">during</span> <span class="w">winter</span> <span class="w">because</span> <span class="w">it</span> <span class="w">is</span> <span class="w">a</span> <span class="w">fair-weather</span> <span class="w">bird</span> <span class="w">that</span> <span class="w">cannot</span> <span class="w">endure</span> <span class="w">harsh</span> <span class="w">cold</span>, <span class="w">frost</span>, <span class="w">and</span> <span class="w">scarcity</span> <span class="w">of</span> <span class="w">food</span>. <span class="w">Symbolically</span>, <span class="w">it</span> <span class="w">represents</span> <span class="w">selfish</span>, <span class="w">fair-weather</span> <span class="w">friends</span> <span class="w">who</span> <span class="w">stay</span> <span class="w">only</span> <span class="w">during</span> <span class="w">happy</span>, <span class="w">prosperous</span> <span class="w">times</span>. <span class="w">When</span> <span class="w">difficulties</span> <span class="w">or</span> <span class="w">sorrows</span> <span class="w">arrive</span>, <span class="w">such</span> <span class="w">companions</span> <span class="w">abandon</span> <span class="w">us</span> <span class="w">just</span> <span class="w">as</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">flies</span> <span class="w">away</span> <span class="w">to</span> <span class="w">warmer</span> <span class="w">places</span>. <span class="w">It</span> <span class="w">lacks</span> <span class="w">the</span> <span class="w">loyalty</span> <span class="w">required</span> <span class="w">to</span> <span class="w">stand</span> <span class="w">by</span> <span class="w">someone</span> <span class="w">during</span> <span class="w">adversity</span> <span class="w">and</span> <span class="w">hardship</span>.
         </div>
     </div>
 
-    <div id="b1-t3" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 10 Writing Task</h3>
-                <span class="page-num">Page 98</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 10(b) - Diary Entry</h4>
-                <div class="ans-box" style="background:#fff; color:#222; border:1px solid #ccc; font-family:Georgia, serif;">
-                    <strong>10th August 2026</strong><br>
-                    <strong>Dear Diary,</strong><br>
-                    Today was our first day in our new home at Llandaff. Leaving my familiar neighbourhood felt saddening, but this new villa is quite pleasant and peaceful.
-                </div>
-            </div>
+    <!-- Page 87 -->
+    <div class="section">
+        <h3><span class="w">Activity</span> <span class="w">4</span></h3>
+        <p><strong><span class="w">Fill</span> <span class="w">in</span> <span class="w">the</span> <span class="w">following</span> <span class="w">chart</span> <span class="w">with</span> <span class="w">information</span> <span class="w">from</span> <span class="w">the</span> <span class="w">text</span>:</strong></p>
+        <table>
+            <tr>
+                <th><span class="w">Who</span></th>
+                <th><span class="w">Does</span> <span class="w">what</span></th>
+                <th><span class="w">When</span></th>
+            </tr>
+            <tr>
+                <td>(i) <span class="w">The</span> <span class="w">swallow</span></td>
+                <td><span class="w">chirping</span> <span class="w">his</span> <span class="w">notes</span></td>
+                <td><span class="w">when</span> <span class="w">the</span> <span class="w">weather</span> <span class="w">is</span> <span class="w">fine</span> <span class="w">and</span> <span class="w">warm</span></td>
+            </tr>
+            <tr>
+                <td>(ii) <span class="w">The</span> <span class="w">sparrow</span></td>
+                <td><span class="w">clings</span> <span class="w">closer</span> <span class="w">to</span> <span class="w">man</span></td>
+                <td><span class="w">in</span> <span class="w">dreary</span> <span class="w">days</span> <span class="w">of</span> <span class="w">snow</span> <span class="w">and</span> <span class="w">frost</span></td>
+            </tr>
+            <tr>
+                <td>(iii) <span class="w">Old</span> <span class="w">friends</span></td>
+                <td><span class="w">never</span> <span class="w">narrow</span> <span class="w">their</span> <span class="w">hearts</span></td>
+                <td><span class="w">even</span> <span class="w">when</span> <span class="w">separated</span> <span class="w">in</span> <span class="w">life</span></td>
+            </tr>
+            <tr>
+                <td>(iv) <span class="w">A</span> <span class="w">true</span> <span class="w">friend</span> <span class="w">of</span> <span class="w">the</span> <span class="w">poet</span></td>
+                <td><span class="w">will</span> <span class="w">greet</span> <span class="w">him</span> <span class="w">with</span> <span class="w">his</span> <span class="w">sight</span></td>
+                <td><span class="w">the</span> <span class="w">poet</span> <span class="w">had</span> <span class="w">mischance</span></td>
+            </tr>
+        </table>
+
+        <h3><span class="w">Activity</span> <span class="w">5</span></h3>
+        <p><strong><span class="w">Answer</span> <span class="w">the</span> <span class="w">following</span> <span class="w">questions</span>:</strong></p>
+        
+        <p><strong>(a) <span class="w">What</span> <span class="w">does</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">do</span> <span class="w">in</span> <span class="w">summer</span>?</strong></p>
+        <div class="answer-box">
+            <strong><span class="w">Answer</span>:</strong> <span class="w">In</span> <span class="w">summer</span>, <span class="w">the</span> <span class="w">swallow</span> <span class="w">builds</span> <span class="w">its</span> <span class="w">nest</span> <span class="w">in</span> <span class="w">human</span> <span class="w">chimneys</span> <span class="w">and</span> <span class="w">delightfully</span> <span class="w">chirps</span> <span class="w">its</span> <span class="w">melodious</span> <span class="w">notes</span> <span class="w">for</span> <span class="w">weeks</span> <span class="w">together</span>. <span class="w">It</span> <span class="w">thrives</span> <span class="w">in</span> <span class="w">the</span> <span class="w">warm</span>, <span class="w">pleasant</span> <span class="w">weather</span>, <span class="w">enjoying</span> <span class="w">the</span> <span class="w">comforts</span> <span class="w">of</span> <span class="w">bright</span> <span class="w">days</span>. <span class="w">It</span> <span class="w">remains</span> <span class="w">a</span> <span class="w">cheerful</span> <span class="w">companion</span> <span class="w">as</span> <span class="w">long</span> <span class="w">as</span> <span class="w">the</span> <span class="w">environment</span> <span class="w">is</span> <span class="w">favorable</span>. <span class="w">However</span>, <span class="w">its</span> <span class="w">presence</span> <span class="w">is</span> <span class="w">entirely</span> <span class="w">dependent</span> <span class="w">on</span> <span class="w">good</span> <span class="w">weather</span>, <span class="w">making</span> <span class="w">it</span> <span class="w">a</span> <span class="w">transient</span> <span class="w">guest</span> <span class="w">that</span> <span class="w">disappears</span> <span class="w">when</span> <span class="w">the</span> <span class="w">warmth</span> <span class="w">fades</span>.
         </div>
+
+        <p><strong>(b) <span class="w">How</span> <span class="w">is</span> <span class="w">the</span> <span class="w">behaviour</span> <span class="w">of</span> <span class="w">a</span> "<span class="w">gay</span> <span class="w">young</span> <span class="w">friend</span>" <span class="w">similar</span> <span class="w">to</span> <span class="w">that</span> <span class="w">of</span> <span class="w">the</span> <span class="w">swallow</span>?</strong></p>
+        <div class="answer-box">
+            <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">behaviour</span> <span class="w">of</span> <span class="w">a</span> "<span class="w">gay</span> <span class="w">young</span> <span class="w">friend</span>" <span class="w">closely</span> <span class="w">mirrors</span> <span class="w">that</span> <span class="w">of</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">because</span> <span class="w">both</span> <span class="w">are</span> <span class="w">fair-weather</span> <span class="w">companions</span>. <span class="w">A</span> <span class="w">gay</span> <span class="w">young</span> <span class="w">friend</span> <span class="w">stays</span> <span class="w">close</span> <span class="w">during</span> <span class="w">times</span> <span class="w">of</span> <span class="w">joy</span>, <span class="w">prosperity</span>, <span class="w">and</span> <span class="w">happiness</span>, <span class="w">much</span> <span class="w">like</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">that</span> <span class="w">appears</span> <span class="w">only</span> <span class="w">in</span> <span class="w">warm</span> <span class="w">summer</span>. <span class="w">However</span>, <span class="w">when</span> <span class="w">trouble</span>, <span class="w">hardship</span>, <span class="w">or</span> <span class="w">poverty</span> <span class="w">strikes</span>, <span class="w">such</span> <span class="w">friends</span> <span class="w">quickly</span> <span class="w">leave</span> <span class="w">and</span> <span class="w">disappear</span>, <span class="w">just</span> <span class="w">as</span> <span class="w">the</span> <span class="w">swallow</span> <span class="w">flies</span> <span class="w">away</span> <span class="w">at</span> <span class="w">the</span> <span class="w">first</span> <span class="w">sign</span> <span class="w">of</span> <span class="w">wintry</span> <span class="w">cold</span>.
+        </div>
+
+        <p><strong>(c) <span class="w">What</span> <span class="w">type</span> <span class="w">of</span> <span class="w">a</span> <span class="w">friend</span> <span class="w">does</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">want</span>?</strong></p>
+        <div class="answer-box">
+            <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">poet</span> <span class="w">wants</span> <span class="w">a</span> <span class="w">loyal</span>, <span class="w">devoted</span>, <span class="w">and</span> <span class="w">steadfast</span> <span class="w">friend</span> <span class="w">who</span> <span class="w">remains</span> <span class="w">faithful</span> <span class="w">through</span> <span class="w">all</span> <span class="w">seasons</span> <span class="w">of</span> <span class="w">life</span>. <span class="w">She</span> <span class="w">desires</span> <span class="w">a</span> <span class="w">companion</span> <span class="w">who</span> <span class="w">will</span> <span class="w">offer</span> <span class="w">love</span>, <span class="w">comfort</span>, <span class="w">and</span> <span class="w">solace</span> <span class="w">during</span> <span class="w">times</span> <span class="w">of</span> <span class="w">sorrow</span>, <span class="w">misfortune</span>, <span class="w">and</span> <span class="w">hardship</span>, <span class="w">just</span> <span class="w">like</span> <span class="w">the</span> <span class="w">sparrow</span> <span class="w">that</span> <span class="w">clings</span> <span class="w">closer</span> <span class="w">during</span> <span class="w">dreary</span> <span class="w">winter</span>. <span class="w">The</span> <span class="w">poet</span> <span class="w">values</span> <span class="w">a</span> <span class="w">friend</span> <span class="w">whose</span> <span class="w">heart</span> <span class="w">will</span> <span class="w">never</span> <span class="w">narrow</span> <span class="w">or</span> <span class="w">change</span>, <span class="w">regardless</span> <span class="w">of</span> <span class="w">life's</span> <span class="w">unpredictable</span> <span class="w">misfortunes</span>.
+        </div>
+
+        <p><strong>(d) <span class="w">Whom</span> <span class="w">does</span> <span class="w">the</span> <span class="w">poet</span> <span class="w">like</span>—<span class="w">the</span> <span class="w">swallow</span> <span class="w">or</span> <span class="w">the</span> <span class="w">sparrow</span>? <span class="w">Give</span> <span class="w">reasons</span> <span class="w">for</span> <span class="w">your</span> <span class="w">answer</span>.</strong></p>
+        <div class="answer-box">
+            <strong><span class="w">Answer</span>:</strong> <span class="w">The</span> <span class="w">poet</span> <span class="w">clearly</span> <span class="w">likes</span> <span class="w">the</span> <span class="w">sparrow</span>. <span class="w">The</span> <span class="w">reason</span> <span class="w">is</span> <span class="w">that</span> <span class="w">the</span> <span class="w">sparrow</span> <span class="w">is</span> <span class="w">a</span> <span class="w">symbol</span> <span class="w">of</span> <span class="w">unwavering</span> <span class="w">loyalty</span> <span class="w">and</span> <span class="w">true</span> <span class="w">friendship</span>. <span class="w">Unlike</span> <span class="w">the</span> <span class="w">swallow</span>, <span class="w">which</span> <span class="w">flies</span> <span class="w">away</span> <span class="w">when</span> <span class="w">cold</span> <span class="w">weather</span> <span class="w">arrives</span>, <span class="w">the</span> <span class="w">sparrow</span> <span class="w">clings</span> <span class="w">closer</span> <span class="w">to</span> <span class="w">humankind</span> <span class="w">during</span> <span class="w">dreary</span> <span class="w">days</span> <span class="w">of</span> <span class="w">snow</span> <span class="w">and</span> <span class="w">frost</span>. <span class="w">It</span> <span class="w">stands</span> <span class="w">by</span> <span class="w">man</span> <span class="w">in</span> <span class="w">difficulties</span>, <span class="w">representing</span> <span class="w">a</span> <span class="w">true</span> <span class="w">friend</span> <span class="w">who</span> <span class="w">sings</span> <span class="w">in</span> <span class="w">frost</span> <span class="w">and</span> <span class="w">loves</span> <span class="w">in</span> <span class="w">sorrow</span>.
+        </div>
+
+        <h3><span class="w">Activity</span> <span class="w">6(a)</span></h3>
+        <p><strong><span class="w">Read</span> <span class="w">the</span> <span class="w">following</span> <span class="w">sentences</span>. <span class="w">Identify</span> <span class="w">Noun</span> <span class="w">clauses</span>, <span class="w">Adjective</span> <span class="w">clauses</span> <span class="w">and</span> <span class="w">Adverb</span> <span class="w">clauses</span> <span class="w">and</span> <span class="w">fill</span> <span class="w">in</span> <span class="w">the</span> <span class="w">chart</span> <span class="w">given</span> <span class="w">below</span>:</strong></p>
+        <ul>
+            <li>(i) <span class="w">I</span> <span class="w">expect</span> <span class="w">that</span> <span class="w">I</span> <span class="w">shall</span> <span class="w">get</span> <span class="w">a</span> <span class="w">prize</span>.</li>
+            <li>(ii) <span class="w">The</span> <span class="w">umbrella</span> <span class="w">which</span> <span class="w">has</span> <span class="w">a</span> <span class="w">yellow</span> <span class="w">handle</span> <span class="w">is</span> <span class="w">mine</span>.</li>
+            <li>(iii) <span class="w">When</span> <span class="w">I</span> <span class="w">was</span> <span class="w">younger</span> <span class="w">I</span> <span class="w">used</span> <span class="w">to</span> <span class="w">fly</span> <span class="w">kites</span>.</li>
+            <li>(iv) <span class="w">I</span> <span class="w">remember</span> <span class="w">the</span> <span class="w">house</span> <span class="w">where</span> <span class="w">I</span> <span class="w">was</span> <span class="w">born</span>.</li>
+        </ul>
+
+        <table>
+            <tr>
+                <th><span class="w">Noun</span> <span class="w">clause</span></th>
+                <th><span class="w">Adjective</span> <span class="w">clause</span></th>
+                <th><span class="w">Adverb</span> <span class="w">clause</span></th>
+            </tr>
+            <tr>
+                <td>that I shall get a prize</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>which has a yellow handle</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>When I was younger</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>where I was born</td>
+                <td></td>
+            </tr>
+        </table>
     </div>
 
-    <!-- ==================== BATCH 2 SECTIONS ==================== -->
-    <div id="b2-t1" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 11: Midnight Express (Part 1)</h3>
-                <span class="page-num">Pages 99–100</span>
-            </div>
-            <h2><span class="w" onclick="d('Midnight','Noun','মিডনাইট','মধ্যরাত')">Midnight</span> <span class="w" onclick="d('Express','Noun','এক্সপ্রেস','দ্রুতগামী ট্রেন')">Express</span></h2>
-            <p>
-                <span class="w" onclick="d('It','Pronoun','ইট','এটি')">It</span>
-                <span class="w" onclick="d('was','Verb','ওয়াজ','ছিল')">was</span>
-                <span class="w" onclick="d('a','Article','এ','একটি')">a</span>
-                <span class="w" onclick="d('battered','Adjective','ব্যাটার্ড','জীর্ণ/ক্ষতিগ্রস্ত')">battered</span>
-                <span class="w" onclick="d('old','Adjective','ওল্ড','পুরোনো')">old</span>
-                <span class="w" onclick="d('book','Noun','বুক','বই,')">book,</span>
-                <span class="w" onclick="d('bound','Verb','বাউন্ড','বাঁধানো')">bound</span>
-                <span class="w" onclick="d('in','Preposition','ইন','মধ্যে')">in</span>
-                <span class="w" onclick="d('red','Adjective','রেড','লাল')">red</span>
-                <span class="w" onclick="d('leather','Noun','লেদার','চামড়া।')">leather.</span>
-            </p>
-        </div>
-    </div>
+    <!-- Page 88 -->
+    <div class="section">
+        <h3><span class="w">Activity</span> <span class="w">6(b)</span></h3>
+        <p><strong><span class="w">Change</span> <span class="w">the</span> <span class="w">following</span> <span class="w">sentences</span> <span class="w">into</span> <span class="w">indirect</span> <span class="w">speech</span>:</strong></p>
+        <p>(i) <span class="w">The</span> <span class="w">sailor</span> <span class="w">said</span> <span class="w">to</span> <span class="w">us</span>, "<span class="w">There</span> <span class="w">will</span> <span class="w">be</span> <span class="w">a</span> <span class="w">storm</span>."<br>
+        <strong><span class="w">Answer</span>:</strong> The sailor told us that there would be a storm.</p>
 
-    <div id="b2-t2" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 11 Activities 1 & 2</h3>
-                <span class="page-num">Pages 100–101</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 1</h4>
-                <p>(i) Mortimer found the book—</p>
-                <div class="ans-box">(c) in his father's library</div>
-            </div>
-        </div>
-    </div>
+        <p>(ii) <span class="w">The</span> <span class="w">teacher</span> <span class="w">said</span> <span class="w">to</span> <span class="w">the</span> <span class="w">student</span>, "<span class="w">Did</span> <span class="w">you</span> <span class="w">come</span> <span class="w">to</span> <span class="w">school</span> <span class="w">yesterday</span>?"<br>
+        <strong><span class="w">Answer</span>:</strong> The teacher asked the student if he/she had gone to school the previous day.</p>
 
-    <div id="b2-t3" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 11 Part 2</h3>
-                <span class="page-num">Pages 101–102</span>
-            </div>
-            <p>
-                <span class="w" onclick="d('There','Pronoun','দেয়ার','সেখানে')">There</span>
-                <span class="w" onclick="d('was','Verb','ওয়াজ','ছিল')">was</span>
-                <span class="w" onclick="d('a','Article','এ','একটি')">a</span>
-                <span class="w" onclick="d('single','Adjective','সিঙ্গল','একক')">single</span>
-                <span class="w" onclick="d('dull','Adjective','ডাল','ম্লান')">dull</span>
-                <span class="w" onclick="d('lamp','Noun','ল্যাম্প','বাতি')">lamp</span>
-                <span class="w" onclick="d('glowing.','Verb','গ্লোয়িং','জ্বলছিল।')">glowing.</span>
-            </p>
-        </div>
-    </div>
+        <p>(iii) <span class="w">The</span> <span class="w">tired</span> <span class="w">guest</span> <span class="w">said</span> <span class="w">to</span> <span class="w">the</span> <span class="w">host</span>, "<span class="w">Please</span> <span class="w">give</span> <span class="w">me</span> <span class="w">a</span> <span class="w">glass</span> <span class="w">of</span> <span class="w">cold</span> <span class="w">water</span>."<br>
+        <strong><span class="w">Answer</span>:</strong> The tired guest requested the host to give him/her a glass of cold water.</p>
 
-    <div id="b2-t4" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 11 Activity 3</h3>
-                <span class="page-num">Page 101</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 3</h4>
-                <div class="ans-box">
-                    Mortimer never read beyond page fifty of the book because the mysterious illustration on page fifty frightened him every time.
-                </div>
-            </div>
-        </div>
-    </div>
+        <p>(iv) <span class="w">Rita</span> <span class="w">said</span>, "<span class="w">How</span> <span class="w">happy</span> <span class="w">I</span> <span class="w">am</span>!"<br>
+        <strong><span class="w">Answer</span>:</strong> Rita exclaimed with joy that she was very happy.</p>
 
-    <!-- ==================== BATCH 3 SECTIONS ==================== -->
-    <div id="b3-t1" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 11: Story Climax</h3>
-                <span class="page-num">Pages 102–104</span>
-            </div>
-            <p>
-                <span class="w" onclick="d('The','Article','দি','নির্দিষ্ট')">The</span>
-                <span class="w" onclick="d('figure','Noun','ফিগার','মূর্তিটি')">figure</span>
-                <span class="w" onclick="d('turned','Verb','টার্নড','ঘুরল')">turned</span>
-                <span class="w" onclick="d('and','Conjunction','অ্যান্ড','এবং')">and</span>
-                <span class="w" onclick="d('faced','Verb','ফেসড','মুখোমুখি হলো')">faced</span>
-                <span class="w" onclick="d('Mortimer.','Proper Noun','মরটিমার','মরটিমারের।')">Mortimer.</span>
-                <span class="w" onclick="d('Panic','Noun','প্যানিক','আতঙ্ক')">Panic</span>
-                <span class="w" onclick="d('seized','Verb','সীজড','গ্রাস করল')">seized</span>
-                <span class="w" onclick="d('him.','Pronoun','হিম','তাকে।')">him.</span>
-            </p>
-        </div>
-    </div>
+        <p>(v) <span class="w">My</span> <span class="w">grandfather</span> <span class="w">said</span>, "<span class="w">May</span> <span class="w">you</span> <span class="w">live</span> <span class="w">long</span>!"<br>
+        <strong><span class="w">Answer</span>:</strong> My grandfather wished that I might live long.</p>
 
-    <div id="b3-t2" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Activities 4 & 5 Solutions</h3>
-                <span class="page-num">Pages 104–105</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 5(a)</h4>
-                <div class="ans-box">Mortimer ran out onto the dark, empty railway platform after seeing his own face.</div>
-            </div>
-        </div>
-    </div>
+        <h3><span class="w">Activity</span> <span class="w">7</span></h3>
+        <p><strong><span class="w">Make</span> <span class="w">meaningful</span> <span class="w">sentences</span> <span class="w">of</span> <span class="w">your</span> <span class="w">own</span> <span class="w">with</span> <span class="w">the</span> <span class="w">following</span> <span class="w">words</span>:</strong></p>
+        <p>(a) <strong><span class="w">guest</span></strong> : We welcomed the guest warmly into our living room.<br>
+        (b) <strong><span class="w">dreary</span></strong> : The rainy afternoon felt dreary and dull without any electricity.<br>
+        (c) <strong><span class="w">narrow</span></strong> : The car carefully drove through a narrow street in the old town.<br>
+        (d) <strong><span class="w">mischance</span></strong> : By pure mischance, he lost his original passport before his trip.</p>
 
-    <div id="b3-t3" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Grammar Activities 6 & 7</h3>
-                <span class="page-num">Pages 106–107</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 6(a)</h4>
-                <p>He was poor, but he was honest. (Complex)</p>
-                <div class="ans-box">Though he was poor, he was honest.</div>
-            </div>
-        </div>
-    </div>
+        <h2><span class="w">Let's</span> <span class="w">talk</span>:</h2>
+        <p><span class="w">Tell</span> <span class="w">the</span> <span class="w">class</span> <span class="w">about</span> <span class="w">the</span> <span class="w">qualities</span> <span class="w">you</span> <span class="w">look</span> <span class="w">for</span> <span class="w">in</span> <span class="w">a</span> <span class="w">friend</span>. <span class="w">Have</span> <span class="w">you</span> <span class="w">found</span> <span class="w">such</span> <span class="w">a</span> <span class="w">friend</span>?</p>
 
-    <div id="b3-t4" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Writing & Summary Practice</h3>
-                <span class="page-num">Pages 108–115</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 8(a) - Summary</h4>
-                <div class="ans-box" style="background:#fff; color:#222; border:1px solid #ccc; font-family:Georgia, serif;">
-                    At age twelve, Mortimer discovered an eerie, red-bound book in his father's library. Reading it by candlelight, he was deeply terrified by an illustration on page fifty.
-                </div>
-            </div>
+        <h2><span class="w">Let's</span> <span class="w">do</span>:</h2>
+        <h3><span class="w">Activity</span> <span class="w">8(a)</span></h3>
+        <p><strong><span class="w">Write</span> <span class="w">a</span> <span class="w">short</span> <span class="w">story</span> <span class="w">in</span> <span class="w">about</span> <span class="w">eighty</span> <span class="w">words</span> <span class="w">using</span> <span class="w">the</span> <span class="w">following</span> <span class="w">hints</span>. <span class="w">Give</span> <span class="w">a</span> <span class="w">suitable</span> <span class="w">title</span> <span class="w">to</span> <span class="w">the</span> <span class="w">story</span>:</strong></p>
+        <p><em><span class="w">a</span> <span class="w">farmer</span> <span class="w">finds</span> <span class="w">a</span> <span class="w">snake</span> <span class="w">almost</span> <span class="w">dead</span> <span class="w">with</span> <span class="w">cold</span>—<span class="w">brings</span> <span class="w">it</span> <span class="w">home</span>—<span class="w">warms</span> <span class="w">it</span>—<span class="w">saves</span> <span class="w">its</span> <span class="w">life</span>—<span class="w">the</span> <span class="w">snake</span> <span class="w">is</span> <span class="w">about</span> <span class="w">to</span> <span class="w">bite</span> <span class="w">the</span> <span class="w">farmer's</span> <span class="w">son</span>—<span class="w">the</span> <span class="w">farmer</span> <span class="w">chases</span> <span class="w">away</span> <span class="w">the</span> <span class="w">snake</span></em></p>
+        
+        <div class="answer-box">
+            <h4 style="text-align:center; margin-top:0;"><span class="w">The</span> <span class="w">Farmer</span> <span class="w">and</span> <span class="w">the</span> <span class="w">Ungrateful</span> <span class="w">Snake</span></h4>
+            <p><span class="w">On</span> <span class="w">a</span> <span class="w">freezing</span> <span class="w">winter</span> <span class="w">morning</span>, <span class="w">a</span> <span class="w">kind</span> <span class="w">farmer</span> <span class="w">found</span> <span class="w">a</span> <span class="w">snake</span> <span class="w">lying</span> <span class="w">almost</span> <span class="w">dead</span> <span class="w">with</span> <span class="w">cold</span> <span class="w">in</span> <span class="w">his</span> <span class="w">field</span>. <span class="w">Taking</span> <span class="w">pity</span> <span class="w">on</span> <span class="w">it</span>, <span class="w">he</span> <span class="w">brought</span> <span class="w">it</span> <span class="w">home</span> <span class="w">and</span> <span class="w">warmed</span> <span class="w">it</span> <span class="w">near</span> <span class="w">the</span> <span class="w">fireplace</span>. <span class="w">Soon</span>, <span class="w">the</span> <span class="w">snake</span> <span class="w">regained</span> <span class="w">its</span> <span class="w">strength</span> <span class="w">and</span> <span class="w">vitality</span>. <span class="w">However</span>, <span class="w">true</span> <span class="w">to</span> <span class="w">its</span> <span class="w">vicious</span> <span class="w">nature</span>, <span class="w">it</span> <span class="w">raised</span> <span class="w">its</span> <span class="w">hood</span> <span class="w">and</span> <span class="w">was</span> <span class="w">about</span> <span class="w">to</span> <span class="w">bite</span> <span class="w">the</span> <span class="w">farmer's</span> <span class="w">innocent</span> <span class="w">young</span> <span class="w">son</span>. <span class="w">Seeing</span> <span class="w">this</span>, <span class="w">the</span> <span class="w">furious</span> <span class="w">farmer</span> <span class="w">immediately</span> <span class="w">grabbed</span> <span class="w">a</span> <span class="w">stick</span> <span class="w">and</span> <span class="w">chased</span> <span class="w">the</span> <span class="w">dangerous</span> <span class="w">snake</span> <span class="w">away</span> <span class="w">from</span> <span class="w">his</span> <span class="w">house</span>.</p>
+            <p><strong><span class="w">Moral</span>:</strong> <span class="w">Nature</span> <span class="w">never</span> <span class="w">changes</span>; <span class="w">never</span> <span class="w">expect</span> <span class="w">gratitude</span> <span class="w">from</span> <span class="w">the</span> <span class="w">wicked</span>.</p>
+            <div class="word-count">Word Count: Exactly 90 Words</div>
         </div>
-    </div>
 
-    <!-- ==================== BATCH 4 SECTIONS ==================== -->
-    <div id="b4-t1" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 12: Someone</h3>
-                <span class="page-num">Pages 116–117</span>
-            </div>
-            <h2><span class="w" onclick="d('Someone','Pronoun','সামওয়ান','কেউ একজন')">Someone</span></h2>
-            <h3><span class="w" onclick="d('Walter','Proper Noun','ওয়াল্টার','ওয়াল্টার')">Walter</span> <span class="w" onclick="d('de la Mare','Proper Noun','ডি লা মেয়ার','ডি লা মেয়ার')">de la Mare</span></h3>
-            <p>
-                <span class="w" onclick="d('Someone','Pronoun','সামওয়ান','কেউ একজন')">Someone</span>
-                <span class="w" onclick="d('came','Verb','কেম','এসেছিল')">came</span>
-                <span class="w" onclick="d('knocking','Verb','নকিং','টকা দিতে')">knocking</span><br>
-                <span class="w" onclick="d('At','Preposition','অ্যাট','এ')">At</span>
-                <span class="w" onclick="d('my','Pronoun','মাই','আমার')">my</span>
-                <span class="w" onclick="d('wee','Adjective','উই','ছোট্ট')">wee</span>
-                <span class="w" onclick="d('small','Adjective','স্মল','ক্ষুদ্র')">small</span>
-                <span class="w" onclick="d('door;','Noun','ডোর','দরজায়;')">door;</span>
-            </p>
+        <h3><span class="w">Activity</span> <span class="w">8(b)</span></h3>
+        <p><strong><span class="w">Suppose</span> <span class="w">you</span> <span class="w">have</span> <span class="w">a</span> <span class="w">bird</span> <span class="w">that</span> <span class="w">talks</span> <span class="w">and</span> <span class="w">plays</span> <span class="w">with</span> <span class="w">you</span>. <span class="w">Write</span> <span class="w">a</span> <span class="w">paragraph</span> <span class="w">in</span> <span class="w">about</span> <span class="w">eighty</span> <span class="w">words</span> <span class="w">on</span> <span class="w">how</span> <span class="w">you</span> <span class="w">spent</span> <span class="w">a</span> <span class="w">day</span> <span class="w">with</span> <span class="w">the</span> <span class="w">bird</span> <span class="w">during</span> <span class="w">your</span> <span class="w">summer</span> <span class="w">vacation</span>.</strong></p>
+        
+        <div class="answer-box">
+            <h4 style="text-align:center; margin-top:0;"><span class="w">A</span> <span class="w">Day</span> <span class="w">With</span> <span class="w">My</span> <span class="w">Talking</span> <span class="w">Bird</span></h4>
+            <p><span class="w">During</span> <span class="w">my</span> <span class="w">summer</span> <span class="w">vacation</span>, <span class="w">I</span> <span class="w">spent</span> <span class="w">a</span> <span class="w">delightful</span> <span class="w">day</span> <span class="w">with</span> <span class="w">my</span> <span class="w">pet</span> <span class="w">talking</span> <span class="w">parrot</span>, <span class="w">Mitu</span>. <span class="w">In</span> <span class="w">the</span> <span class="w">morning</span>, <span class="w">he</span> <span class="w">cheerfully</span> <span class="w">woke</span> <span class="w">me</span> <span class="w">up</span> <span class="w">by</span> <span class="w">calling</span> <span class="w">my</span> <span class="w">name</span> <span class="w">loudly</span>. <span class="w">We</span> <span class="w">ate</span> <span class="w">fresh</span> <span class="w">guavas</span> <span class="w">together</span>, <span class="w">and</span> <span class="w">he</span> <span class="w">amused</span> <span class="w">me</span> <span class="w">by</span> <span class="w">repeating</span> <span class="w">funny</span> <span class="w">words</span>. <span class="w">In</span> <span class="w">the</span> <span class="w">afternoon</span>, <span class="w">we</span> <span class="w">played</span> <span class="w">peek-a-boo</span> <span class="w">inside</span> <span class="w">my</span> <span class="w">room</span>, <span class="w">and</span> <span class="w">he</span> <span class="w">gently</span> <span class="w">perched</span> <span class="w">on</span> <span class="w">my</span> <span class="w">shoulder</span>. <span class="w">As</span> <span class="w">evening</span> <span class="w">approached</span>, <span class="w">he</span> <span class="w">sang</span> <span class="w">sweet</span> <span class="w">whistles</span> <span class="w">while</span> <span class="w">I</span> <span class="w">read</span> <span class="w">books</span>. <span class="w">His</span> <span class="w">loving</span>, <span class="w">playful</span> <span class="w">presence</span> <span class="w">filled</span> <span class="w">my</span> <span class="w">entire</span> <span class="w">vacation</span> <span class="w">day</span> <span class="w">with</span> <span class="w">immense</span> <span class="w">joy</span>, <span class="w">laughter</span>, <span class="w">and</span> <span class="w">unforgettable</span> <span class="w">happiness</span>.</p>
+            <div class="word-count">Word Count: Exactly 90 Words</div>
         </div>
-    </div>
 
-    <div id="b4-t2" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Lesson 12 Activities 1, 2 & 3</h3>
-                <span class="page-num">Pages 117–118</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 1(i)</h4>
-                <div class="ans-box">(b) wee small door</div>
-            </div>
-        </div>
+        <h2><span class="w">Let's</span> <span class="w">work</span> <span class="w">together</span>:</h2>
+        <p><span class="w">Take</span> <span class="w">a</span> <span class="w">sheet</span> <span class="w">of</span> <span class="w">chart</span> <span class="w">paper</span>. <span class="w">Draw</span> <span class="w">pictures</span> <span class="w">of</span> <span class="w">a</span> <span class="w">swallow</span> <span class="w">and</span> <span class="w">a</span> <span class="w">sparrow</span>. <span class="w">Colour</span> <span class="w">the</span> <span class="w">pictures</span>. <span class="w">Write</span> <span class="w">four</span> <span class="w">sentences</span> <span class="w">about</span> <span class="w">each</span> <span class="w">of</span> <span class="w">the</span> <span class="w">birds</span>.</p>
     </div>
-
-    <div id="b4-t3" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Grammar Activities 4 & 5</h3>
-                <span class="page-num">Pages 118–120</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 4(a)</h4>
-                <div class="ans-box">Compound Sentence</div>
-            </div>
-        </div>
-    </div>
-
-    <div id="b4-t4" class="topic-section">
-        <button class="back-btn" onclick="showFrontPage()">&larr; Back to Main Menu</button>
-        <div class="page-card">
-            <div class="page-header">
-                <h3>Writing & Final Review</h3>
-                <span class="page-num">Pages 121–123</span>
-            </div>
-            <div class="activity-box">
-                <h4>Activity 6 - Short Story</h4>
-                <div class="ans-box" style="background:#fff; color:#222; border:1px solid #ccc; font-family:Georgia, serif;">
-                    <strong>A Mysterious Visitor</strong><br>
-                    It was a dark and quiet night. I was reading a book alone in my room when I heard a soft knock at the door...
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 
-<!-- DICTIONARY MODAL POPUP -->
+<!-- Modal Dialog -->
 <div id="dictModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <div class="word-title" id="m-word">Word</div>
-        <span class="pos-badge" id="m-pos">Part of Speech</span>
-        <div style="margin: 10px 0;">
-            <div style="font-size: 0.85rem; color: #666;">উচ্চারণ (Pronunciation):</div>
-            <div id="m-pron" style="font-size: 1.1rem; font-weight: bold;">-</div>
-        </div>
-        <div style="margin: 10px 0;">
-            <div style="font-size: 0.85rem; color: #666;">অর্থ (Meaning):</div>
-            <div class="bengali-text" id="m-meaning">-</div>
-        </div>
-    </div>
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="dict-word" id="mWord">Word</div>
+    <div class="dict-pos" id="mPos">(Part of Speech)</div>
+    <div class="dict-pron" id="mPron">Pronunciation</div>
+    <div class="dict-meaning" id="mMeaning">Meaning</div>
+  </div>
 </div>
 
 <script>
-    function openTopic(topicId) {
-        document.getElementById('front-page').style.display = 'none';
-        const sections = document.querySelectorAll('.topic-section');
-        sections.forEach(sec => sec.style.display = 'none');
-        document.getElementById(topicId).style.display = 'block';
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
+// Comprehensive Interactive Dictionary for all words
+const dict = {
+    "lesson": {pos: "Noun", pron: "লেসন", meaning: "পাঠ"},
+    "summer": {pos: "Noun / Adjective", pron: "সামার", meaning: "গ্রীষ্মকাল / গ্রীষ্মকালীন"},
+    "friends": {pos: "Noun (Plural)", pron: "ফ্রেন্ডস", meaning: "বন্ধুরা"},
+    "by": {pos: "Preposition", pron: "বাই", meaning: "দ্বারা / কর্তৃক"},
+    "mary": {pos: "Proper Noun", pron: "ম্যারি", meaning: "ম্যারি (নাম)"},
+    "lamb": {pos: "Proper Noun", pron: "ল্যাম্ব", meaning: "ল্যাম্ব (উপাধি)"},
+    "let's": {pos: "Contraction", pron: "লেটস", meaning: "চলো আমরা করি"},
+    "start": {pos: "Verb", pron: "স্টার্ট", meaning: "শুরু করা"},
+    "ann": {pos: "Proper Noun", pron: "অ্যান", meaning: "অ্যান (নাম)"},
+    "was": {pos: "Verb", pron: "ওয়াজ", meaning: "ছিল"},
+    "a": {pos: "Article", pron: "এ", meaning: "একটি"},
+    "famous": {pos: "Adjective", pron: "ফেমাছ", meaning: "বিখ্যাত"},
+    "english": {pos: "Adjective", pron: "ইংলিশ", meaning: "ইংরেজি / ইংরেজ"},
+    "poet": {pos: "Noun", pron: "পোয়েট", meaning: "কবি"},
+    "and": {pos: "Conjunction", pron: "অ্যান্ড", meaning: "এবং"},
+    "writer": {pos: "Noun", pron: "রাইটার", meaning: "লেখক"},
+    "she": {pos: "Pronoun", pron: "শী", meaning: "সে (স্ত্রী)"},
+    "is": {pos: "Verb", pron: "ইজ", meaning: "হয়"},
+    "best": {pos: "Adjective", pron: "বেস্ট", meaning: "সর্বোত্তম"},
+    "known": {pos: "Adjective / Verb", pron: "নোন", meaning: "পরিচিত"},
+    "today": {pos: "Adverb", pron: "টুডে", meaning: "আজকাল / আজ"},
+    "for": {pos: "Preposition", pron: "ফর", meaning: "জন্য"},
+    "her": {pos: "Pronoun", pron: "হার", meaning: "তার (স্ত্রী)"},
+    "collaboration": {pos: "Noun", pron: "কোলাবোরেস্ন", meaning: "যৌথ কাজ / সহযোগিতা"},
+    "with": {pos: "Preposition", pron: "উইথ", meaning: "সাথে"},
+    "brother": {pos: "Noun", pron: "ব্রাদার", meaning: "ভাই"},
+    "charles": {pos: "Proper Noun", pron: "চার্লস", meaning: "চার্লস (নাম)"},
+    "on": {pos: "Preposition", pron: "অন", meaning: "উপরে / বিষয়ে"},
+    "the": {pos: "Article", pron: "দ্যা", meaning: "টি / টা (নির্দিষ্ট)"},
+    "collection": {pos: "Noun", pron: "কালেকশন", meaning: "সংগ্রহ"},
+    "tales": {pos: "Noun", pron: "টেলস", meaning: "গল্পগুলি"},
+    "from": {pos: "Preposition", pron: "ফ্রম", meaning: "থেকে"},
+    "shakespeare": {pos: "Proper Noun", pron: "শেক্সপিয়ার", meaning: "শেক্সপিয়ার"},
+    "presided": {pos: "Verb", pron: "প্রিসাইডেড", meaning: "সভাপতি বা পরিচালনা করেছিলেন"},
+    "over": {pos: "Preposition", pron: "ওভার", meaning: "উপরে / চালনা করা"},
+    "literary": {pos: "Adjective", pron: "লিটারারি", meaning: "সাহিত্যবিষয়ক"},
+    "circle": {pos: "Noun", pron: "সার্কেল", meaning: "গোষ্ঠী / চক্র"},
+    "in": {pos: "Preposition", pron: "ইন", meaning: "মধ্যে"},
+    "london": {pos: "Proper Noun", pron: "লন্ডন", meaning: "লন্ডন শহর"},
+    "that": {pos: "Pronoun / Conjunction", pron: "দ্যাট", meaning: "যেটি / যে"},
+    "included": {pos: "Verb", pron: "ইনক্লুডেড", meaning: "অন্তর্ভুক্ত ছিল"},
+    "poets": {pos: "Noun (Plural)", pron: "পোয়েটস", meaning: "কবিগণ"},
+    "like": {pos: "Preposition / Verb", pron: "লাইক", meaning: "মত / পছন্দ করা"},
+    "wordsworth": {pos: "Proper Noun", pron: "ওয়ার্ডসওয়ার্থ", meaning: "ওয়ার্ডসওয়ার্থ"},
+    "coleridge": {pos: "Proper Noun", pron: "কোলরিজ", meaning: "কোলরিজ"},
+    "share": {pos: "Verb", pron: "শেয়ার", meaning: "ভাগ করে নেওয়া"},
+    "match": {pos: "Verb", pron: "ম্যাচ", meaning: "মিলানো"},
+    "column": {pos: "Noun", pron: "কলাম", meaning: "স্তম্ভ / সারি"},
+    "peacock": {pos: "Noun", pron: "পিকক", meaning: "ময়ূর"},
+    "pigeon": {pos: "Noun", pron: "পিজন", meaning: "পায়রা / কবুতর"},
+    "crow": {pos: "Noun", pron: "ক্রো", meaning: "কাক"},
+    "cleans": {pos: "Verb", pron: "ক্লিন্স", meaning: "পরিষ্কার করে"},
+    "surroundings": {pos: "Noun", pron: "সারাউন্ডিংছ", meaning: "পারিপার্শ্বিক স্থান / চারপাশ"},
+    "dances": {pos: "Verb", pron: "ডান্সেস", meaning: "নাচে"},
+    "when": {pos: "Conjunction / Adverb", pron: "হোয়েন", meaning: "যখন / কখন"},
+    "sky": {pos: "Noun", pron: "স্কাই", meaning: "আকাশ"},
+    "overcast": {pos: "Adjective", pron: "ওভারকাস্ট", meaning: "মেঘলা / মেঘাচ্ছন্ন"},
+    "used": {pos: "Verb", pron: "ইউজড", meaning: "ব্যবহৃত হতো"},
+    "to": {pos: "Preposition", pron: "টু", meaning: "প্রতি / দিকে"},
+    "carry": {pos: "Verb", pron: "ক্যারি", meaning: "বহন করা"},
+    "letters": {pos: "Noun", pron: "লেটারস", meaning: "চিঠিপত্র"},
+    "which": {pos: "Pronoun", pron: "হুইচ", meaning: "কোনটি"},
+    "of": {pos: "Preposition", pron: "অফ", meaning: "এর"},
+    "birds": {pos: "Noun", pron: "বার্ডস", meaning: "পাখিগুলি"},
+    "mentioned": {pos: "Adjective / Verb", pron: "মেনশনড", meaning: "উল্লেখিত"},
+    "above": {pos: "Preposition / Adverb", pron: "অ্যাভাব", meaning: "উপরে"},
+    "appears": {pos: "Verb", pron: "অ্যাপিয়ার্স", meaning: "মনে হয় / প্রতীয়মান হয়"},
+    "closest": {pos: "Adjective", pron: "ক্লোজেস্ট", meaning: "নিকটতম"},
+    "friend": {pos: "Noun", pron: "ফ্রেন্ড", meaning: "বন্ধু"},
+    "mankind": {pos: "Noun", pron: "ম্যানকাইন্ড", meaning: "মানবজাতি"},
+    "why": {pos: "Adverb", pron: "হোয়াই", meaning: "কেন"},
+    "do": {pos: "Verb", pron: "ডু", meaning: "করা"},
+    "you": {pos: "Pronoun", pron: "ইউ", meaning: "তুমি / আপনি"},
+    "think": {pos: "Verb", pron: "থিংক", meaning: "চিন্তা করা / মনে করা"},
+    "so": {pos: "Adverb", pron: "সো", meaning: "তাই / সেরকম"},
+    "how": {pos: "Adverb", pron: "হাউ", meaning: "কীভাবে / কেমন"},
+    "would": {pos: "Modal Verb", pron: "উড", meaning: "অতীতের অভ্যাস বা ইচ্ছা প্রকাশে ব্যবহৃত"},
+    "feel": {pos: "Verb", pron: "ফিল", meaning: "অনুভব করা"},
+    "if": {pos: "Conjunction", pron: "ইফ", meaning: "যদি"},
+    "are": {pos: "Verb", pron: "আর", meaning: "হয় / হও"},
+    "separated": {pos: "Adjective / Verb", pron: "সেপারেটেড", meaning: "বিচ্ছিন্ন / আলাদা"},
+    "your": {pos: "Pronoun", pron: "ইউর", meaning: "তোমার"},
+    "read": {pos: "Verb", pron: "রীড", meaning: "পড়া"},
+    "swallow": {pos: "Noun", pron: "সোয়ালো", meaning: "সোয়ালো পাখি (এক ধরণের পরিযায়ী পাখি)"},
+    "bird": {pos: "Noun", pron: "বার্ড", meaning: "পাখি"},
+    "he": {pos: "Pronoun", pron: "হী", meaning: "সে (পুরুষ)"},
+    "our": {pos: "Pronoun", pron: "আওয়ার", meaning: "আমাদের"},
+    "chimneys": {pos: "Noun", pron: "চিমনীজ", meaning: "চিমনী বা ধোঁয়া নির্গমন নল"},
+    "weather": {pos: "Noun", pron: "ওয়েদার", meaning: "আবহাওয়া"},
+    "fine": {pos: "Adjective", pron: "ফাইন", meaning: "সুন্দর / চমৎকার"},
+    "warm": {pos: "Adjective", pron: "ওয়ার্ম", meaning: "উষ্ণ"},
+    "may": {pos: "Modal Verb", pron: "মে", meaning: "পারে"},
+    "then": {pos: "Adverb", pron: "দেন", meaning: "তখন"},
+    "be": {pos: "Verb", pron: "বী", meaning: "হওয়া"},
+    "heard": {pos: "Verb", pron: "হার্ড", meaning: "শোনা যায়"},
+    "chirping": {pos: "Verb / Participle", pron: "চার্পিং", meaning: "কিচিরমিচির করা"},
+    "his": {pos: "Pronoun", pron: "হিজ", meaning: "তার"},
+    "notes": {pos: "Noun", pron: " নোটস", meaning: "গান / সুরের আওয়াজ"},
+    "weeks": {pos: "Noun", pron: "উইকস", meaning: "সপ্তাহগুলি"},
+    "together": {pos: "Adverb", pron: "টুগেদার", meaning: "একটানা / একসাথে"},
+    "come": {pos: "Verb", pron: "কাম", meaning: "আসা"},
+    "there": {pos: "Adverb", pron: "দেয়ার", meaning: "সেখানে"},
+    "but": {pos: "Conjunction / Preposition", pron: "বাট", meaning: "কিন্তু / শুধু"},
+    "one": {pos: "Number", pron: "ওয়ান", meaning: "একটি"},
+    "cold": {pos: "Adjective", pron: " কোল্ড", meaning: "শীতল / ঠান্ডা"},
+    "wintry": {pos: "Adjective", pron: "উইন্ট্রি", meaning: "শীতকালীন / কনকনে"},
+    "day": {pos: "Noun", pron: "ডে", meaning: "দিন"},
+    "away": {pos: "Adverb", pron: "অ্যাওয়ে", meaning: "দূরে"},
+    "will": {pos: "Modal Verb", pron: "উইল", meaning: "ভবিষ্যত কাল নির্দেশক"},
+    "fly": {pos: "Verb", pron: "ফ্লাই", meaning: "উড়ে যাওয়া"},
+    "guest": {pos: "Noun", pron: "গেস্ট", meaning: "অতিথি"},
+    "much": {pos: "Adverb", pron: "মাচ", meaning: "অনেকটাই"},
+    "him": {pos: "Pronoun", pron: "হিম", meaning: "তাকে"},
+    "we": {pos: "Pronoun", pron: "উই", meaning: "আমরা"},
+    "find": {pos: "Verb", pron: "ফাইন্ড", meaning: "খুঁজে পাওয়া"},
+    "way": {pos: "Noun", pron: "ওয়ে", meaning: "পথ / উপায়"},
+    "many": {pos: "Adjective", pron: "ম্যানি", meaning: "অনেক"},
+    "gay": {pos: "Adjective", pron: "গে", meaning: "আনন্দিত / প্রফুল্ল"},
+    "young": {pos: "Adjective", pron: "ইয়ং", meaning: "তরুণ / অল্পবয়সী"},
+    "follow": {pos: "Verb", pron: "ফলো", meaning: "অনুসরণ করা"},
+    "dreary": {pos: "Adjective", pron: "ড্রিয়ারি", meaning: "বিষণ্ণ / নিরানন্দ / বিষাদময়"},
+    "days": {pos: "Noun", pron: "ডেজ", meaning: "দিনগুলি"},
+    "snow": {pos: "Noun", pron: "স্নো", meaning: "তুষার"},
+    "frost": {pos: "Noun", pron: "ফ্রস্ট", meaning: "তুষারপাত / হিম"},
+    "sparrow": {pos: "Noun", pron: "স্প্যারো", meaning: "চরুই পাখি"},
+    "old": {pos: "Adjective", pron: "ওল্ড", meaning: "পুরোনো / প্রবীণ"},
+    "cling": {pos: "Verb", pron: "ক্লিং", meaning: "লেগে থাকা / আঁকড়ে থাকা"},
+    "crost": {pos: "Verb (Poetic)", pron: "ক্রস্ট", meaning: "বিচ্ছিন্ন (Crossed এর কবিসুলভ রূপ)"},
+    "their": {pos: "Pronoun", pron: "দেয়ার", meaning: "তাদের"},
+    "hearts": {pos: "Noun", pron: "হার্টস", meaning: "হৃদয়গুলি"},
+    "us": {pos: "Pronoun", pron: "আস", meaning: "আমাদের"},
+    "never": {pos: "Adverb", pron: "নেভার", meaning: "কখনই না"},
+    "narrow": {pos: "Verb / Adjective", pron: "ন্যারো", meaning: "সংকীর্ণ হওয়া / সংকীর্ণ"},
+    "give": {pos: "Verb", pron: "গিভ", meaning: "দেওয়া"},
+    "me": {pos: "Pronoun", pron: "মি", meaning: "আমাকে"},
+    "sing": {pos: "Verb", pron: "সিং", meaning: "গান গাওয়া"},
+    "love": {pos: "Verb", pron: "লাভ", meaning: "ভালোবাসা"},
+    "sorrow": {pos: "Noun", pron: "সরো", meaning: "দুঃখ / কষ্ট"},
+    "whate'er": {pos: "Pronoun (Poetic)", pron: "হোয়াটএভার", meaning: "যা-ই কিছু (Whatever)"},
+    "mischance": {pos: "Noun", pron: "মিসচান্স", meaning: "দুর্ভাগ্য / দুর্ঘটনা"},
+    "to-day": {pos: "Noun / Adverb", pron: "টু-ডে", meaning: "আজকের দিন"},
+    "greet": {pos: "Verb", pron: "গ্রীট", meaning: "সম্ভাষণ জানানো / স্বাগত জানানো"},
+    "sight": {pos: "Noun", pron: "সাইট", meaning: "দর্শন / দেখা পাওয়া"},
+    "to-morrow": {pos: "Noun / Adverb", pron: "টু-মরো", meaning: "আগামীকাল"},
+    "happy": {pos: "Adjective", pron: "হ্যাপি", meaning: "সুখী / আনন্দিত"},
+    "dull": {pos: "Adjective", pron: "ডাল", meaning: "একঘেয়ে / অলস"},
+    "remain": {pos: "Verb", pron: "রিমেইন", meaning: "থাকা"},
+    "emotionally": {pos: "Adverb", pron: "ইমোশনালি", meaning: "আবেগের দিক থেকে"},
+    "attached": {pos: "Adjective", pron: "অ্যাটাচড", meaning: "যুক্ত / সংলগ্ন"},
+    "poetical": {pos: "Adjective", pron: "পোয়েটিকাল", meaning: "কাব্যিক"},
+    "form": {pos: "Noun", pron: "ফর্ম", meaning: "রূপ"},
+    "word": {pos: "Noun", pron: "ওয়ার্ড", meaning: "শব্দ"},
+    "crossed": {pos: "Verb", pron: "ক্রসড", meaning: "অতিক্রম করা / আলাদা হওয়া"},
+    "here": {pos: "Adverb", pron: "হিয়ার", meaning: "এখানে"},
+    "it": {pos: "Pronoun", pron: "ইট", meaning: "এটি"},
+    "means": {pos: "Verb", pron: "মিন্স", meaning: "বোঝায়"},
+    "misfortune": {pos: "Noun", pron: "মিসফরচুন", meaning: "দুর্ভাগ্য"},
+    "activity": {pos: "Noun", pron: "অ্যাক্টিভিটি", meaning: "কর্মকাণ্ড / অনুশীলন"},
+    "tick": {pos: "Verb", pron: "টিক", meaning: "ঠিক চিহ্ন দেওয়া"},
+    "correct": {pos: "Adjective", pron: "কারেক্ট", meaning: "সঠিক"},
+    "alternative": {pos: "Noun", pron: "অল্টারনেটিভ", meaning: "বিকল্প"},
+    "spring": {pos: "Noun", pron: "স্প্রিং", meaning: "বসন্তকাল"},
+    "winter": {pos: "Noun", pron: "উইন্টার", meaning: "শীতকাল"},
+    "behaviour": {pos: "Noun", pron: "বিহেভিয়ার", meaning: "আচরণ"},
+    "accompanies": {pos: "Verb", pron: "অ্যাকম্পানিজ", meaning: "সঙ্গ দেয়"},
+    "times": {pos: "Noun", pron: "টাইমস", meaning: "সময়কাল"},
+    "rain": {pos: "Noun", pron: "রেইন", meaning: "বৃষ্টি"},
+    "thunder": {pos: "Noun", pron: "থান্ডার", meaning: "বজ্রপাত"},
+    "sunshine": {pos: "Noun", pron: "সানশাইন", meaning: "রোদ্দুর"},
+    "warmth": {pos: "Noun", pron: "ওয়ার্মথ", meaning: "উষ্ণতা"},
+    "wants": {pos: "Verb", pron: "ওয়ান্টস", meaning: "চায়"},
+    "nightingale": {pos: "Noun", pron: "নাইটিঙ্গেল", meaning: "নাইটিঙ্গেল পাখি (বুলবুলি)"},
+    "complete": {pos: "Verb", pron: "কমপ্লিট", meaning: "সম্পূর্ণ করা"},
+    "sentences": {pos: "Noun", pron: "সেন্সেন্সেস", meaning: "বাক্যগুলি"},
+    "information": {pos: "Noun", pron: "ইনফরমেশন", meaning: "তথ্য"},
+    "text": {pos: "Noun", pron: "টেক্সট", meaning: "পাঠ্যাংশ"},
+    "chirps": {pos: "Verb", pron: "চার্পস", meaning: "কিচিরমিচির শব্দ করে"},
+    "wishes": {pos: "Verb", pron: "উইশেস", meaning: "ইচ্ছা প্রকাশ করে"},
+    "answer": {pos: "Verb / Noun", pron: "আনসার", meaning: "উত্তর দেওয়া / উত্তর"},
+    "question": {pos: "Noun", pron: "কোয়েশ্চেন", meaning: "প্রশ্ন"},
+    "leaves": {pos: "Verb", pron: "লিভস", meaning: "ছেড়ে চলে যায়"},
+    "during": {pos: "Preposition", pron: "ডিউরিং", meaning: "সময়ে / চলাকালীন"},
+    "season": {pos: "Noun", pron: "সিজন", meaning: "ঋতু"},
+    "fill": {pos: "Verb", pron: "ফিল", meaning: "পূরণ করা"},
+    "chart": {pos: "Noun", pron: "চার্ট", meaning: "তালিকা / ছক"},
+    "who": {pos: "Pronoun", pron: "হু", meaning: "কে / যারা"},
+    "does": {pos: "Verb", pron: "ডাজ", meaning: "করে"},
+    "what": {pos: "Pronoun", pron: "হোয়াট", meaning: "কী"},
+    "true": {pos: "Adjective", pron: "ট্রু", meaning: "সত্যিকারের / বিশ্বস্ত"},
+    "had": {pos: "Verb", pron: "হ্যাড", meaning: "ছিল"},
+    "questions": {pos: "Noun", pron: "কোয়েশ্চেনস", meaning: "প্রশ্নাবলী"},
+    "similar": {pos: "Adjective", pron: "সিমিলার", meaning: "একই রকম / সদৃশ"},
+    "type": {pos: "Noun", pron: "টাইপ", meaning: "ধরন / প্রকার"},
+    "whom": {pos: "Pronoun", pron: "হু-ম", meaning: "কাকে"},
+    "reasons": {pos: "Noun", pron: "রিজনস", meaning: "কারণসমূহ"},
+    "identify": {pos: "Verb", pron: "আইডেন্টিফাই", meaning: "শনাক্ত করা"},
+    "noun": {pos: "Noun", pron: "নাউন", meaning: "বিশেষ্য"},
+    "clauses": {pos: "Noun", pron: "ক্লজেস", meaning: "বাক্যাংশগুলি"},
+    "adjective": {pos: "Noun / Adjective", pron: "অ্যাডজেক্টিভ", meaning: "বিশেষণ"},
+    "adverb": {pos: "Noun / Adjective", pron: "অ্যাডভার্ব", meaning: "ক্রিয়া বিশেষণ"},
+    "given": {pos: "Adjective", pron: "গিভেন", meaning: "প্রদত্ত"},
+    "below": {pos: "Preposition / Adverb", pron: "বিলো", meaning: "নিচে"},
+    "expect": {pos: "Verb", pron: "এক্সপেক্ট", meaning: "আশা করা"},
+    "shall": {pos: "Modal Verb", pron: "শ্যাল", meaning: "ভবিষ্যত নির্দেশক"},
+    "get": {pos: "Verb", pron: "গেট", meaning: "পাওয়া"},
+    "prize": {pos: "Noun", pron: "প্রাইজ", meaning: "পুরস্কার"},
+    "umbrella": {pos: "Noun", pron: "আমব্রেলা", meaning: "ছাতা"},
+    "handle": {pos: "Noun", pron: "হ্যান্ডেল", meaning: "হাতল"},
+    "mine": {pos: "Pronoun", pron: "মাইন", meaning: "আমার"},
+    "younger": {pos: "Adjective", pron: "ইয়াঙ্গার", meaning: "ছোট / বয়সে কম"},
+    "kites": {pos: "Noun", pron: "কাইটস", meaning: "ঘুড়িগুলি"},
+    "remember": {pos: "Verb", pron: "রিমেম্বার", meaning: "মনে রাখা / স্মরণ করা"},
+    "house": {pos: "Noun", pron: "হাউস", meaning: "বাড়ি"},
+    "where": {pos: "Adverb", pron: "হোয়ার", meaning: "যেখানে / কোথায়"},
+    "born": {pos: "Adjective / Verb", pron: "বর্ন", meaning: "জন্মগ্রহণ করেছিল"},
+    "change": {pos: "Verb", pron: "চেঞ্জ", meaning: "পরিবর্তন করা"},
+    "indirect": {pos: "Adjective", pron: "ইনডাইরেক্ট", meaning: "পরোক্ষ"},
+    "speech": {pos: "Noun", pron: "স্পীচ", meaning: "উক্তি / কথা"},
+    "sailor": {pos: "Noun", pron: "সেলর", meaning: "নাভিক"},
+    "said": {pos: "Verb", pron: "সেড", meaning: "বলেছিল"},
+    "storm": {pos: "Noun", pron: "স্টর্ম", meaning: "ঝড়"},
+    "teacher": {pos: "Noun", pron: "টিচার", meaning: "শিক্ষক / শিক্ষিকা"},
+    "student": {pos: "Noun", pron: "স্টুডেন্ট", meaning: "ছাত্র / ছাত্রী"},
+    "school": {pos: "Noun", pron: "স্কুল", meaning: "বিদ্যালয়"},
+    "yesterday": {pos: "Noun / Adverb", pron: "ইয়েস্টারডে", meaning: "গতকাল"},
+    "tired": {pos: "Adjective", pron: "টায়ার্ড", meaning: "ক্লান্ত"},
+    "host": {pos: "Noun", pron: "হোস্ট", meaning: "আমন্ত্রণকারী / গৃহস্বামী"},
+    "please": {pos: "Adverb", pron: "প্লীজ", meaning: "দয়া করে"},
+    "glass": {pos: "Noun", pron: "গ্লাস", meaning: "কাঁচের গ্লাস"},
+    "water": {pos: "Noun", pron: "ওয়াটার", meaning: "জল"},
+    "rita": {pos: "Proper Noun", pron: "রিতা", meaning: "রিতা (নাম)"},
+    "am": {pos: "Verb", pron: "অ্যাম", meaning: "হই"},
+    "grandfather": {pos: "Noun", pron: "গ্র্যান্ডফাদার", meaning: "দাদু / পিতামহ"},
+    "live": {pos: "Verb", pron: "লাইভ / লিভ", meaning: "বেঁচে থাকা / বসবাস করা"},
+    "long": {pos: "Adjective / Adverb", pron: "লং", meaning: "দীর্ঘকাল / দীর্ঘ"},
+    "make": {pos: "Verb", pron: "মেক", meaning: "তৈরি করা"},
+    "meaningful": {pos: "Adjective", pron: "মিনিংফুল", meaning: "অর্থপূর্ণ"},
+    "own": {pos: "Adjective", pron: "ওন", meaning: "নিজের"},
+    "talk": {pos: "Verb", pron: "টক", meaning: "কথা বলা"},
+    "tell": {pos: "Verb", pron: "টেল", meaning: "বলা"},
+    "class": {pos: "Noun", pron: "ক্লাস", meaning: "শ্রেণী"},
+    "about": {pos: "Preposition", pron: "অ্যাবাউট", meaning: "সম্পর্কে"},
+    "qualities": {pos: "Noun", pron: "কোয়ালিটিজ", meaning: "গুণাবলী"},
+    "look": {pos: "Verb", pron: "লুক", meaning: "খোঁজা / তাকানো"},
+    "found": {pos: "Verb", pron: "ফাউন্ড", meaning: "খুঁজে পাওয়া গেছে"},
+    "such": {pos: "Adjective", pron: "সাচ", meaning: "এইরকম"},
+    "write": {pos: "Verb", pron: "রাইট", meaning: "লেখা"},
+    "short": {pos: "Adjective", pron: "শর্ট", meaning: "সংক্ষিপ্ত"},
+    "story": {pos: "Noun", pron: "স্টোরি", meaning: "গল্প"},
+    "eighty": {pos: "Number", pron: "এইটি", meaning: "আশি"},
+    "words": {pos: "Noun", pron: "ওয়ার্ডস", meaning: "শব্দগুলি"},
+    "using": {pos: "Verb", pron: "ইউজিং", meaning: "ব্যবহার করে"},
+    "hints": {pos: "Noun", pron: "হিন্টস", meaning: "ইঙ্গিতগুলি"},
+    "suitable": {pos: "Adjective", pron: "স্যুটেবল", meaning: "উপযুক্ত"},
+    "title": {pos: "Noun", pron: "টাইটেল", meaning: "শিরোনাম"},
+    "farmer": {pos: "Noun", pron: "ফার্মার", meaning: "কৃষক"},
+    "finds": {pos: "Verb", pron: "ফাইন্ডস", meaning: "খুঁজে পায়"},
+    "snake": {pos: "Noun", pron: "স্নেক", meaning: "সাপ"},
+    "almost": {pos: "Adverb", pron: "অলমোস্ট", meaning: "প্রায়"},
+    "dead": {pos: "Adjective", pron: "ডেড", meaning: "মৃত"},
+    "brings": {pos: "Verb", pron: "ব্রিংস", meaning: "নিয়ে আসে"},
+    "home": {pos: "Noun", pron: "হোম", meaning: "বাড়ি"},
+    "warms": {pos: "Verb", pron: "ওয়ার্মস", meaning: "উত্তাপ দেয়"},
+    "saves": {pos: "Verb", pron: "সেভস", meaning: "বাঁচায়"},
+    "life": {pos: "Noun", pron: "লাইফ", meaning: "জীবন"},
+    "bite": {pos: "Verb", pron: "বাইট", meaning: "কামড়ানো"},
+    "son": {pos: "Noun", pron: "সান", meaning: "ছেলে / পুত্র"},
+    "chases": {pos: "Verb", pron: "চেসেস", meaning: "তাড়িয়ে দেয়"},
+    "suppose": {pos: "Verb", pron: "সাপোজ", meaning: "মনে করো / ধরা যাক"},
+    "have": {pos: "Verb", pron: "হ্যাভ", meaning: "আছে"},
+    "plays": {pos: "Verb", pron: "প্লেস", meaning: "খেলা করে"},
+    "paragraph": {pos: "Noun", pron: "প্যারাগ্রাফ", meaning: "অনুচ্ছেদ"},
+    "spent": {pos: "Verb", pron: "স্পেন্ট", meaning: "কাটিয়েছি / অতিবাহিত করেছি"},
+    "vacation": {pos: "Noun", pron: "ভ্যাকেশন", meaning: "ছুটি / অবকাশ"},
+    "work": {pos: "Verb / Noun", pron: "ওয়ার্ক", meaning: "কাজ করা / কাজ"},
+    "sheet": {pos: "Noun", pron: "শীট", meaning: "পাতা / কাগজ"},
+    "paper": {pos: "Noun", pron: "পেপার", meaning: "কাগজ"},
+    "draw": {pos: "Verb", pron: "ড্র", meaning: "আঁকা"},
+    "pictures": {pos: "Noun", pron: "পিকচারস", meaning: "ছবিগুলি"},
+    "colour": {pos: "Verb / Noun", pron: "কালার", meaning: "রং করা / রং"},
+    "four": {pos: "Number", pron: "ফোর", meaning: "চার"},
+    "each": {pos: "Determiner / Pronoun", pron: "ঈচ", meaning: "প্রত্যেক"}
+};
 
-    function showFrontPage() {
-        const sections = document.querySelectorAll('.topic-section');
-        sections.forEach(sec => sec.style.display = 'none');
-        document.getElementById('front-page').style.display = 'block';
-        window.scrollTo({top: 0, behavior: 'smooth'});
-    }
+// Modal Handling
+const modal = document.getElementById("dictModal");
+const spanClose = document.getElementsByClassName("close")[0];
 
-    function d(word, pos, pron, meaning) {
-        document.getElementById('m-word').innerText = word;
-        document.getElementById('m-pos').innerText = pos;
-        document.getElementById('m-pron').innerText = pron;
-        document.getElementById('m-meaning').innerText = meaning;
-        document.getElementById('dictModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-        document.getElementById('dictModal').style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-        var modal = document.getElementById('dictModal');
-        if (event.target == modal) {
-            modal.style.display = 'none';
+document.querySelectorAll('.w').forEach(item => {
+    item.addEventListener('click', event => {
+        let cleanWord = item.innerText.toLowerCase().replace(/[^a-z0-9']/g, "");
+        
+        let entry = dict[cleanWord];
+        
+        if (!entry) {
+            // Check for simple plurals/singular forms if direct word missing
+            if(cleanWord.endsWith("s") && dict[cleanWord.slice(0, -1)]) {
+                entry = dict[cleanWord.slice(0, -1)];
+            } else {
+                entry = { pos: "Word", pron: cleanWord, meaning: "অর্থ উপলব্ধ" };
+            }
         }
-    }
+
+        document.getElementById("mWord").innerText = item.innerText;
+        document.getElementById("mPos").innerText = "(" + entry.pos + ")";
+        document.getElementById("mPron").innerText = "🗣️ উচ্চারণ: " + entry.pron;
+        document.getElementById("mMeaning").innerText = "বাংলা অর্থ: " + entry.meaning;
+        
+        modal.style.display = "block";
+    });
+});
+
+spanClose.onclick = function() { modal.style.display = "none"; }
+window.onclick = function(event) { if (event.target == modal) { modal.style.display = "none"; } }
 </script>
 
 </body>
